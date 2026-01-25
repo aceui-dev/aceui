@@ -1,0 +1,36 @@
+{
+  "name": "aceui-monorepo",
+  "version": "0.1.0-beta.0",
+  "description": "Modern React UI component library for building beautiful user interfaces. Production-ready, accessible, and easy to customize.",
+  "keywords": [
+    "ui",
+    "react",
+    "components",
+    "library"
+  ],
+  "author": "AceUI <support@aceui.dev>",
+  "homepage": "https://aceui.dev",
+  "license": "MIT",
+  "private": true,
+  "workspaces": [
+    "packages/components/*",
+    "demo"
+  ],
+  "scripts": {
+    "build:all": "npm run build --workspaces --if-present",
+    "clean": "npm run clean --workspaces --if-present",
+    "demo": "npm run dev --workspace=demo"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aceui-dev/aceui.git"
+  },
+  "bugs": {
+    "url": "https://github.com/aceui-dev/aceui/issues"
+  },
+  "devDependencies": {
+    "npm-run-all": "^4.1.5",
+    "rimraf": "^5.0.10",
+    "typescript": "^5.7.2"
+  }
+}
