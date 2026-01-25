@@ -24,7 +24,7 @@ AceUI provides a comprehensive collection of production-ready React components t
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/aceuidev/aceui.git
+git clone https://github.com/aceui-dev/aceui.git
 cd aceui
 ```
 
@@ -304,5 +304,5 @@ MIT
 ## 🔗 Links
 
 - [Homepage](https://aceui.dev)
-- [GitHub](https://github.com/aceuidev/aceui)
-- [Issues](https://github.com/aceuidev/aceui/issues)
+- [GitHub](https://github.com/aceui-dev/aceui)
+- [Issues](https://github.com/aceui-dev/aceui/issues)
