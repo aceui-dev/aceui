@@ -2,6 +2,7 @@ import { useSearchParams, Link } from "react-router-dom";
 import DefaultSection from "./sections/DefaultSection";
 import DisabledSection from "./sections/DisabledSection";
 import CustomStylesSection from "./sections/CustomStylesSection";
+import { useSidebar } from "../../contexts/SidebarContext";
 
 const SECTIONS = [
   { id: "default", label: "Default", component: DefaultSection },
@@ -12,19 +13,22 @@ const SECTIONS = [
 export default function ButtonPage() {
   const [searchParams] = useSearchParams();
   const currentTab = searchParams.get("t") || "default";
+  const { isOpen, close } = useSidebar();
 
   const currentSection = SECTIONS.find((section) => section.id === currentTab) || SECTIONS[0];
   const CurrentComponent = currentSection.component;
 
   return (
     <div className="page-layout">
-      <aside className="sidebar">
+      <div className={`sidebar-overlay ${isOpen ? "active" : ""}`} onClick={close}></div>
+      <aside className={`sidebar ${isOpen ? "open" : ""}`}>
         <nav className="sidebar-nav">
           {SECTIONS.map((section) => (
             <Link
               key={section.id}
               to={`/button?t=${section.id}`}
               className={currentTab === section.id ? "sidebar-link active" : "sidebar-link"}
+              onClick={close}
             >
               {section.label}
             </Link>
