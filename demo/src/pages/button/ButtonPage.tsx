@@ -1,13 +1,25 @@
 import { useSearchParams, Link } from "react-router-dom";
 import DefaultSection from "./sections/DefaultSection";
 import DisabledSection from "./sections/DisabledSection";
-import CustomStylesSection from "./sections/CustomStylesSection";
+import VariantsSection from "./sections/VariantsSection";
+import ColorsSection from "./sections/ColorsSection";
+import SizesSection from "./sections/SizesSection";
+import RadiusSection from "./sections/RadiusSection";
+import LoadingSection from "./sections/LoadingSection";
+import IconSection from "./sections/IconSection";
+import CombinationsSection from "./sections/CombinationsSection";
 import { useSidebar } from "../../contexts/SidebarContext";
 
 const SECTIONS = [
   { id: "default", label: "Default", component: DefaultSection },
+  { id: "variants", label: "Variants", component: VariantsSection },
+  { id: "colors", label: "Colors", component: ColorsSection },
+  { id: "sizes", label: "Sizes", component: SizesSection },
+  { id: "radius", label: "Radius", component: RadiusSection },
   { id: "disabled", label: "Disabled", component: DisabledSection },
-  { id: "custom-styles", label: "Custom styles", component: CustomStylesSection },
+  { id: "loading", label: "Loading", component: LoadingSection },
+  { id: "icon", label: "Icon", component: IconSection },
+  { id: "combinations", label: "Combinations", component: CombinationsSection },
 ];
 
 export default function ButtonPage() {

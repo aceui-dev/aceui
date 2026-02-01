@@ -11,6 +11,6 @@ export default defineConfig({
     },
   },
   optimizeDeps: {
-    exclude: ['@aceuidev/button', '@aceuidev/chip'],
+    exclude: ['@aceuidev/button'],
   },
 })

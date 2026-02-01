@@ -1,6 +1,5 @@
 import { BrowserRouter, Routes, Route, Link, useLocation } from "react-router-dom";
 import ButtonPage from "./pages/button/ButtonPage";
-import ChipPage from "./pages/chip/ChipPage";
 import HomePage from "./pages/HomePage";
 import { COMPONENTS } from "./constants";
 import { SidebarProvider, useSidebar } from "./contexts/SidebarContext";
@@ -43,7 +42,6 @@ function AppContent() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/button" element={<ButtonPage />} />
-          <Route path="/chip" element={<ChipPage />} />
         </Routes>
       </div>
     </div>

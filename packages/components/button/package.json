@@ -15,7 +15,9 @@
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
-  "sideEffects": false,
+  "sideEffects": [
+    "**/*.css"
+  ],
   "files": [
     "dist"
   ],
@@ -36,6 +38,7 @@
       "import": "./dist/index.mjs",
       "require": "./dist/index.js"
     },
+    "./styles.css": "./dist/Button.css",
     "./package.json": "./package.json"
   },
   "peerDependencies": {
@@ -50,6 +53,7 @@
   "devDependencies": {
     "@types/react": "^19.2.0",
     "@types/react-dom": "^19.2.0",
+    "copyfiles": "^2.4.1",
     "react": "19.2.3",
     "react-dom": "19.2.3",
     "rimraf": "^5.0.10",
@@ -57,7 +61,7 @@
     "typescript": "^5.7.2"
   },
   "scripts": {
-    "build": "tsup src --dts --format esm,cjs",
+    "build": "tsup src --dts --format esm,cjs && copyfiles -f \"src/*.css\" dist",
     "dev": "tsup src --watch --format esm,cjs",
     "clean": "rimraf dist",
     "prepublishOnly": "npm run clean && npm run build"

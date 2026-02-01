@@ -1,0 +1,586 @@
+# Feature Requirements
+
+## Version: 1.0.0
+Last Updated: 2025-01-28
+
+---
+
+## Feature: Button Component
+Priority: High
+Status: Pending
+
+### Overview
+A flexible, accessible button component that serves as the foundation of the component library. Supports multiple variants, sizes, states, and configurations using the project's design token system.
+
+### Requirements
+
+#### 1. Basic Button
+- Render a clickable button element
+- Support text content
+- Handle click events
+- Use semantic HTML `<button>` element
+- Apply base BEM class: `.aceui-button`
+- Use design tokens from `design-tokens.css`
+
+#### 2. Disabled State
+- Support `isDisabled` prop (boolean)
+- Visual indication of disabled state using `--disabled-opacity: 0.5`
+- Prevent click events when disabled
+- Apply modifier class: `.aceui-button--disabled`
+- Add `disabled` attribute to button element (do not add `aria-disabled`; native `<button>` uses `disabled` only per a11y guidelines)
+- Change cursor to `not-allowed`
+
+#### 3. Sizes
+Support three size variants via `size` prop:
+
+- **Small**: `.aceui-button--small`
+  - Font size: `var(--font-size-small)` (0.875rem / 14px)
+  - Line height: `var(--line-height-small)` (1.25rem)
+  - Padding: 0 12px
+  - Min-height: 32px
+  
+- **Medium** (default): `.aceui-button--medium`
+  - Font size: `var(--font-size-medium)` (1rem / 16px)
+  - Line height: `var(--line-height-medium)` (1.5rem)
+  - Padding: 0 16px
+  - Min-height: 40px
+  
+- **Large**: `.aceui-button--large`
+  - Font size: `var(--font-size-large)` (1.125rem / 18px)
+  - Line height: `var(--line-height-large)` (1.75rem)
+  - Padding: 0 24px
+  - Min-height: 48px
+
+#### 4. Border Radius
+Support radius variants via `radius` prop using design tokens:
+
+- **Small**: `.aceui-button--radius-small`
+  - Border radius: `var(--radius-small)` (8px)
+  
+- **Medium** (default): `.aceui-button--radius-medium`
+  - Border radius: `var(--radius-medium)` (12px)
+  
+- **Large**: `.aceui-button--radius-large`
+  - Border radius: `var(--radius-large)` (14px)
+  
+- **Full**: `.aceui-button--radius-full`
+  - Border radius: `9999px` (pill shape)
+
+#### 5. Colors
+Support color variants via `color` prop using design token color system:
+
+- **Default**: Uses `--color-default` system
+  - Base: `var(--color-default-500)`
+  - Foreground: `var(--color-default-foreground)`
+  - Hover: `var(--color-default-600)`
+  - Active: `var(--color-default-700)`
+  
+- **Primary** (default): Uses `--color-primary` system
+  - Base: `var(--color-primary-500)` (#006fee)
+  - Foreground: `var(--color-primary-foreground)` (#fff)
+  - Hover: `var(--color-primary-600)`
+  - Active: `var(--color-primary-700)`
+  
+- **Secondary**: Uses `--color-secondary` system
+  - Base: `var(--color-secondary-500)` (#7828c8)
+  - Foreground: `var(--color-secondary-foreground)` (#fff)
+  - Hover: `var(--color-secondary-600)`
+  - Active: `var(--color-secondary-700)`
+  
+- **Success**: Uses `--color-success` system
+  - Base: `var(--color-success-500)` (#17c964)
+  - Foreground: `var(--color-success-foreground)` (#000)
+  - Hover: `var(--color-success-600)`
+  - Active: `var(--color-success-700)`
+  
+- **Warning**: Uses `--color-warning` system
+  - Base: `var(--color-warning-500)` (#f5a524)
+  - Foreground: `var(--color-warning-foreground)` (#000)
+  - Hover: `var(--color-warning-600)`
+  - Active: `var(--color-warning-700)`
+  
+- **Danger**: Uses `--color-danger` system
+  - Base: `var(--color-danger-500)` (#f31260)
+  - Foreground: `var(--color-danger-foreground)` (#000)
+  - Hover: `var(--color-danger-600)`
+  - Active: `var(--color-danger-700)`
+
+Apply as: `.aceui-button--color-default`, `.aceui-button--color-primary`, `.aceui-button--color-danger`, etc.
+
+#### 6. Variants
+Support style variants via `variant` prop:
+
+- **Solid** (default): `.aceui-button--solid`
+  - Background: Color token (e.g., `var(--color-primary-500)`)
+  - Text: Color foreground token (e.g., `var(--color-primary-foreground)`)
+  - Border: None
+  - Hover: Darker shade from color system (e.g., `var(--color-primary-600)`)
+  
+- **Bordered**: `.aceui-button--bordered`
+  - Background: Transparent
+  - Border: `var(--border-width-medium)` solid color (e.g., `var(--color-primary-500)`)
+  - Text: Color token (e.g., `var(--color-primary-500)`)
+  - Hover: Light background tint using color-50 (e.g., `var(--color-primary-50)`)
+  
+- **Light**: `.aceui-button--light`
+  - Background: Light shade (e.g., `var(--color-primary-50)`)
+  - Text: Color token (e.g., `var(--color-primary-500)`)
+  - Border: None
+  - Hover: Slightly darker light shade (e.g., `var(--color-primary-100)`)
+  
+- **Flat**: `.aceui-button--flat`
+  - Background: Transparent
+  - Text: Color token (e.g., `var(--color-primary-500)`)
+  - Border: None
+  - Hover: Light background using `--hover-opacity` overlay (rgba with 0.1 opacity)
+  
+- **Shadow**: `.aceui-button--shadow`
+  - Same as solid variant
+  - Add box shadow: `var(--box-shadow-small)` or `var(--box-shadow-medium)` based on size
+  - Hover: Increase shadow to next level
+  - Active: Reduce shadow
+
+- **Ghost**: `.aceui-button--ghost`
+  - Background: Transparent
+  - Border: `var(--border-width-small)` solid with low opacity
+  - Text: Color token
+  - Hover: Border becomes solid, light background tint
+
+#### 7. Loading State
+- Support `isLoading` prop (boolean)
+- Show loading spinner icon
+- Disable button interaction during loading
+- Apply modifier class: `.aceui-button--loading`
+- Add `.aceui-button__spinner` element
+- Maintain button text or show `loadingText` prop if provided
+- Maintain button width to prevent layout shift
+- Add `aria-busy="true"` attribute
+- Reduce opacity using `var(--disabled-opacity)`
+
+#### 8. With Icon
+Support icons via `icon` and `iconPosition` props:
+
+- **Icon Element**: 
+  - Accept icon as prop (React node)
+  - Create `.aceui-button__icon` element for styling
+  
+- **Icon Position**: via `iconPosition` prop
+  - `left` (default): Icon before text
+  - `right`: Icon after text
+  
+- **Icon Only**: 
+  - When no children/text provided
+  - Apply `.aceui-button--icon-only` modifier
+  - Make button square (equal width/height)
+  - Center icon
+  
+- **Spacing**:
+  - Gap between icon and text: 0.5rem
+  - Adjust icon size based on button size:
+    - Small: 1rem (16px)
+    - Medium: 1.25rem (20px)
+    - Large: 1.5rem (24px)
+
+### Component API
+```typescript
+interface ButtonProps {
+  // Content
+  children?: React.ReactNode;
+  
+  // Variants
+  variant?: 'solid' | 'bordered' | 'light' | 'flat' | 'shadow' | 'ghost';
+  color?: 'default' | 'primary' | 'secondary' | 'success' | 'warning' | 'danger';
+  size?: 'small' | 'medium' | 'large';
+  radius?: 'small' | 'medium' | 'large' | 'full';
+  
+  // States
+  isDisabled?: boolean;
+  isLoading?: boolean;
+  
+  // Icon
+  icon?: React.ReactNode;
+  iconPosition?: 'left' | 'right';
+  
+  // Loading
+  loadingText?: string;
+  
+  // Events
+  onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
+  
+  // Accessibility
+  ariaLabel?: string;
+  
+  // HTML attributes
+  type?: 'button' | 'submit' | 'reset';
+  className?: string;
+  testId?: string;
+}
+```
+
+### BEM Class Structure
+```css
+/* Base */
+.aceui-button
+
+/* Elements */
+.aceui-button__icon
+.aceui-button__spinner
+.aceui-button__text
+
+/* Modifiers - Variants */
+.aceui-button--solid
+.aceui-button--bordered
+.aceui-button--light
+.aceui-button--flat
+.aceui-button--shadow
+.aceui-button--ghost
+
+/* Modifiers - Colors */
+.aceui-button--color-default
+.aceui-button--color-primary
+.aceui-button--color-secondary
+.aceui-button--color-success
+.aceui-button--color-warning
+.aceui-button--color-danger
+
+/* Modifiers - Sizes */
+.aceui-button--small
+.aceui-button--medium
+.aceui-button--large
+
+/* Modifiers - Radius */
+.aceui-button--radius-small
+.aceui-button--radius-medium
+.aceui-button--radius-large
+.aceui-button--radius-full
+
+/* Modifiers - States */
+.aceui-button--disabled
+.aceui-button--loading
+.aceui-button--icon-only
+```
+
+### CSS Implementation Guide
+
+Use design tokens for all styling:
+```css
+/* Example: Primary Solid Button */
+.aceui-button.aceui-button--solid.aceui-button--color-primary {
+  background-color: var(--color-primary-500);
+  color: var(--color-primary-foreground);
+  border: none;
+}
+
+.aceui-button.aceui-button--solid.aceui-button--color-primary:hover:not(:disabled) {
+  background-color: var(--color-primary-600);
+}
+
+.aceui-button.aceui-button--solid.aceui-button--color-primary:active:not(:disabled) {
+  background-color: var(--color-primary-700);
+}
+
+/* Example: Bordered Variant */
+.aceui-button.aceui-button--bordered.aceui-button--color-primary {
+  background-color: transparent;
+  color: var(--color-primary-500);
+  border: var(--border-width-medium) solid var(--color-primary-500);
+}
+
+.aceui-button.aceui-button--bordered.aceui-button--color-primary:hover:not(:disabled) {
+  background-color: var(--color-primary-50);
+}
+
+/* Example: Light Variant */
+.aceui-button.aceui-button--light.aceui-button--color-primary {
+  background-color: var(--color-primary-50);
+  color: var(--color-primary-500);
+  border: none;
+}
+
+.aceui-button.aceui-button--light.aceui-button--color-primary:hover:not(:disabled) {
+  background-color: var(--color-primary-100);
+}
+
+/* Example: Flat Variant with hover opacity */
+.aceui-button.aceui-button--flat.aceui-button--color-primary {
+  background-color: transparent;
+  color: var(--color-primary-500);
+  border: none;
+}
+
+.aceui-button.aceui-button--flat.aceui-button--color-primary:hover:not(:disabled) {
+  background-color: rgba(0, 111, 238, var(--hover-opacity)); /* primary with hover opacity */
+}
+
+/* Sizes */
+.aceui-button.aceui-button--small {
+  font-size: var(--font-size-small);
+  line-height: var(--line-height-small);
+  padding: 0 12px;
+  min-height: 32px;
+}
+
+.aceui-button.aceui-button--medium {
+  font-size: var(--font-size-medium);
+  line-height: var(--line-height-medium);
+  padding: 0 16px;
+  min-height: 40px;
+}
+
+.aceui-button.aceui-button--large {
+  font-size: var(--font-size-large);
+  line-height: var(--line-height-large);
+  padding: 0 24px;
+  min-height: 48px;
+}
+
+/* Radius */
+.aceui-button.aceui-button--radius-small {
+  border-radius: var(--radius-small);
+}
+
+.aceui-button.aceui-button--radius-medium {
+  border-radius: var(--radius-medium);
+}
+
+.aceui-button.aceui-button--radius-large {
+  border-radius: var(--radius-large);
+}
+
+.aceui-button.aceui-button--radius-full {
+  border-radius: 9999px;
+}
+
+/* Shadow variant */
+.aceui-button.aceui-button--shadow {
+  box-shadow: var(--box-shadow-small);
+}
+
+.aceui-button.aceui-button--shadow.aceui-button--large {
+  box-shadow: var(--box-shadow-medium);
+}
+
+.aceui-button.aceui-button--shadow:hover:not(:disabled) {
+  box-shadow: var(--box-shadow-medium);
+}
+
+/* Disabled state */
+.aceui-button:disabled,
+.aceui-button.aceui-button--disabled {
+  opacity: var(--disabled-opacity);
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* Loading state */
+.aceui-button.aceui-button--loading {
+  opacity: var(--disabled-opacity);
+  cursor: not-allowed;
+}
+
+/* Focus state */
+.aceui-button:focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 2px;
+}
+```
+
+### Acceptance Criteria
+
+#### Functionality
+- [ ] Button renders with default props (solid, primary, medium, radius-medium)
+- [ ] All size variants render correctly using design token font sizes
+- [ ] All 6 color variants render correctly using design token colors
+- [ ] All 6 style variants (solid, bordered, light, flat, shadow, ghost) work
+- [ ] All radius variants apply correct design token values
+- [ ] Disabled state prevents clicks and uses `--disabled-opacity`
+- [ ] Loading state shows spinner and uses `--disabled-opacity`
+- [ ] Icon renders in correct position
+- [ ] Icon-only button is square
+- [ ] Click handler fires correctly
+- [ ] Hover opacity uses `--hover-opacity` for flat variant
+
+#### Design Token Integration
+- [ ] All colors use design token CSS variables
+- [ ] All font sizes use design token variables
+- [ ] All line heights use design token variables
+- [ ] All border radius use design token variables
+- [ ] All border widths use design token variables
+- [ ] All box shadows use design token variables
+- [ ] Disabled opacity uses `--disabled-opacity`
+- [ ] Hover opacity uses `--hover-opacity`
+- [ ] Focus outline uses `--color-focus`
+- [ ] Background uses `--color-background` where applicable
+- [ ] Foreground uses `--color-foreground` where applicable
+
+#### Accessibility
+- [ ] Uses semantic `<button>` element
+- [ ] Keyboard accessible (Enter and Space to activate)
+- [ ] Focus visible using `--color-focus`
+- [ ] `disabled` attribute when disabled (no redundant `aria-disabled` for native button)
+- [ ] `aria-busy` when loading
+- [ ] `aria-label` supported
+- [ ] Screen reader announces button state
+- [ ] Color contrast meets WCAG AA standards (4.5:1)
+
+#### Styling
+- [ ] BEM naming convention followed
+- [ ] Regular CSS used (`.css` file)
+- [ ] No style conflicts
+- [ ] Hover states work on all variants using design tokens
+- [ ] Active states work on all variants using design tokens
+- [ ] Focus states visible using `--color-focus`
+- [ ] Smooth transitions (200-300ms)
+- [ ] Loading spinner animated
+- [ ] Shadow variant uses correct box-shadow tokens
+- [ ] All color shades (50-900) work correctly
+
+#### Combinations
+- [ ] All 6 variants × 6 colors = 36 combinations work
+- [ ] All variants × 3 sizes work
+- [ ] All variants × 4 radius options work
+- [ ] Disabled + loading states handled
+- [ ] Icon + loading states handled
+- [ ] Shadow + all colors work correctly
+
+#### Testing
+- [ ] Unit tests for all props
+- [ ] Tests for click handler
+- [ ] Tests for disabled state
+- [ ] Tests for loading state
+- [ ] Tests for icon rendering
+- [ ] Tests for all color variants
+- [ ] Tests for all style variants
+- [ ] Tests for design token usage
+- [ ] Accessibility tests pass
+- [ ] Test coverage ≥ 80%
+
+#### Documentation
+- [ ] JSDoc comments on component
+- [ ] JSDoc comments on all props
+- [ ] Storybook stories for all 6 variants
+- [ ] Storybook stories for all 6 colors
+- [ ] Storybook stories showing all combinations
+- [ ] Storybook controls interactive
+- [ ] Design token usage documented
+- [ ] Usage examples in stories
+- [ ] README.md in Button folder
+
+#### Code Quality
+- [ ] TypeScript strict mode passes
+- [ ] No console errors or warnings
+- [ ] ESLint passes
+- [ ] Prettier formatted
+- [ ] No TODO comments
+- [ ] Proper prop destructuring
+- [ ] Default props set appropriately
+- [ ] Design token imports correct
+
+### Examples
+```tsx
+// Basic button (defaults: solid, primary, medium, radius-medium)
+<Button>Click me</Button>
+
+// Primary solid button (explicit)
+<Button variant="solid" color="primary">
+  Primary Button
+</Button>
+
+// Bordered danger button, large size
+<Button variant="bordered" color="danger" size="large">
+  Delete
+</Button>
+
+// Light success button with small radius
+<Button variant="light" color="success" radius="small">
+  Success
+</Button>
+
+// Flat button with full radius (pill)
+<Button variant="flat" radius="full">
+  Cancel
+</Button>
+
+// Shadow variant with secondary color
+<Button variant="shadow" color="secondary">
+  Shadow Button
+</Button>
+
+// Ghost warning button
+<Button variant="ghost" color="warning">
+  Warning
+</Button>
+
+// Button with left icon
+<Button icon={<SaveIcon />} iconPosition="left">
+  Save
+</Button>
+
+// Icon only button
+<Button icon={<SearchIcon />} ariaLabel="Search" />
+
+// Loading button
+<Button isLoading loadingText="Saving...">
+  Save Changes
+</Button>
+
+// Disabled button
+<Button isDisabled>
+  Disabled
+</Button>
+
+// Small bordered button with right icon and large radius
+<Button 
+  variant="bordered"
+  color="primary"
+  size="small"
+  radius="large"
+  icon={<ArrowIcon />}
+  iconPosition="right"
+>
+  Learn more
+</Button>
+
+// All color variants in solid
+<Button color="default">Default</Button>
+<Button color="primary">Primary</Button>
+<Button color="secondary">Secondary</Button>
+<Button color="success">Success</Button>
+<Button color="warning">Warning</Button>
+<Button color="danger">Danger</Button>
+
+// All style variants with primary color
+<Button variant="solid" color="primary">Solid</Button>
+<Button variant="bordered" color="primary">Bordered</Button>
+<Button variant="light" color="primary">Light</Button>
+<Button variant="flat" color="primary">Flat</Button>
+<Button variant="shadow" color="primary">Shadow</Button>
+<Button variant="ghost" color="primary">Ghost</Button>
+```
+
+### Design Token Reference
+
+The button component should import and use tokens from `design-tokens.css`:
+
+**Colors**: `--color-{variant}-{shade}` (e.g., `--color-primary-500`)
+**Foregrounds**: `--color-{variant}-foreground`
+**Font Sizes**: `--font-size-{size}` (tiny, small, medium, large)
+**Line Heights**: `--line-height-{size}`
+**Radius**: `--radius-{size}` (small, medium, large)
+**Border Width**: `--border-width-{size}` (small, medium, large)
+**Box Shadow**: `--box-shadow-{size}` (small, medium, large)
+**Opacity**: `--disabled-opacity`, `--hover-opacity`
+**Focus**: `--color-focus`
+
+### Notes
+- All colors must use design token CSS variables
+- No hardcoded color values allowed
+- Ensure color contrast meets WCAG AA standards (4.5:1) using token foreground colors
+- Test with keyboard navigation thoroughly
+- Ensure focus states use `--color-focus` token
+- Loading spinner should be smooth (CSS animation)
+- Each color has 10 shades (50-900) - use appropriately for hover/active states
+- Consider dark mode support in future (design tokens make this easier)
+- Shadow variant should use appropriate box-shadow token based on button size
+
+---

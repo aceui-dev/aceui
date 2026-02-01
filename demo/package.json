@@ -4,22 +4,18 @@
   "type": "module",
   "scripts": {
     "postinstall": "npm run build:all",
-    "build:all": "npm run build --workspace=@aceuidev/button && npm run build --workspace=@aceuidev/chip",
+    "build:all": "npm run build --workspace=@aceuidev/button",
     "build:button": "npm run build --workspace=@aceuidev/button",
-    "build:chip": "npm run build --workspace=@aceuidev/chip",
     "clean": "rimraf ../../packages/components/*/dist",
     "dev": "vite",
     "dev:button": "npm run dev --workspace=@aceuidev/button",
-    "dev:chip": "npm run dev --workspace=@aceuidev/chip",
     "dev:with:button": "npm-run-all --parallel dev:button dev",
-    "dev:with:chip": "npm-run-all --parallel dev:chip dev",
-    "dev:all": "npm-run-all --parallel dev:button dev:chip dev",
+    "dev:all": "npm-run-all --parallel dev:button",
     "build": "npm run build:all && vite build",
     "preview": "vite preview"
   },
   "dependencies": {
     "@aceuidev/button": "*",
-    "@aceuidev/chip": "*",
     "react": "19.2.3",
     "react-dom": "19.2.3",
     "react-router-dom": "^7.13.0"
