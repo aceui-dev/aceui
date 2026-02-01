@@ -128,6 +128,13 @@
 - [x] ✅ Support `className` prop (append to base classes)
 - [x] ✅ Support `testId` prop for testing
 
+### 6.4 Click Wave (Ripple) Effect
+- [x] ✅ Add wave state and click math (x, y, size from getBoundingClientRect + clientX/clientY)
+- [x] ✅ Render `.aceui-button__wave` span with CSS vars; use unique key per click so animation re-runs
+- [x] ✅ Add `onAnimationEnd` to clear wave state when animation completes
+- [x] ✅ Add `disableWave` prop (optional) to opt out of wave effect
+- [x] ✅ Add overflow hidden and wave styles + keyframes in Button.css
+
 ---
 
 ## Phase 7: CSS Organization & Polish

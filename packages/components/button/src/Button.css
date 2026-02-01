@@ -16,6 +16,7 @@
   white-space: nowrap;
   user-select: none;
   outline: none;
+  overflow: hidden;
 }
 
 .aceui-button:focus-visible {
@@ -53,6 +54,18 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.aceui-button__wave {
+  position: absolute;
+  left: var(--wave-x);
+  top: var(--wave-y);
+  width: var(--wave-size);
+  height: var(--wave-size);
+  border-radius: 50%;
+  pointer-events: none;
+  background: color-mix(in srgb, currentColor 30%, transparent);
+  /* Transform (scale, translate for center) and opacity are animated by framer-motion */
 }
 
 /* ============================================

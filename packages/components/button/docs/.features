@@ -181,6 +181,18 @@ Support icons via `icon` and `iconPosition` props:
     - Medium: 1.25rem (20px)
     - Large: 1.5rem (24px)
 
+#### 9. Click Wave (Ripple) Effect
+- On click, show a wave that originates at the click point and spreads to cover the full button
+- Use **framer-motion** for the wave animation: `motion.span` with `initial`, `animate`, `transition`, and `onAnimationComplete` to remove the element
+- Wave is clipped to button bounds (including border-radius) via `overflow: hidden` on the button
+- Compute click position relative to button: `getBoundingClientRect()` and `clientX`/`clientY`
+- Wave: circular element centered at click point, scale from 0 to 1 then fade out (opacity 0); size = 2 × max(button width, height)
+- Apply `.aceui-button__wave` element; position/size via CSS custom properties (`--wave-x`, `--wave-y`, `--wave-size`) set from JS; framer-motion drives scale and opacity
+- Button must have `overflow: hidden` so wave is clipped to button shape
+- No wave when disabled or loading
+- Optional `disableWave` prop to turn off the effect
+- Clean up wave element in `onAnimationComplete` (no CSS animationend or timeout)
+
 ### Component API
 ```typescript
 interface ButtonProps {
@@ -196,6 +208,9 @@ interface ButtonProps {
   // States
   isDisabled?: boolean;
   isLoading?: boolean;
+  
+  // Wave (ripple)
+  disableWave?: boolean;
   
   // Icon
   icon?: React.ReactNode;
@@ -226,6 +241,7 @@ interface ButtonProps {
 .aceui-button__icon
 .aceui-button__spinner
 .aceui-button__text
+.aceui-button__wave
 
 /* Modifiers - Variants */
 .aceui-button--solid
