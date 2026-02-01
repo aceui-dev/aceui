@@ -8,6 +8,8 @@ import RadiusSection from "./sections/RadiusSection";
 import LoadingSection from "./sections/LoadingSection";
 import IconSection from "./sections/IconSection";
 import CombinationsSection from "./sections/CombinationsSection";
+import ButtonGroupSection from "./sections/ButtonGroupSection";
+import ButtonGroupDisabledSection from "./sections/ButtonGroupDisabledSection";
 import { useSidebar } from "../../contexts/SidebarContext";
 
 const SECTIONS = [
@@ -20,6 +22,8 @@ const SECTIONS = [
   { id: "loading", label: "Loading", component: LoadingSection },
   { id: "icon", label: "Icon", component: IconSection },
   { id: "combinations", label: "Combinations", component: CombinationsSection },
+  { id: "button-group", label: "Button Group", component: ButtonGroupSection },
+  { id: "group-disabled", label: "Group Disabled", component: ButtonGroupDisabledSection },
 ];
 
 export default function ButtonPage() {

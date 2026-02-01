@@ -205,6 +205,22 @@
 
 ---
 
+## Phase: Button Group
+
+### Button Group Component
+- [ ] ⏳ Add "Feature: Button Group" to `.features` (requirements documented)
+- [ ] ⏳ Create `ButtonGroup.tsx` with `ButtonGroupProps` (children, isDisabled, orientation, className, testId, ariaLabel)
+- [ ] ⏳ Render container with `role="group"` and `.aceui-button-group`
+- [ ] ⏳ When `isDisabled={true}`, clone children and pass `isDisabled={true}` to each child that accepts it
+- [ ] ⏳ Create `ButtonGroup.css`: layout (inline-flex, flex-direction, no gap)
+- [ ] ⏳ ButtonGroup.css: first/middle/last radius overrides for `.aceui-button-group > .aceui-button`
+- [ ] ⏳ ButtonGroup.css: border collapse for bordered variant (inner borders collapsed)
+- [ ] ⏳ Export `ButtonGroup` and `ButtonGroupProps` from `index.ts`
+- [ ] ⏳ Add demo section(s): default group (One, Two, Three; optionally Three disabled) and group disabled
+- [ ] ⏳ Register Button Group section(s) in ButtonPage.tsx and sidebar
+
+---
+
 ## Notes
 
 - All colors must use design token CSS variables (no hardcoded values)

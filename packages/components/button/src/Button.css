@@ -637,3 +637,68 @@
   padding: 1rem;
   min-width: 48px;
 }
+
+/* ============================================
+   Button Group Styles
+   ============================================ */
+
+.aceui-button-group {
+  display: inline-flex;
+  align-items: stretch;
+  gap: 0;
+}
+
+.aceui-button-group--horizontal {
+  flex-direction: row;
+}
+
+.aceui-button-group--vertical {
+  flex-direction: column;
+}
+
+/* First / Middle / Last Radius (Horizontal) */
+.aceui-button-group--horizontal > .aceui-button:first-of-type:not(:last-of-type) {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.aceui-button-group--horizontal > .aceui-button:last-of-type:not(:first-of-type) {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.aceui-button-group--horizontal > .aceui-button:not(:first-of-type):not(:last-of-type) {
+  border-radius: 0;
+}
+
+/* First / Middle / Last Radius (Vertical) */
+.aceui-button-group--vertical > .aceui-button:first-of-type:not(:last-of-type) {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.aceui-button-group--vertical > .aceui-button:last-of-type:not(:first-of-type) {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.aceui-button-group--vertical > .aceui-button:not(:first-of-type):not(:last-of-type) {
+  border-radius: 0;
+}
+
+/* Border Collapse (Bordered Variant) */
+.aceui-button-group--horizontal > .aceui-button--bordered:not(:last-of-type) {
+  border-right-width: 0;
+}
+
+.aceui-button-group--horizontal > .aceui-button--bordered:not(:first-of-type) {
+  margin-left: calc(-1 * var(--border-width-medium, 1px));
+}
+
+.aceui-button-group--vertical > .aceui-button--bordered:not(:last-of-type) {
+  border-bottom-width: 0;
+}
+
+.aceui-button-group--vertical > .aceui-button--bordered:not(:first-of-type) {
+  margin-top: calc(-1 * var(--border-width-medium, 1px));
+}
