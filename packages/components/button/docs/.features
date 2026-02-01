@@ -54,6 +54,9 @@ Support three size variants via `size` prop:
 #### 4. Border Radius
 Support radius variants via `radius` prop using design tokens:
 
+- **None**: `.aceui-button--radius-none`
+  - Border radius: `0` (square corners, no rounding)
+  
 - **Small**: `.aceui-button--radius-small`
   - Border radius: `var(--radius-small)` (8px)
   
@@ -136,15 +139,12 @@ Support style variants via `variant` prop:
   
 - **Shadow**: `.aceui-button--shadow`
   - Same as solid variant
-  - Add box shadow: `var(--box-shadow-small)` or `var(--box-shadow-medium)` based on size
-  - Hover: Increase shadow to next level
-  - Active: Reduce shadow
+  - Medium shadow (0 4px 14px) using button's base color via `color-mix(in srgb, var(--color-X-500) 40%, transparent)`
+  - Defined directly in Button.css (no design token variables)
 
 - **Ghost**: `.aceui-button--ghost`
-  - Background: Transparent
-  - Border: `var(--border-width-small)` solid with low opacity
-  - Text: Color token
-  - Hover: Border becomes solid, light background tint
+  - Default: Transparent background, border `var(--border-width-small)` solid base color (e.g., `var(--color-primary-500)`), text base color
+  - Hover: Background base color 500, text base color foreground (e.g., `var(--color-primary-foreground)`)
 
 #### 7. Loading State
 - Support `isLoading` prop (boolean)
@@ -191,7 +191,7 @@ interface ButtonProps {
   variant?: 'solid' | 'bordered' | 'light' | 'flat' | 'shadow' | 'ghost';
   color?: 'default' | 'primary' | 'secondary' | 'success' | 'warning' | 'danger';
   size?: 'small' | 'medium' | 'large';
-  radius?: 'small' | 'medium' | 'large' | 'full';
+  radius?: 'none' | 'small' | 'medium' | 'large' | 'full';
   
   // States
   isDisabled?: boolean;
@@ -249,6 +249,7 @@ interface ButtonProps {
 .aceui-button--large
 
 /* Modifiers - Radius */
+.aceui-button--radius-none
 .aceui-button--radius-small
 .aceui-button--radius-medium
 .aceui-button--radius-large
@@ -335,6 +336,10 @@ Use design tokens for all styling:
 }
 
 /* Radius */
+.aceui-button.aceui-button--radius-none {
+  border-radius: 0;
+}
+
 .aceui-button.aceui-button--radius-small {
   border-radius: var(--radius-small);
 }
@@ -351,18 +356,11 @@ Use design tokens for all styling:
   border-radius: 9999px;
 }
 
-/* Shadow variant */
-.aceui-button.aceui-button--shadow {
-  box-shadow: var(--box-shadow-small);
+/* Shadow variant - medium shadow using button's base color, defined directly in Button.css */
+.aceui-button.aceui-button--shadow.aceui-button--color-primary {
+  box-shadow: 0 4px 14px 0 color-mix(in srgb, var(--color-primary-500) 40%, transparent);
 }
-
-.aceui-button.aceui-button--shadow.aceui-button--large {
-  box-shadow: var(--box-shadow-medium);
-}
-
-.aceui-button.aceui-button--shadow:hover:not(:disabled) {
-  box-shadow: var(--box-shadow-medium);
-}
+/* Same pattern for each color: default, primary, secondary, success, warning, danger */
 
 /* Disabled state */
 .aceui-button:disabled,
@@ -438,7 +436,7 @@ Use design tokens for all styling:
 #### Combinations
 - [ ] All 6 variants × 6 colors = 36 combinations work
 - [ ] All variants × 3 sizes work
-- [ ] All variants × 4 radius options work
+- [ ] All variants × 5 radius options work
 - [ ] Disabled + loading states handled
 - [ ] Icon + loading states handled
 - [ ] Shadow + all colors work correctly
@@ -581,6 +579,6 @@ The button component should import and use tokens from `design-tokens.css`:
 - Loading spinner should be smooth (CSS animation)
 - Each color has 10 shades (50-900) - use appropriately for hover/active states
 - Consider dark mode support in future (design tokens make this easier)
-- Shadow variant should use appropriate box-shadow token based on button size
+- Shadow variant uses medium colored shadow (button base color) defined in Button.css
 
 ---
