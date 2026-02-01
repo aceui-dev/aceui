@@ -58,7 +58,8 @@
 - [x] ✅ Update min-height values: small (32px), medium (40px), large (48px)
 
 ### 3.2 Border Radius
-- [x] ✅ Implement `radius` prop (small, medium, large, full)
+- [x] ✅ Implement `radius` prop (none, small, medium, large, full)
+- [x] ✅ Add `.aceui-button--radius-none` with border-radius: 0 (square corners)
 - [x] ✅ Add `.aceui-button--radius-small` using `--radius-small`
 - [x] ✅ Add `.aceui-button--radius-medium` (default) using `--radius-medium`
 - [x] ✅ Add `.aceui-button--radius-large` using `--radius-large`
@@ -142,6 +143,7 @@
 ### 7.2 Edge Cases
 - [x] ✅ Handle disabled + loading combination
 - [x] ✅ Handle icon + loading combination
+- [x] ✅ Fix small button text vertical alignment (text appeared slightly low due to line-height + font metrics)
 - [x] ✅ Ensure all 36 variant × color combinations work
 - [x] ✅ Test all size × radius combinations
 - [ ] ⏳ Verify color contrast meets WCAG AA (4.5:1)
@@ -155,7 +157,7 @@
 - [x] ✅ Update `VariantsSection.tsx` to show all 6 variants
 - [x] ✅ Update `ColorsSection.tsx` to show all 6 colors
 - [x] ✅ Update `SizesSection.tsx` to show all 3 sizes
-- [x] ✅ Update `RadiusSection.tsx` to show all 4 radius options
+- [x] ✅ Update `RadiusSection.tsx` to show all 5 radius options (none, small, medium, large, full)
 - [x] ✅ Update `DisabledSection.tsx` to show disabled states
 - [x] ✅ Update `LoadingSection.tsx` to show loading states
 - [x] ✅ Update `IconSection.tsx` to show icon variations
@@ -204,7 +206,7 @@
 - Accessibility is critical - ensure ARIA attributes and keyboard navigation work
 - Focus states must use `--color-focus` token
 - Loading spinner should be smooth CSS animation
-- Shadow variant should use appropriate box-shadow token based on button size
+- Shadow variant uses medium colored shadow (button base color) in Button.css
 
 ---
 

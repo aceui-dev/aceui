@@ -18,7 +18,7 @@ export interface ButtonProps {
   size?: 'small' | 'medium' | 'large';
   
   /** The border radius of the button */
-  radius?: 'small' | 'medium' | 'large' | 'full';
+  radius?: 'none' | 'small' | 'medium' | 'large' | 'full';
   
   /** Whether the button is disabled */
   isDisabled?: boolean;

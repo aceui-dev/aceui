@@ -36,6 +36,7 @@
 
 .aceui-button__text {
   display: inline-block;
+  line-height: 1;
 }
 
 .aceui-button__spinner {
@@ -45,7 +46,7 @@
   border: 2px solid currentColor;
   border-right-color: transparent;
   border-radius: 50%;
-  animation: aceui-button-spin 0.6s linear infinite;
+  animation: aceui-button-spin 0.8s linear infinite;
 }
 
 @keyframes aceui-button-spin {
@@ -97,6 +98,10 @@
 /* ============================================
    Border Radius Variants
    ============================================ */
+
+.aceui-button--radius-none {
+  border-radius: 0;
+}
 
 .aceui-button--radius-small {
   border-radius: var(--radius-small);
@@ -413,33 +418,14 @@
 }
 
 /* ============================================
-   Shadow Variant
+   Shadow Variant (uses button base color for shadow tint)
    ============================================ */
 
-.aceui-button--shadow {
-  box-shadow: var(--box-shadow-small);
-}
-
-.aceui-button--shadow.aceui-button--large {
-  box-shadow: var(--box-shadow-medium);
-}
-
-.aceui-button--shadow:hover:not(:disabled) {
-  box-shadow: var(--box-shadow-medium);
-}
-
-.aceui-button--shadow.aceui-button--large:hover:not(:disabled) {
-  box-shadow: var(--box-shadow-large);
-}
-
-.aceui-button--shadow:active:not(:disabled) {
-  box-shadow: var(--box-shadow-small);
-}
-
-/* Shadow variant uses solid colors */
+/* Shadow variant uses solid colors + medium colored shadow per base color */
 .aceui-button--shadow.aceui-button--color-default {
   background-color: var(--color-default-500);
   color: var(--color-default-foreground);
+  box-shadow: 0 4px 14px 0 color-mix(in srgb, var(--color-default-500) 40%, transparent);
 }
 
 .aceui-button--shadow.aceui-button--color-default:hover:not(:disabled) {
@@ -453,6 +439,7 @@
 .aceui-button--shadow.aceui-button--color-primary {
   background-color: var(--color-primary-500);
   color: var(--color-primary-foreground);
+  box-shadow: 0 4px 14px 0 color-mix(in srgb, var(--color-primary-500) 40%, transparent);
 }
 
 .aceui-button--shadow.aceui-button--color-primary:hover:not(:disabled) {
@@ -466,6 +453,7 @@
 .aceui-button--shadow.aceui-button--color-secondary {
   background-color: var(--color-secondary-500);
   color: var(--color-secondary-foreground);
+  box-shadow: 0 4px 14px 0 color-mix(in srgb, var(--color-secondary-500) 40%, transparent);
 }
 
 .aceui-button--shadow.aceui-button--color-secondary:hover:not(:disabled) {
@@ -479,6 +467,7 @@
 .aceui-button--shadow.aceui-button--color-success {
   background-color: var(--color-success-500);
   color: var(--color-success-foreground);
+  box-shadow: 0 4px 14px 0 color-mix(in srgb, var(--color-success-500) 40%, transparent);
 }
 
 .aceui-button--shadow.aceui-button--color-success:hover:not(:disabled) {
@@ -492,6 +481,7 @@
 .aceui-button--shadow.aceui-button--color-warning {
   background-color: var(--color-warning-500);
   color: var(--color-warning-foreground);
+  box-shadow: 0 4px 14px 0 color-mix(in srgb, var(--color-warning-500) 40%, transparent);
 }
 
 .aceui-button--shadow.aceui-button--color-warning:hover:not(:disabled) {
@@ -505,6 +495,7 @@
 .aceui-button--shadow.aceui-button--color-danger {
   background-color: var(--color-danger-500);
   color: var(--color-danger-foreground);
+  box-shadow: 0 4px 14px 0 color-mix(in srgb, var(--color-danger-500) 40%, transparent);
 }
 
 .aceui-button--shadow.aceui-button--color-danger:hover:not(:disabled) {
@@ -519,76 +510,77 @@
    Ghost Variant
    ============================================ */
 
+/* Default: transparent bg, base color border, base color text. Hover: base color 500 bg, foreground text */
 /* Default Color */
 .aceui-button--ghost.aceui-button--color-default {
   background-color: transparent;
   color: var(--color-default-500);
-  border: var(--border-width-small) solid rgba(212, 212, 216, 0.3);
+  border: var(--border-width-small) solid var(--color-default-500);
 }
 
 .aceui-button--ghost.aceui-button--color-default:hover:not(:disabled) {
-  background-color: var(--color-default-50);
-  border-color: var(--color-default-500);
+  background-color: var(--color-default-500);
+  color: var(--color-default-foreground);
 }
 
 /* Primary Color */
 .aceui-button--ghost.aceui-button--color-primary {
   background-color: transparent;
   color: var(--color-primary-500);
-  border: var(--border-width-small) solid rgba(0, 111, 238, 0.3);
+  border: var(--border-width-small) solid var(--color-primary-500);
 }
 
 .aceui-button--ghost.aceui-button--color-primary:hover:not(:disabled) {
-  background-color: var(--color-primary-50);
-  border-color: var(--color-primary-500);
+  background-color: var(--color-primary-500);
+  color: var(--color-primary-foreground);
 }
 
 /* Secondary Color */
 .aceui-button--ghost.aceui-button--color-secondary {
   background-color: transparent;
   color: var(--color-secondary-500);
-  border: var(--border-width-small) solid rgba(120, 40, 200, 0.3);
+  border: var(--border-width-small) solid var(--color-secondary-500);
 }
 
 .aceui-button--ghost.aceui-button--color-secondary:hover:not(:disabled) {
-  background-color: var(--color-secondary-50);
-  border-color: var(--color-secondary-500);
+  background-color: var(--color-secondary-500);
+  color: var(--color-secondary-foreground);
 }
 
 /* Success Color */
 .aceui-button--ghost.aceui-button--color-success {
   background-color: transparent;
   color: var(--color-success-500);
-  border: var(--border-width-small) solid rgba(23, 201, 100, 0.3);
+  border: var(--border-width-small) solid var(--color-success-500);
 }
 
 .aceui-button--ghost.aceui-button--color-success:hover:not(:disabled) {
-  background-color: var(--color-success-50);
-  border-color: var(--color-success-500);
+  background-color: var(--color-success-500);
+  color: var(--color-success-foreground);
 }
 
 /* Warning Color */
 .aceui-button--ghost.aceui-button--color-warning {
   background-color: transparent;
   color: var(--color-warning-500);
-  border: var(--border-width-small) solid rgba(245, 165, 36, 0.3);
+  border: var(--border-width-small) solid var(--color-warning-500);
 }
 
 .aceui-button--ghost.aceui-button--color-warning:hover:not(:disabled) {
-  background-color: var(--color-warning-50);
-  border-color: var(--color-warning-500);
+  background-color: var(--color-warning-500);
+  color: var(--color-warning-foreground);
 }
 
 /* Danger Color */
 .aceui-button--ghost.aceui-button--color-danger {
   background-color: transparent;
   color: var(--color-danger-500);
-  border: var(--border-width-small) solid rgba(243, 18, 96, 0.3);
+  border: var(--border-width-small) solid var(--color-danger-500);
 }
 
 .aceui-button--ghost.aceui-button--color-danger:hover:not(:disabled) {
-  background-color: var(--color-danger-50);
-  border-color: var(--color-danger-500);
+  background-color: var(--color-danger-500);
+  color: var(--color-danger-foreground);
 }
 
 /* ============================================

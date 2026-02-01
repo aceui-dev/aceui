@@ -4,8 +4,9 @@ export default function RadiusSection() {
   return (
     <section className="demo-section">
       <h2>Button · Border Radius</h2>
-      <p>Four border radius options: small, medium (default), large, and full (pill).</p>
+      <p>Five border radius options: none, small, medium (default), large, and full (pill).</p>
       <div className="demo-row">
+        <Button radius="none">No Radius</Button>
         <Button radius="small">Small Radius</Button>
         <Button radius="medium">Medium Radius</Button>
         <Button radius="large">Large Radius</Button>
