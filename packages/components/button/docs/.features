@@ -181,6 +181,18 @@ Support icons via `icon` and `iconPosition` props:
     - Medium: 1.25rem (20px)
     - Large: 1.5rem (24px)
 
+#### 9. Click Wave (Ripple) Effect
+- On click, show a wave that originates at the click point and spreads to cover the full button
+- Use **framer-motion** for the wave animation: `motion.span` with `initial`, `animate`, `transition`, and `onAnimationComplete` to remove the element
+- Wave is clipped to button bounds (including border-radius) via `overflow: hidden` on the button
+- Compute click position relative to button: `getBoundingClientRect()` and `clientX`/`clientY`
+- Wave: circular element centered at click point, scale from 0 to 1 then fade out (opacity 0); size = 2 × max(button width, height)
+- Apply `.aceui-button__wave` element; position/size via CSS custom properties (`--wave-x`, `--wave-y`, `--wave-size`) set from JS; framer-motion drives scale and opacity
+- Button must have `overflow: hidden` so wave is clipped to button shape
+- No wave when disabled or loading
+- Optional `disableWave` prop to turn off the effect
+- Clean up wave element in `onAnimationComplete` (no CSS animationend or timeout)
+
 ### Component API
 ```typescript
 interface ButtonProps {
@@ -196,6 +208,9 @@ interface ButtonProps {
   // States
   isDisabled?: boolean;
   isLoading?: boolean;
+  
+  // Wave (ripple)
+  disableWave?: boolean;
   
   // Icon
   icon?: React.ReactNode;
@@ -226,6 +241,7 @@ interface ButtonProps {
 .aceui-button__icon
 .aceui-button__spinner
 .aceui-button__text
+.aceui-button__wave
 
 /* Modifiers - Variants */
 .aceui-button--solid
@@ -580,5 +596,54 @@ The button component should import and use tokens from `design-tokens.css`:
 - Each color has 10 shades (50-900) - use appropriately for hover/active states
 - Consider dark mode support in future (design tokens make this easier)
 - Shadow variant uses medium colored shadow (button base color) defined in Button.css
+
+---
+
+## Feature: Button Group
+Priority: High
+Status: Pending
+
+### Overview
+A wrapper component that groups multiple Button children into a single visual unit. Supports horizontal and vertical layout, seamless styling (first/middle/last radius and border collapse), and group-level isDisabled to disable all buttons inside.
+
+### Requirements
+
+#### 1. Basic Button Group
+- Render a container with `role="group"`
+- Accept `Button` components (or compatible elements) as children
+- Apply base BEM class: `.aceui-button-group`
+- Support `orientation` prop: `'horizontal'` (default) | `'vertical'`
+- Horizontal: `display: inline-flex`, `flex-direction: row`, no gap so buttons touch
+- Vertical: `flex-direction: column`, no gap so buttons touch
+
+#### 2. Seamless Strip Styling
+- Override radius of direct Button children so the group looks like one rounded rectangle
+- First child (horizontal): round left only; inner edge (right) 0
+- Last child (horizontal): round right only; inner edge (left) 0
+- Middle children: `border-radius: 0`
+- Vertical: first child round top only; last child round bottom only; middle 0
+- Use direct-child selectors: `.aceui-button-group > .aceui-button`
+
+#### 3. Border Collapse (Bordered Variant)
+- For bordered Buttons inside the group, collapse inner borders so no double lines between buttons
+- Use design token `--border-width-medium` (or small where applicable)
+- Remove or overlap inner border between adjacent buttons (e.g. negative margin or border-right: 0 on all but last)
+
+#### 4. Group Disabled
+- Support `isDisabled` prop (boolean)
+- When `isDisabled={true}`, disable all buttons inside: clone children and pass `isDisabled={true}` to each child that accepts it
+- For non-Button children, wrap or apply `aria-disabled="true"` and `pointer-events: none` as fallback
+
+#### 5. Props and Accessibility
+- Props: `children`, `isDisabled`, `orientation`, `className`, `testId`, `ariaLabel`
+- Container: `role="group"`, `aria-label={ariaLabel}` when provided
+- Export `ButtonGroupProps` interface
+
+#### 6. Design Tokens
+- Reuse radius tokens (`--radius-small`, `--radius-medium`, etc.) for first/last child overrides
+- Reuse border width tokens for collapse styling
+
+### Out of Scope (Phase 2)
+- Split button (primary action + dropdown in one bar) — deferred until Dropdown/Menu primitive exists
 
 ---

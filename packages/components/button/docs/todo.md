@@ -128,6 +128,13 @@
 - [x] ✅ Support `className` prop (append to base classes)
 - [x] ✅ Support `testId` prop for testing
 
+### 6.4 Click Wave (Ripple) Effect
+- [x] ✅ Add wave state and click math (x, y, size from getBoundingClientRect + clientX/clientY)
+- [x] ✅ Render `.aceui-button__wave` span with CSS vars; use unique key per click so animation re-runs
+- [x] ✅ Add `onAnimationEnd` to clear wave state when animation completes
+- [x] ✅ Add `disableWave` prop (optional) to opt out of wave effect
+- [x] ✅ Add overflow hidden and wave styles + keyframes in Button.css
+
 ---
 
 ## Phase 7: CSS Organization & Polish
@@ -195,6 +202,22 @@
 - [x] ✅ Test focus states are visible
 - [ ] ⏳ Test hover states on all variants
 - [ ] ⏳ Test active states on all variants
+
+---
+
+## Phase: Button Group
+
+### Button Group Component
+- [ ] ⏳ Add "Feature: Button Group" to `.features` (requirements documented)
+- [ ] ⏳ Create `ButtonGroup.tsx` with `ButtonGroupProps` (children, isDisabled, orientation, className, testId, ariaLabel)
+- [ ] ⏳ Render container with `role="group"` and `.aceui-button-group`
+- [ ] ⏳ When `isDisabled={true}`, clone children and pass `isDisabled={true}` to each child that accepts it
+- [ ] ⏳ Create `ButtonGroup.css`: layout (inline-flex, flex-direction, no gap)
+- [ ] ⏳ ButtonGroup.css: first/middle/last radius overrides for `.aceui-button-group > .aceui-button`
+- [ ] ⏳ ButtonGroup.css: border collapse for bordered variant (inner borders collapsed)
+- [ ] ⏳ Export `ButtonGroup` and `ButtonGroupProps` from `index.ts`
+- [ ] ⏳ Add demo section(s): default group (One, Two, Three; optionally Three disabled) and group disabled
+- [ ] ⏳ Register Button Group section(s) in ButtonPage.tsx and sidebar
 
 ---
 

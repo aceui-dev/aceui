@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState, useRef } from 'react';
+import { motion } from 'framer-motion';
 import './Button.css';
 
 /**
@@ -44,6 +45,9 @@ export interface ButtonProps {
   /** HTML button type */
   type?: 'button' | 'submit' | 'reset';
   
+  /** Whether to disable the click wave (ripple) effect */
+  disableWave?: boolean;
+  
   /** Additional CSS class names */
   className?: string;
   
@@ -79,14 +83,27 @@ export const Button = ({
   type = 'button',
   className = '',
   testId,
+  disableWave = false,
 }: ButtonProps) => {
   const isIconOnly = !children && icon;
   const isActuallyDisabled = isDisabled || isLoading;
+
+  const [wave, setWave] = useState<{ x: number; y: number; size: number; key: number } | null>(null);
+  const waveKeyRef = useRef(0);
 
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     if (isActuallyDisabled) {
       event.preventDefault();
       return;
+    }
+    if (!disableWave) {
+      const el = event.currentTarget;
+      const rect = el.getBoundingClientRect();
+      const x = event.clientX - rect.left;
+      const y = event.clientY - rect.top;
+      const size = 2 * Math.max(rect.width, rect.height);
+      waveKeyRef.current += 1;
+      setWave({ x, y, size, key: waveKeyRef.current });
     }
     onClick?.(event);
   };
@@ -170,6 +187,24 @@ export const Button = ({
       aria-busy={isLoading}
       data-testid={testId}
     >
+      {wave && (
+        <motion.span
+          key={wave.key}
+          className="aceui-button__wave"
+          style={
+            {
+              '--wave-x': `${wave.x}px`,
+              '--wave-y': `${wave.y}px`,
+              '--wave-size': `${wave.size}px`,
+            } as React.CSSProperties
+          }
+          initial={{ scale: 0, x: '-50%', y: '-50%', opacity: 1 }}
+          animate={{ scale: 1, x: '-50%', y: '-50%', opacity: 0 }}
+          transition={{ duration: 0.65, ease: 'easeOut' }}
+          onAnimationComplete={() => setWave(null)}
+          aria-hidden="true"
+        />
+      )}
       {renderContent()}
     </button>
   );

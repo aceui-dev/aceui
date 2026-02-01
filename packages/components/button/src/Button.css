@@ -16,6 +16,7 @@
   white-space: nowrap;
   user-select: none;
   outline: none;
+  overflow: hidden;
 }
 
 .aceui-button:focus-visible {
@@ -53,6 +54,18 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.aceui-button__wave {
+  position: absolute;
+  left: var(--wave-x);
+  top: var(--wave-y);
+  width: var(--wave-size);
+  height: var(--wave-size);
+  border-radius: 50%;
+  pointer-events: none;
+  background: color-mix(in srgb, currentColor 30%, transparent);
+  /* Transform (scale, translate for center) and opacity are animated by framer-motion */
 }
 
 /* ============================================
@@ -623,4 +636,69 @@
 .aceui-button--icon-only.aceui-button--large {
   padding: 1rem;
   min-width: 48px;
+}
+
+/* ============================================
+   Button Group Styles
+   ============================================ */
+
+.aceui-button-group {
+  display: inline-flex;
+  align-items: stretch;
+  gap: 0;
+}
+
+.aceui-button-group--horizontal {
+  flex-direction: row;
+}
+
+.aceui-button-group--vertical {
+  flex-direction: column;
+}
+
+/* First / Middle / Last Radius (Horizontal) */
+.aceui-button-group--horizontal > .aceui-button:first-of-type:not(:last-of-type) {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.aceui-button-group--horizontal > .aceui-button:last-of-type:not(:first-of-type) {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.aceui-button-group--horizontal > .aceui-button:not(:first-of-type):not(:last-of-type) {
+  border-radius: 0;
+}
+
+/* First / Middle / Last Radius (Vertical) */
+.aceui-button-group--vertical > .aceui-button:first-of-type:not(:last-of-type) {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.aceui-button-group--vertical > .aceui-button:last-of-type:not(:first-of-type) {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.aceui-button-group--vertical > .aceui-button:not(:first-of-type):not(:last-of-type) {
+  border-radius: 0;
+}
+
+/* Border Collapse (Bordered Variant) */
+.aceui-button-group--horizontal > .aceui-button--bordered:not(:last-of-type) {
+  border-right-width: 0;
+}
+
+.aceui-button-group--horizontal > .aceui-button--bordered:not(:first-of-type) {
+  margin-left: calc(-1 * var(--border-width-medium, 1px));
+}
+
+.aceui-button-group--vertical > .aceui-button--bordered:not(:last-of-type) {
+  border-bottom-width: 0;
+}
+
+.aceui-button-group--vertical > .aceui-button--bordered:not(:first-of-type) {
+  margin-top: calc(-1 * var(--border-width-medium, 1px));
 }
