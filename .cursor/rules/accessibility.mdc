@@ -1,0 +1,100 @@
+---
+description: Accessibility requirements for AceUI components
+globs: packages/components/**/*.tsx
+alwaysApply: false
+---
+
+# Accessibility Guidelines
+
+## Default Expectations (when applicable)
+
+- Proper ARIA labels (`aria-label`, `aria-labelledby`)
+- Keyboard navigation support (especially for custom widgets; native elements like `<button>` already handle Enter/Space)
+- Focus management (visible focus states; focus trap for modals/dialogs)
+- Screen reader support (use `aria-live`/`aria-hidden` when needed, not by default)
+- Semantic HTML (use `button`, `input`, not `div` with `onClick`)
+
+## ARIA Attributes
+
+### Common Patterns
+
+```tsx
+<button
+  className="aceui-button"
+  onClick={onClick}
+  disabled={isDisabled}
+  aria-label={ariaLabel}
+  type="button"
+>
+  {children}
+</button>
+```
+
+For native `<button>`, use the `disabled` attribute only; avoid redundant `aria-disabled`. Use `aria-disabled` for custom interactive elements (e.g. `role="button"` on non-button elements).
+
+### Interactive Elements
+
+- Use semantic HTML elements (`<button>`, `<input>`, `<a>`)
+- Add `aria-label` for icon-only buttons
+- Use `aria-labelledby` when label is in separate element
+- Set `aria-disabled` for disabled **custom** interactive elements (not for native `disabled`)
+
+### Form Elements
+
+- Associate labels with inputs using `htmlFor` and `id`
+- Use `aria-required` for required fields
+- Provide `aria-describedby` for error messages
+- Use `aria-invalid` for validation states
+
+### Modal/Dialog
+
+- Use `role="dialog"` or `role="alertdialog"`
+- Implement focus trap
+- Return focus to trigger element on close
+- Use `aria-modal="true"`
+- Add `aria-labelledby` pointing to title
+
+### Lists and Navigation
+
+- Use semantic list elements (`<ul>`, `<ol>`)
+- For custom lists, use `role="list"` and `role="listitem"`
+- Navigation should use `<nav>` element
+- Use `aria-current` for current page/item
+
+## Keyboard Navigation
+
+- All interactive elements must be keyboard accessible
+- Use `Tab` for navigation between elements
+- Use `Enter` or `Space` to activate buttons
+- Implement arrow keys for menus, dropdowns, and lists
+- Use `Escape` to close modals/dropdowns
+- Provide visible focus indicators
+
+## Focus Management
+
+- Ensure all interactive elements are focusable
+- Provide visible focus states (outline or ring)
+- Manage focus for modals (trap focus, return on close)
+- Use `tabIndex` appropriately; use `tabIndex={-1}` only when needed for focus management (e.g. focus traps), not to remove focusability from interactive elements
+
+## Screen Reader Support
+
+- Use `aria-live` regions for dynamic content updates
+- Use `aria-hidden="true"` for decorative elements
+- Provide text alternatives for images (`alt` attribute)
+- Use `aria-describedby` to link descriptions
+- Ensure proper heading hierarchy (`h1` → `h2` → `h3`)
+
+## Semantic HTML
+
+- Use appropriate HTML elements for their purpose
+- Use `<button>` for actions, not `<div>` with `onClick`
+- Use `<nav>` for navigation
+- Use `<main>` for main content
+- Use `<header>`, `<footer>`, `<section>` appropriately
+
+## Color and Contrast
+
+- Ensure sufficient color contrast (WCAG AA minimum)
+- Don't rely solely on color to convey information
+- Provide additional indicators (icons, text, patterns)

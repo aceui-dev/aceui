@@ -1,0 +1,77 @@
+---
+description: Core project conventions for AceUI React component library
+alwaysApply: true
+---
+
+# AceUI Project Conventions
+
+## Project Overview
+
+AceUI is a React UI component library using npm workspaces monorepo structure.
+
+## Project Structure
+
+```
+aceui/
+├── packages/components/{name}/    # Component packages (@aceuidev/{name})
+│   ├── src/
+│   │   ├── {Name}.tsx
+│   │   ├── {Name}.css
+│   │   └── index.ts
+│   ├── docs/
+│   │   ├── .features              # Feature requirements list
+│   │   └── todo.md                # Task list based on .features
+│   ├── package.json
+│   └── tsconfig.json
+├── demo/                          # Demo application (Vite)
+│   └── src/pages/{name}/          # Component demo pages
+└── package.json                   # Root workspace config
+```
+
+## Package Naming
+
+- NPM scope: `@aceuidev/{component}`
+- Examples: `@aceuidev/button`
+
+## Build Tools
+
+- **Components:** tsup (ESM + CJS + TypeScript declarations)
+- **Demo:** Vite
+
+## Naming Conventions
+
+- **Components:** PascalCase (`UserProfile.tsx`, `Button.tsx`)
+- **Functions:** camelCase (`getUserData`, `handleClick`)
+- **Constants:** UPPER_SNAKE_CASE (`API_BASE_URL`, `MAX_RETRIES`)
+- **Files:** kebab-case for non-components (`user-service.ts`, `utils.ts`)
+
+## TypeScript
+
+- Use TypeScript for all files
+- Define proper interfaces/types for all props
+- Export prop types for documentation
+- Use explicit return types for functions
+- Avoid `any` type - use `unknown` if necessary
+
+## React & Styling
+
+- Follow `react-components.mdc` for component patterns and performance
+- Follow `styling.mdc` for CSS and BEM conventions
+- Follow `accessibility.mdc` for A11y standards
+
+## Component Checklist
+
+Before marking a component as complete, verify:
+- [ ] TypeScript interfaces defined and exported
+- [ ] BEM naming convention followed (`styling.mdc`)
+- [ ] CSS file created with proper organization
+- [ ] Accessibility attributes added (`accessibility.mdc`)
+- [ ] Props properly typed and documented
+- [ ] Responsive design implemented (if applicable)
+- [ ] Error states handled (if applicable)
+- [ ] Loading states implemented (if applicable)
+- [ ] index.ts export added
+
+## Creating New Components
+
+Follow the checklist in `README.md` (§ Creating a New Component).
