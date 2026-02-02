@@ -15,34 +15,36 @@ alwaysApply: false
 
 ## Design Tokens
 
-Design tokens are defined in `demo/src/design-tokens.css` and shared with the demo app. Components reference these CSS variables; consumers must ensure tokens are available (e.g. import `design-tokens.css` or provide their own). Use CSS variables instead of hardcoded values.
+Design tokens are defined in `demo/src/design-tokens.css` and shared with the demo app. All design token CSS variables use the **`--aceui`** prefix. Components reference these CSS variables; consumers must ensure tokens are available (e.g. import `design-tokens.css` or provide their own). Use CSS variables instead of hardcoded values.
 
 ## CSS Variable Naming
 
+All design tokens use the **`--aceui`** prefix (e.g. `--aceui-color-focus`, `--aceui-font-size-small`).
+
 ### Colors
 
-#### Global Colors
-- `--color-background`: Main background color
-- `--color-foreground`: Main text/foreground color
-- `--color-focus`: Focus ring color
-- `--color-overlay`: Overlay background color
+#### Global / Content Surfaces
+- `--aceui-color-content1-background`, `--aceui-color-content1-foreground` (main surface)
+- `--aceui-color-content2-background`, `--aceui-color-content2-foreground`
+- `--aceui-color-focus`: Focus ring color
 
 #### Semantic Colors
-- Base: `--color-{semantic}` (e.g., `--color-primary`)
-- Foreground: `--color-{semantic}-foreground`
-- Shades: `--color-{semantic}-{50-900}` (e.g., `--color-primary-500`)
+- Base: `--aceui-color-{semantic}` (e.g., `--aceui-color-primary`)
+- Foreground: `--aceui-color-{semantic}-foreground`
+- Shades: `--aceui-color-{semantic}-{50-900}` (e.g., `--aceui-color-primary-500`)
 - Semantics: `default`, `primary`, `secondary`, `success`, `warning`, `danger`
 - Each semantic color has shades from 50 (lightest) to 900 (darkest)
 
 ### Sizing
-- Font sizes: `--font-size-tiny`, `--font-size-small`, `--font-size-medium`, `--font-size-large`
-- Line heights: `--line-height-tiny`, `--line-height-small`, `--line-height-medium`, `--line-height-large`
-- Border radius: `--radius-small`, `--radius-medium`, `--radius-large`
-- Border widths: `--border-width-small`, `--border-width-medium`, `--border-width-large`
-- Box shadows: `--box-shadow-small`, `--box-shadow-medium`, `--box-shadow-large`
+- Font sizes: `--aceui-font-size-tiny`, `--aceui-font-size-small`, `--aceui-font-size-medium`, `--aceui-font-size-large`
+- Line heights: `--aceui-line-height-tiny`, `--aceui-line-height-small`, `--aceui-line-height-medium`, `--aceui-line-height-large`
+- Border radius: `--aceui-radius-small`, `--aceui-radius-medium`, `--aceui-radius-large`
+- Border widths: `--aceui-border-width-small`, `--aceui-border-width-medium`, `--aceui-border-width-large`
+- Spacing: `--aceui-spacing-small`, `--aceui-spacing-medium`, `--aceui-spacing-large`
 
 ### Other
-- Opacity: `--disabled-opacity`, `--hover-opacity`
+- Opacity: `--aceui-disabled-opacity`, `--aceui-hover-opacity`
+- Component-specific tokens (e.g. `--aceui-button-shadow-opacity`, `--aceui-accordion-border-radius`) are defined in `design-tokens.css`
 
 ## BEM (Block Element Modifier) Methodology
 

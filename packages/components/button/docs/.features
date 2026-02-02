@@ -24,7 +24,7 @@ A flexible, accessible button component that serves as the foundation of the com
 
 #### 2. Disabled State
 - Support `isDisabled` prop (boolean)
-- Visual indication of disabled state using `--disabled-opacity: 0.5`
+- Visual indication of disabled state using `--aceui-disabled-opacity: 0.5`
 - Prevent click events when disabled
 - Apply modifier class: `.aceui-button--disabled`
 - Add `disabled` attribute to button element (do not add `aria-disabled`; native `<button>` uses `disabled` only per a11y guidelines)
@@ -34,20 +34,20 @@ A flexible, accessible button component that serves as the foundation of the com
 Support three size variants via `size` prop:
 
 - **Small**: `.aceui-button--small`
-  - Font size: `var(--font-size-small)` (0.875rem / 14px)
-  - Line height: `var(--line-height-small)` (1.25rem)
+  - Font size: `var(--aceui-font-size-small)` (0.875rem / 14px)
+  - Line height: `var(--aceui-line-height-small)` (1.25rem)
   - Padding: 0 12px
   - Min-height: 32px
   
 - **Medium** (default): `.aceui-button--medium`
-  - Font size: `var(--font-size-medium)` (1rem / 16px)
-  - Line height: `var(--line-height-medium)` (1.5rem)
+  - Font size: `var(--aceui-font-size-medium)` (1rem / 16px)
+  - Line height: `var(--aceui-line-height-medium)` (1.5rem)
   - Padding: 0 16px
   - Min-height: 40px
   
 - **Large**: `.aceui-button--large`
-  - Font size: `var(--font-size-large)` (1.125rem / 18px)
-  - Line height: `var(--line-height-large)` (1.75rem)
+  - Font size: `var(--aceui-font-size-large)` (1.125rem / 18px)
+  - Line height: `var(--aceui-line-height-large)` (1.75rem)
   - Padding: 0 24px
   - Min-height: 48px
 
@@ -58,13 +58,13 @@ Support radius variants via `radius` prop using design tokens:
   - Border radius: `0` (square corners, no rounding)
   
 - **Small**: `.aceui-button--radius-small`
-  - Border radius: `var(--radius-small)` (8px)
+  - Border radius: `var(--aceui-radius-small)` (8px)
   
 - **Medium** (default): `.aceui-button--radius-medium`
-  - Border radius: `var(--radius-medium)` (12px)
+  - Border radius: `var(--aceui-radius-medium)` (12px)
   
 - **Large**: `.aceui-button--radius-large`
-  - Border radius: `var(--radius-large)` (14px)
+  - Border radius: `var(--aceui-radius-large)` (14px)
   
 - **Full**: `.aceui-button--radius-full`
   - Border radius: `9999px` (pill shape)
@@ -72,41 +72,41 @@ Support radius variants via `radius` prop using design tokens:
 #### 5. Colors
 Support color variants via `color` prop using design token color system:
 
-- **Default**: Uses `--color-default` system
-  - Base: `var(--color-default-500)`
-  - Foreground: `var(--color-default-foreground)`
-  - Hover: `var(--color-default-600)`
-  - Active: `var(--color-default-700)`
+- **Default**: Uses `--aceui-color-default` system
+  - Base: `var(--aceui-color-default-500)`
+  - Foreground: `var(--aceui-color-default-foreground)`
+  - Hover: `var(--aceui-color-default-600)`
+  - Active: `var(--aceui-color-default-700)`
   
-- **Primary** (default): Uses `--color-primary` system
-  - Base: `var(--color-primary-500)` (#006fee)
-  - Foreground: `var(--color-primary-foreground)` (#fff)
-  - Hover: `var(--color-primary-600)`
-  - Active: `var(--color-primary-700)`
+- **Primary** (default): Uses `--aceui-color-primary` system
+  - Base: `var(--aceui-color-primary-500)` (#006fee)
+  - Foreground: `var(--aceui-color-primary-foreground)` (#fff)
+  - Hover: `var(--aceui-color-primary-600)`
+  - Active: `var(--aceui-color-primary-700)`
   
-- **Secondary**: Uses `--color-secondary` system
-  - Base: `var(--color-secondary-500)` (#7828c8)
-  - Foreground: `var(--color-secondary-foreground)` (#fff)
-  - Hover: `var(--color-secondary-600)`
-  - Active: `var(--color-secondary-700)`
+- **Secondary**: Uses `--aceui-color-secondary` system
+  - Base: `var(--aceui-color-secondary-500)` (#7828c8)
+  - Foreground: `var(--aceui-color-secondary-foreground)` (#fff)
+  - Hover: `var(--aceui-color-secondary-600)`
+  - Active: `var(--aceui-color-secondary-700)`
   
-- **Success**: Uses `--color-success` system
-  - Base: `var(--color-success-500)` (#17c964)
-  - Foreground: `var(--color-success-foreground)` (#000)
-  - Hover: `var(--color-success-600)`
-  - Active: `var(--color-success-700)`
+- **Success**: Uses `--aceui-color-success` system
+  - Base: `var(--aceui-color-success-500)` (#17c964)
+  - Foreground: `var(--aceui-color-success-foreground)` (#000)
+  - Hover: `var(--aceui-color-success-600)`
+  - Active: `var(--aceui-color-success-700)`
   
-- **Warning**: Uses `--color-warning` system
-  - Base: `var(--color-warning-500)` (#f5a524)
-  - Foreground: `var(--color-warning-foreground)` (#000)
-  - Hover: `var(--color-warning-600)`
-  - Active: `var(--color-warning-700)`
+- **Warning**: Uses `--aceui-color-warning` system
+  - Base: `var(--aceui-color-warning-500)` (#f5a524)
+  - Foreground: `var(--aceui-color-warning-foreground)` (#000)
+  - Hover: `var(--aceui-color-warning-600)`
+  - Active: `var(--aceui-color-warning-700)`
   
-- **Danger**: Uses `--color-danger` system
-  - Base: `var(--color-danger-500)` (#f31260)
-  - Foreground: `var(--color-danger-foreground)` (#fff)
-  - Hover: `var(--color-danger-600)`
-  - Active: `var(--color-danger-700)`
+- **Danger**: Uses `--aceui-color-danger` system
+  - Base: `var(--aceui-color-danger-500)` (#f31260)
+  - Foreground: `var(--aceui-color-danger-foreground)` (#fff)
+  - Hover: `var(--aceui-color-danger-600)`
+  - Active: `var(--aceui-color-danger-700)`
 
 Apply as: `.aceui-button--color-default`, `.aceui-button--color-primary`, `.aceui-button--color-danger`, etc.
 
@@ -114,37 +114,37 @@ Apply as: `.aceui-button--color-default`, `.aceui-button--color-primary`, `.aceu
 Support style variants via `variant` prop:
 
 - **Solid** (default): `.aceui-button--solid`
-  - Background: Color token (e.g., `var(--color-primary-500)`)
-  - Text: Color foreground token (e.g., `var(--color-primary-foreground)`)
+  - Background: Color token (e.g., `var(--aceui-color-primary-500)`)
+  - Text: Color foreground token (e.g., `var(--aceui-color-primary-foreground)`)
   - Border: None
-  - Hover: Darker shade from color system (e.g., `var(--color-primary-600)`)
+  - Hover: Darker shade from color system (e.g., `var(--aceui-color-primary-600)`)
   
 - **Bordered**: `.aceui-button--bordered`
   - Background: Transparent
-  - Border: `var(--button-bordered-border-width)` solid color (e.g., `var(--color-primary-500)`)
-  - Text: Color token (e.g., `var(--color-primary-500)`)
-  - Hover: Light background tint using color-50 (e.g., `var(--color-primary-50)`)
+  - Border: `var(--aceui-button-bordered-border-width)` solid color (e.g., `var(--aceui-color-primary-500)`)
+  - Text: Color token (e.g., `var(--aceui-color-primary-500)`)
+  - Hover: Light background tint using color-50 (e.g., `var(--aceui-color-primary-50)`)
   
 - **Light**: `.aceui-button--light`
-  - Background: Light shade (e.g., `var(--color-primary-50)`)
-  - Text: Color token (e.g., `var(--color-primary-500)`)
+  - Background: Light shade (e.g., `var(--aceui-color-primary-50)`)
+  - Text: Color token (e.g., `var(--aceui-color-primary-500)`)
   - Border: None
-  - Hover: Slightly darker light shade (e.g., `var(--color-primary-100)`)
+  - Hover: Slightly darker light shade (e.g., `var(--aceui-color-primary-100)`)
   
 - **Flat**: `.aceui-button--flat`
   - Background: Transparent
-  - Text: Color token (e.g., `var(--color-primary-500)`)
+  - Text: Color token (e.g., `var(--aceui-color-primary-500)`)
   - Border: None
-  - Hover: Light background tint using color-50 (e.g., `var(--color-primary-50)`)
+  - Hover: Light background tint using color-50 (e.g., `var(--aceui-color-primary-50)`)
   
 - **Shadow**: `.aceui-button--shadow`
   - Same as solid variant
-  - Shadow (0 4px 14px) using button's base color via `color-mix(in srgb, var(--color-X-500) calc(var(--button-shadow-opacity) * 100%), transparent)`
-  - Uses design token `--button-shadow-opacity` (theme-aware: medium in light mode, small in dark mode)
+  - Shadow (0 4px 14px) using button's base color via `color-mix(in srgb, var(--aceui-color-X-500) calc(var(--aceui-button-shadow-opacity) * 100%), transparent)` (X = default, primary, etc.)
+  - Uses design token `--aceui-button-shadow-opacity` (theme-aware: medium in light mode, small in dark mode)
 
 - **Ghost**: `.aceui-button--ghost`
-  - Default: Transparent background, border `var(--button-ghost-border-width)` solid base color (e.g., `var(--color-primary-500)`), text base color
-  - Hover: Background base color 500, text base color foreground (e.g., `var(--color-primary-foreground)`)
+  - Default: Transparent background, border `var(--aceui-button-ghost-border-width)` solid base color (e.g., `var(--aceui-color-primary-500)`), text base color
+  - Hover: Background base color 500, text base color foreground (e.g., `var(--aceui-color-primary-foreground)`)
 
 #### 7. Loading State
 - Support `isLoading` prop (boolean)
@@ -155,7 +155,7 @@ Support style variants via `variant` prop:
 - Maintain button text or show `loadingText` prop if provided
 - Maintain button width to prevent layout shift
 - Add `aria-busy="true"` attribute
-- Reduce opacity using `var(--disabled-opacity)`
+- Reduce opacity using `var(--aceui-disabled-opacity)`
 
 #### 8. With Icon
 Support icons via `icon` and `iconPosition` props:
@@ -283,70 +283,70 @@ Use design tokens for all styling:
 ```css
 /* Example: Primary Solid Button */
 .aceui-button.aceui-button--solid.aceui-button--color-primary {
-  background-color: var(--color-primary-500);
-  color: var(--color-primary-foreground);
+  background-color: var(--aceui-color-primary-500);
+  color: var(--aceui-color-primary-foreground);
   border: none;
 }
 
 .aceui-button.aceui-button--solid.aceui-button--color-primary:hover:not(:disabled) {
-  background-color: var(--color-primary-600);
+  background-color: var(--aceui-color-primary-600);
 }
 
 .aceui-button.aceui-button--solid.aceui-button--color-primary:active:not(:disabled) {
-  background-color: var(--color-primary-700);
+  background-color: var(--aceui-color-primary-700);
 }
 
 /* Example: Bordered Variant */
 .aceui-button.aceui-button--bordered.aceui-button--color-primary {
   background-color: transparent;
-  color: var(--color-primary-500);
-  border: var(--button-bordered-border-width) solid var(--color-primary-500);
+  color: var(--aceui-color-primary-500);
+  border: var(--aceui-button-bordered-border-width) solid var(--aceui-color-primary-500);
 }
 
 .aceui-button.aceui-button--bordered.aceui-button--color-primary:hover:not(:disabled) {
-  background-color: var(--color-primary-50);
+  background-color: var(--aceui-color-primary-50);
 }
 
 /* Example: Light Variant */
 .aceui-button.aceui-button--light.aceui-button--color-primary {
-  background-color: var(--color-primary-50);
-  color: var(--color-primary-500);
+  background-color: var(--aceui-color-primary-50);
+  color: var(--aceui-color-primary-500);
   border: none;
 }
 
 .aceui-button.aceui-button--light.aceui-button--color-primary:hover:not(:disabled) {
-  background-color: var(--color-primary-100);
+  background-color: var(--aceui-color-primary-100);
 }
 
 /* Example: Flat Variant (hover uses color-50) */
 .aceui-button.aceui-button--flat.aceui-button--color-primary {
   background-color: transparent;
-  color: var(--color-primary-500);
+  color: var(--aceui-color-primary-500);
   border: none;
 }
 
 .aceui-button.aceui-button--flat.aceui-button--color-primary:hover:not(:disabled) {
-  background-color: var(--color-primary-50);
+  background-color: var(--aceui-color-primary-50);
 }
 
 /* Sizes */
 .aceui-button.aceui-button--small {
-  font-size: var(--font-size-small);
-  line-height: var(--line-height-small);
+  font-size: var(--aceui-font-size-small);
+  line-height: var(--aceui-line-height-small);
   padding: 0 12px;
   min-height: 32px;
 }
 
 .aceui-button.aceui-button--medium {
-  font-size: var(--font-size-medium);
-  line-height: var(--line-height-medium);
+  font-size: var(--aceui-font-size-medium);
+  line-height: var(--aceui-line-height-medium);
   padding: 0 16px;
   min-height: 40px;
 }
 
 .aceui-button.aceui-button--large {
-  font-size: var(--font-size-large);
-  line-height: var(--line-height-large);
+  font-size: var(--aceui-font-size-large);
+  line-height: var(--aceui-line-height-large);
   padding: 0 24px;
   min-height: 48px;
 }
@@ -357,44 +357,44 @@ Use design tokens for all styling:
 }
 
 .aceui-button.aceui-button--radius-small {
-  border-radius: var(--radius-small);
+  border-radius: var(--aceui-radius-small);
 }
 
 .aceui-button.aceui-button--radius-medium {
-  border-radius: var(--radius-medium);
+  border-radius: var(--aceui-radius-medium);
 }
 
 .aceui-button.aceui-button--radius-large {
-  border-radius: var(--radius-large);
+  border-radius: var(--aceui-radius-large);
 }
 
 .aceui-button.aceui-button--radius-full {
   border-radius: 9999px;
 }
 
-/* Shadow variant - uses --button-shadow-opacity (theme-aware) */
+/* Shadow variant - uses --aceui-button-shadow-opacity (theme-aware) */
 .aceui-button.aceui-button--shadow.aceui-button--color-primary {
-  box-shadow: 0 4px 14px 0 color-mix(in srgb, var(--color-primary-500) calc(var(--button-shadow-opacity) * 100%), transparent);
+  box-shadow: 0 4px 14px 0 color-mix(in srgb, var(--aceui-color-primary-500) calc(var(--aceui-button-shadow-opacity) * 100%), transparent);
 }
 /* Same pattern for each color: default, primary, secondary, success, warning, danger */
 
 /* Disabled state */
 .aceui-button:disabled,
 .aceui-button.aceui-button--disabled {
-  opacity: var(--disabled-opacity);
+  opacity: var(--aceui-disabled-opacity);
   cursor: not-allowed;
   pointer-events: none;
 }
 
 /* Loading state */
 .aceui-button.aceui-button--loading {
-  opacity: var(--disabled-opacity);
+  opacity: var(--aceui-disabled-opacity);
   cursor: not-allowed;
 }
 
 /* Focus state */
 .aceui-button:focus-visible {
-  outline: 2px solid var(--color-focus);
+  outline: 2px solid var(--aceui-color-focus);
   outline-offset: 2px;
 }
 ```
@@ -407,12 +407,12 @@ Use design tokens for all styling:
 - [ ] All 6 color variants render correctly using design token colors
 - [ ] All 6 style variants (solid, bordered, light, flat, shadow, ghost) work
 - [ ] All radius variants apply correct design token values
-- [ ] Disabled state prevents clicks and uses `--disabled-opacity`
-- [ ] Loading state shows spinner and uses `--disabled-opacity`
+- [ ] Disabled state prevents clicks and uses `--aceui-disabled-opacity`
+- [ ] Loading state shows spinner and uses `--aceui-disabled-opacity`
 - [ ] Icon renders in correct position
 - [ ] Icon-only button is square
 - [ ] Click handler fires correctly
-- [ ] Flat variant hover uses color-50 (e.g., `var(--color-primary-50)`)
+- [ ] Flat variant hover uses color-50 (e.g., `var(--aceui-color-primary-50)`)
 
 #### Design Token Integration
 - [ ] All colors use design token CSS variables
@@ -420,17 +420,17 @@ Use design tokens for all styling:
 - [ ] All line heights use design token variables
 - [ ] All border radius use design token variables
 - [ ] All border widths use design token variables
-- [ ] All box shadows use design token variables (shadow variant uses `--button-shadow-opacity`)
-- [ ] Disabled opacity uses `--disabled-opacity`
-- [ ] Hover opacity uses `--hover-opacity`
-- [ ] Focus outline uses `--color-focus`
-- [ ] Background uses `--color-background` where applicable
-- [ ] Foreground uses `--color-foreground` where applicable
+- [ ] All box shadows use design token variables (shadow variant uses `--aceui-button-shadow-opacity`)
+- [ ] Disabled opacity uses `--aceui-disabled-opacity`
+- [ ] Hover opacity uses `--aceui-hover-opacity`
+- [ ] Focus outline uses `--aceui-color-focus`
+- [ ] Background uses `--aceui-color-content1-background` where applicable
+- [ ] Foreground uses `--aceui-color-content1-foreground` where applicable
 
 #### Accessibility
 - [ ] Uses semantic `<button>` element
 - [ ] Keyboard accessible (Enter and Space to activate)
-- [ ] Focus visible using `--color-focus`
+- [ ] Focus visible using `--aceui-color-focus`
 - [ ] `disabled` attribute when disabled (no redundant `aria-disabled` for native button)
 - [ ] `aria-busy` when loading
 - [ ] `aria-label` supported
@@ -443,10 +443,10 @@ Use design tokens for all styling:
 - [ ] No style conflicts
 - [ ] Hover states work on all variants using design tokens
 - [ ] Active states work on all variants using design tokens
-- [ ] Focus states visible using `--color-focus`
+- [ ] Focus states visible using `--aceui-color-focus`
 - [ ] Smooth transitions (200-300ms)
 - [ ] Loading spinner animated
-- [ ] Shadow variant uses `--button-shadow-opacity` token (theme-aware: medium in light, small in dark)
+- [ ] Shadow variant uses `--aceui-button-shadow-opacity` token (theme-aware: medium in light, small in dark)
 - [ ] All color shades (50-900) work correctly
 
 #### Combinations
@@ -576,27 +576,28 @@ Use design tokens for all styling:
 
 The button component should import and use tokens from `design-tokens.css`:
 
-**Colors**: `--color-{variant}-{shade}` (e.g., `--color-primary-500`)
-**Foregrounds**: `--color-{variant}-foreground`
-**Font Sizes**: `--font-size-{size}` (tiny, small, medium, large)
-**Line Heights**: `--line-height-{size}`
-**Radius**: `--radius-{size}` (small, medium, large)
-**Border Width**: `--border-width-{size}` (small, medium, large); button-specific: `--button-bordered-border-width`, `--button-ghost-border-width` (defined in design-tokens.css, reference --border-width-medium / --border-width-small)
-**Box Shadow**: `--box-shadow-{size}` (small, medium, large)
-**Opacity**: `--disabled-opacity`, `--hover-opacity`
-**Focus**: `--color-focus`
-**Button Shadow**: `--button-shadow-opacity` (references `--shadow-opacity-*`; theme-aware for light/dark)
+All design tokens use the **`--aceui`** prefix.
+
+**Colors**: `--aceui-color-{variant}-{shade}` (e.g., `--aceui-color-primary-500`)
+**Foregrounds**: `--aceui-color-{variant}-foreground`
+**Font Sizes**: `--aceui-font-size-{size}` (tiny, small, medium, large)
+**Line Heights**: `--aceui-line-height-{size}`
+**Radius**: `--aceui-radius-{size}` (small, medium, large)
+**Border Width**: `--aceui-border-width-{size}` (small, medium, large); button-specific: `--aceui-button-bordered-border-width`, `--aceui-button-ghost-border-width` (defined in design-tokens.css)
+**Opacity**: `--aceui-disabled-opacity`, `--aceui-hover-opacity`
+**Focus**: `--aceui-color-focus`
+**Button Shadow**: `--aceui-button-shadow-opacity` (references `--aceui-shadow-opacity-*`; theme-aware for light/dark)
 
 ### Notes
 - All colors must use design token CSS variables
 - No hardcoded color values allowed
 - Ensure color contrast meets WCAG AA standards (4.5:1) using token foreground colors
 - Test with keyboard navigation thoroughly
-- Ensure focus states use `--color-focus` token
+- Ensure focus states use `--aceui-color-focus` token
 - Loading spinner should be smooth (CSS animation)
 - Each color has 10 shades (50-900) - use appropriately for hover/active states
 - Consider dark mode support in future (design tokens make this easier)
-- Shadow variant uses `--button-shadow-opacity` design token (theme-aware); defined in design-tokens.css
+- Shadow variant uses `--aceui-button-shadow-opacity` design token (theme-aware); defined in design-tokens.css
 
 ---
 
@@ -627,7 +628,7 @@ A wrapper component that groups multiple Button children into a single visual un
 
 #### 3. Border Collapse (Bordered Variant)
 - For bordered Buttons inside the group, collapse inner borders so no double lines between buttons
-- Use design token `--button-bordered-border-width` (defined in design-tokens.css)
+- Use design token `--aceui-button-bordered-border-width` (defined in design-tokens.css)
 - Remove or overlap inner border between adjacent buttons (e.g. negative margin or border-right: 0 on all but last)
 
 #### 4. Group Disabled
@@ -641,7 +642,7 @@ A wrapper component that groups multiple Button children into a single visual un
 - Export `ButtonGroupProps` interface
 
 #### 6. Design Tokens
-- Reuse radius tokens (`--radius-small`, `--radius-medium`, etc.) for first/last child overrides
+- Reuse radius tokens (`--aceui-radius-small`, `--aceui-radius-medium`, etc.) for first/last child overrides
 - Reuse border width tokens for collapse styling
 
 ### Out of Scope (Phase 2)

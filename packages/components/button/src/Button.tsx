@@ -193,9 +193,9 @@ export const Button = ({
           className="aceui-button__wave"
           style={
             {
-              '--wave-x': `${wave.x}px`,
-              '--wave-y': `${wave.y}px`,
-              '--wave-size': `${wave.size}px`,
+              '--aceui-wave-x': `${wave.x}px`,
+              '--aceui-wave-y': `${wave.y}px`,
+              '--aceui-wave-size': `${wave.size}px`,
             } as React.CSSProperties
           }
           initial={{ scale: 0, x: '-50%', y: '-50%', opacity: 1 }}

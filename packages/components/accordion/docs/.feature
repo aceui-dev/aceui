@@ -36,13 +36,13 @@ Each accordion item should support:
 - **Subtitle** (optional): Secondary descriptive text
   - Element: `.aceui-accordion__subtitle`
   - Displayed below title in muted color
-  - Font size: `var(--font-size-small)`
-  - Color: `var(--color-default-400)`
+  - Font size: `var(--aceui-font-size-small)`
+  - Color: `var(--aceui-color-default-400)`
   
 - **Content**: Expandable body content
   - Element: `.aceui-accordion__content`
   - Smooth expand/collapse animation
-  - Padding: `var(--spacing-medium)` (16px)
+  - Padding: `var(--aceui-spacing-medium)` (16px)
   
 - **Indicator**: Visual expand/collapse icon
   - Element: `.aceui-accordion__indicator`
@@ -67,28 +67,28 @@ Support different expansion behaviors via `selectionMode` prop:
 Support style variants via `variant` prop:
 
 - **Light** (default): `.aceui-accordion--light`
-  - Background: `var(--color-default-50)`
+  - Background: `var(--aceui-color-content1-background)`
   - Border: None
   - Minimal padding between items
   - Clean, airy appearance
   
 - **Shadow**: `.aceui-accordion--shadow`
-  - Background: `var(--color-background)`
-  - Each item has subtle shadow: `var(--box-shadow-small)`
+  - Background: `var(--aceui-color-content1-background)`
+  - Each item has subtle shadow (color-mix with `var(--aceui-color-content1-foreground)`)
   - Padding/margin between items
   - Elevated appearance
   
 - **Bordered**: `.aceui-accordion--bordered`
-  - Background: `var(--color-background)`
-  - Border: `var(--border-width-medium)` solid `var(--color-default-200)`
+  - Background: `var(--aceui-color-content1-background)`
+  - Border: `var(--aceui-border-width-medium)` solid `var(--aceui-color-content2-background)`
   - All items within single bordered container
   - Dividers between items
   
 - **Splitted**: `.aceui-accordion--splitted`
   - Each item is a separate card
-  - Background: `var(--color-background)`
-  - Border: `var(--border-width-medium)` solid `var(--color-default-200)`
-  - Spacing between items: `var(--spacing-small)` (8px)
+  - Background: `var(--aceui-color-content1-background)`
+  - Border: `var(--aceui-border-width-medium)` solid `var(--aceui-color-content2-background)`
+  - Spacing between items: `var(--aceui-spacing-small)` (8px)
   - Individual item borders and shadows
 
 #### 5. Default Expanded Keys
@@ -102,7 +102,7 @@ Support style variants via `variant` prop:
 - Support `disabledKeys` prop (array of strings/numbers)
 - Disable specific accordion items from being interacted with
 - Apply modifier class: `.aceui-accordion__item--disabled`
-- Visual indication: reduced opacity `var(--disabled-opacity)`
+- Visual indication: reduced opacity `var(--aceui-disabled-opacity)`
 - Prevent click/keyboard interaction
 - Cursor: `not-allowed`
 - Add `aria-disabled="true"` to disabled items
@@ -113,7 +113,7 @@ Support style variants via `variant` prop:
 - Display custom content at the start of the header (before title)
 - Element: `.aceui-accordion__start-content`
 - Common use cases: avatar images, icons, status indicators
-- Spacing from title: `var(--spacing-small)` (8px)
+- Spacing from title: `var(--aceui-spacing-small)` (8px)
 - Maintains alignment with indicator
 
 #### 8. Custom Indicator
@@ -167,8 +167,8 @@ Support optimized rendering via `renderStrategy` prop:
   - `aria-disabled="true"` on disabled items
   
 - Focus management:
-  - Visible focus indicator using `var(--color-focus)`
-  - Focus ring: 2px solid `var(--color-focus)`
+  - Visible focus indicator using `var(--aceui-color-focus)`
+  - Focus ring: 2px solid `var(--aceui-color-focus)`
   - Offset: 2px
 
 ### Component API
@@ -328,7 +328,7 @@ const handleExpand = (key) => {
 - [ ] ARIA attributes present and correct
 - [ ] `aria-expanded` updates on state change
 - [ ] `aria-disabled` on disabled items
-- [ ] Focus visible with `var(--color-focus)`
+- [ ] Focus visible with `var(--aceui-color-focus)`
 - [ ] Screen reader announces expansion state
 - [ ] Semantic heading structure maintained
 - [ ] Role attributes correct
@@ -597,25 +597,24 @@ const [expandedKeys, setExpandedKeys] = useState(['1']);
 
 ### Design Token Reference
 
-The accordion component should import and use tokens from `design-tokens.css`:
+The accordion component should import and use tokens from `design-tokens.css`. All design tokens use the `--aceui` prefix.
 
-**Colors**: `--color-default-{shade}` (e.g., `--color-default-50`, `--color-default-200`, `--color-default-400`)
-**Background**: `--color-background`
-**Font Sizes**: `--font-size-{size}` (small, medium, large)
-**Line Heights**: `--line-height-{size}`
-**Spacing**: `--spacing-{size}` (small, medium, large)
-**Radius**: `--radius-{size}` (small, medium, large)
-**Border Width**: `--border-width-{size}` (small, medium)
-**Box Shadow**: `--box-shadow-{size}` (small, medium)
-**Opacity**: `--disabled-opacity`, `--hover-opacity`
-**Focus**: `--color-focus`
+**Colors**: `--aceui-color-default-{shade}` (e.g., `--aceui-color-default-50`, `--aceui-color-default-200`, `--aceui-color-default-400`)
+**Content surfaces**: `--aceui-color-content1-background`, `--aceui-color-content1-foreground`, `--aceui-color-content2-background`
+**Font Sizes**: `--aceui-font-size-{size}` (small, medium, large)
+**Line Heights**: `--aceui-line-height-{size}`
+**Spacing**: `--aceui-spacing-{size}` (small, medium, large)
+**Radius**: `--aceui-radius-{size}` (small, medium, large); **Accordion**: `--aceui-accordion-border-radius`
+**Border Width**: `--aceui-border-width-{size}` (small, medium)
+**Opacity**: `--aceui-disabled-opacity`, `--aceui-hover-opacity`
+**Focus**: `--aceui-color-focus`
 
 ### Notes
 - All colors must use design token CSS variables
 - No hardcoded color values allowed
 - Ensure color contrast meets WCAG AA standards
 - Test with keyboard navigation thoroughly
-- Ensure focus states use `--color-focus` token
+- Ensure focus states use `--aceui-color-focus` token
 - Expansion animations should be smooth (300ms)
 - Consider performance for accordions with many items
 - renderStrategy 'lazy' improves performance for complex content
