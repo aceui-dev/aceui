@@ -33,8 +33,8 @@
 - [x] ✅ Add `.aceui-button--bordered` styles with border and hover
 - [x] ✅ Add `.aceui-button--light` styles with light background
 - [x] ✅ Add `.aceui-button--flat` styles with hover opacity overlay
-- [x] ✅ Add `.aceui-button--shadow` styles with box-shadow tokens
-- [x] ✅ Add `.aceui-button--ghost` styles with low opacity border
+- [x] ✅ Add `.aceui-button--shadow` styles using `--button-shadow-opacity` token (theme-aware)
+- [x] ✅ Add `.aceui-button--ghost` styles with solid border using base color (and hover flip)
 
 ### 2.2 Color System
 - [x] ✅ Implement `color` prop (default, primary, secondary, success, warning, danger)
@@ -131,7 +131,7 @@
 ### 6.4 Click Wave (Ripple) Effect
 - [x] ✅ Add wave state and click math (x, y, size from getBoundingClientRect + clientX/clientY)
 - [x] ✅ Render `.aceui-button__wave` span with CSS vars; use unique key per click so animation re-runs
-- [x] ✅ Add `onAnimationEnd` to clear wave state when animation completes
+- [x] ✅ Clear wave state in `onAnimationComplete` (framer-motion) when animation completes
 - [x] ✅ Add `disableWave` prop (optional) to opt out of wave effect
 - [x] ✅ Add overflow hidden and wave styles + keyframes in Button.css
 
@@ -145,7 +145,7 @@
 - [x] ✅ Ensure all design tokens are used (no hardcoded values)
 - [x] ✅ Add hover states for all variant × color combinations
 - [x] ✅ Add active states for all variant × color combinations
-- [x] ✅ Ensure shadow variant uses appropriate box-shadow tokens based on size
+- [x] ✅ Ensure shadow variant uses `--button-shadow-opacity` (theme-aware: medium in light, small in dark)
 
 ### 7.2 Edge Cases
 - [x] ✅ Handle disabled + loading combination
@@ -208,14 +208,14 @@
 ## Phase: Button Group
 
 ### Button Group Component
-- [ ] ⏳ Add "Feature: Button Group" to `.features` (requirements documented)
-- [ ] ⏳ Create `ButtonGroup.tsx` with `ButtonGroupProps` (children, isDisabled, orientation, className, testId, ariaLabel)
-- [ ] ⏳ Render container with `role="group"` and `.aceui-button-group`
-- [ ] ⏳ When `isDisabled={true}`, clone children and pass `isDisabled={true}` to each child that accepts it
-- [ ] ⏳ Create `ButtonGroup.css`: layout (inline-flex, flex-direction, no gap)
-- [ ] ⏳ ButtonGroup.css: first/middle/last radius overrides for `.aceui-button-group > .aceui-button`
-- [ ] ⏳ ButtonGroup.css: border collapse for bordered variant (inner borders collapsed)
-- [ ] ⏳ Export `ButtonGroup` and `ButtonGroupProps` from `index.ts`
+- [x] ✅ "Feature: Button Group" already in `.features` (requirements documented)
+- [x] ✅ Create `ButtonGroup.tsx` with `ButtonGroupProps` (children, isDisabled, orientation, className, testId, ariaLabel)
+- [x] ✅ Render container with `role="group"` and `.aceui-button-group`
+- [x] ✅ When `isDisabled={true}`, clone children and pass `isDisabled={true}` to each child that accepts it
+- [x] ✅ ButtonGroup layout and styling (in Button.css): inline-flex, flex-direction, no gap
+- [x] ✅ First/middle/last radius overrides for `.aceui-button-group > .aceui-button` (in Button.css)
+- [x] ✅ Border collapse for bordered variant (in Button.css)
+- [x] ✅ Export `ButtonGroup` and `ButtonGroupProps` from `index.ts`
 - [ ] ⏳ Add demo section(s): default group (One, Two, Three; optionally Three disabled) and group disabled
 - [ ] ⏳ Register Button Group section(s) in ButtonPage.tsx and sidebar
 
@@ -229,7 +229,7 @@
 - Accessibility is critical - ensure ARIA attributes and keyboard navigation work
 - Focus states must use `--color-focus` token
 - Loading spinner should be smooth CSS animation
-- Shadow variant uses medium colored shadow (button base color) in Button.css
+- Shadow variant uses `--button-shadow-opacity` design token (theme-aware) in Button.css
 
 ---
 

@@ -1,7 +1,7 @@
 {
   "name": "@aceuidev/button",
   "version": "0.1.0-beta.0",
-  "description": "Versatile button component with multiple variants, sizes, and states for handling user interactions.",
+  "description": "One button component for your whole app: primary, secondary, icons, loading, and grouped actions—ready to drop in.",
   "keywords": [
     "react",
     "button",
