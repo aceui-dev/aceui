@@ -1,0 +1,194 @@
+/* ============================================
+   Accordion Base
+   ============================================ */
+
+.aceui-accordion {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  font-family: inherit;
+}
+
+/* ============================================
+   Accordion Item
+   ============================================ */
+
+.aceui-accordion__item {
+  display: flex;
+  flex-direction: column;
+}
+
+.aceui-accordion__item--disabled {
+  opacity: var(--disabled-opacity, 0.5);
+  pointer-events: none;
+}
+
+.aceui-accordion__item--focused .aceui-accordion__header:focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 2px;
+}
+
+/* ============================================
+   Accordion Header
+   ============================================ */
+
+.aceui-accordion__header {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-small, 8px);
+  width: 100%;
+  padding: var(--spacing-medium, 16px) calc(var(--spacing-medium, 16px) + 4px);
+  border: none;
+  background: transparent;
+  font-family: inherit;
+  font-size: var(--font-size-medium);
+  line-height: var(--line-height-medium);
+  color: var(--color-content1-foreground);
+  text-align: left;
+  cursor: pointer;
+  outline: none;
+  transition: background-color 0.2s ease;
+}
+
+.aceui-accordion__header:hover {
+  background-color: color-mix(in srgb, var(--color-default-500) calc(var(--hover-opacity, 0.1) * 100%), transparent);
+}
+
+.aceui-accordion__header:focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 2px;
+}
+
+.aceui-accordion__item--disabled .aceui-accordion__header {
+  cursor: not-allowed;
+}
+
+/* ============================================
+   Header Elements
+   ============================================ */
+
+.aceui-accordion__start-content {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+}
+
+.aceui-accordion__header-text {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.aceui-accordion__title {
+  margin: 0 !important;
+  font-size: inherit !important;
+  font-weight: 500 !important;
+}
+
+.aceui-accordion__subtitle {
+  font-size: var(--font-size-small);
+  color: var(--color-default-400);
+  line-height: var(--line-height-small);
+}
+
+.aceui-accordion__indicator {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s ease;
+}
+
+.aceui-accordion__indicator--rotated {
+  transform: rotate(90deg);
+}
+
+/* ============================================
+   Accordion Content
+   ============================================ */
+
+.aceui-accordion__content {
+  overflow: hidden;
+}
+
+.aceui-accordion__content-inner {
+  padding: var(--spacing-medium, 16px);
+}
+
+/* ============================================
+   Variant: Light (default)
+   ============================================ */
+
+.aceui-accordion--light {
+  background: var(--color-content1-background);
+}
+
+.aceui-accordion--light .aceui-accordion__item {
+  border-bottom: 1px solid var(--color-content2-background);
+}
+
+.aceui-accordion--light .aceui-accordion__item:last-child {
+  border-bottom: none;
+}
+
+/* ============================================
+   Variant: Shadow
+   ============================================ */
+
+.aceui-accordion--shadow {
+  background: var(--color-content1-background);
+  gap: var(--spacing-small, 8px);
+}
+
+.aceui-accordion--shadow .aceui-accordion__item {
+  background: var(--color-content1-background);
+  box-shadow: 0 1px 3px 0 color-mix(in srgb, var(--color-content1-foreground) 12%, transparent);
+  border-radius: var(--accordion-border-radius);
+  overflow: hidden;
+}
+
+.aceui-accordion--shadow .aceui-accordion__header {
+  border-radius: var(--accordion-border-radius);
+}
+
+/* ============================================
+   Variant: Bordered
+   ============================================ */
+
+.aceui-accordion--bordered {
+  background: var(--color-content1-background);
+  border: var(--border-width-medium) solid var(--color-content2-background);
+  border-radius: var(--accordion-border-radius);
+  overflow: hidden;
+}
+
+.aceui-accordion--bordered .aceui-accordion__item {
+  border-bottom: 1px solid var(--color-content2-background);
+}
+
+.aceui-accordion--bordered .aceui-accordion__item:last-child {
+  border-bottom: none;
+}
+
+/* ============================================
+   Variant: Splitted
+   ============================================ */
+
+.aceui-accordion--splitted {
+  background: transparent;
+  gap: var(--spacing-small, 8px);
+}
+
+.aceui-accordion--splitted .aceui-accordion__item {
+  background: var(--color-content1-background);
+  border: var(--border-width-medium) solid var(--color-content2-background);
+  border-radius: var(--accordion-border-radius);
+  overflow: hidden;
+  box-shadow: 0 1px 3px 0 color-mix(in srgb, var(--color-content1-foreground) 8%, transparent);
+}
+
+.aceui-accordion--splitted .aceui-accordion__header {
+  border-radius: var(--accordion-border-radius);
+}

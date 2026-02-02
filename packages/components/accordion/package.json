@@ -1,16 +1,16 @@
 {
-  "name": "@aceuidev/button",
+  "name": "@aceuidev/accordion",
   "version": "0.1.0-beta.0",
-  "description": "One button component for your whole app: primary, secondary, icons, loading, and grouped actions—ready to drop in.",
+  "description": "One accordion component for your whole app: collapsible content, expandable sections, and smooth animations—ready to drop in.",
   "keywords": [
     "react",
-    "button",
+    "accordion",
     "component",
     "ui",
     "aceui"
   ],
   "author": "AceUI <support@aceui.dev>",
-  "homepage": "https://aceui.dev/docs/components/button",
+  "homepage": "https://aceui.dev/docs/components/accordion",
   "license": "MIT",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
@@ -27,7 +27,7 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/aceui-dev/aceui.git",
-    "directory": "packages/components/button"
+    "directory": "packages/components/accordion"
   },
   "bugs": {
     "url": "https://github.com/aceui-dev/aceui/issues"
@@ -56,7 +56,7 @@
     "typescript": "^5.7.2"
   },
   "scripts": {
-    "build": "tsup && node -e \"const fs=require('fs');fs.copyFileSync('src/Button.css','dist/Button.css')\"",
+    "build": "tsup && node -e \"const fs=require('fs');fs.copyFileSync('src/Accordion.css','dist/Accordion.css')\"",
     "dev": "tsup src --watch --format esm,cjs",
     "clean": "rimraf dist",
     "prepublishOnly": "npm run clean && npm run build"

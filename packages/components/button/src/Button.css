@@ -228,7 +228,7 @@
 .aceui-button--bordered.aceui-button--color-default {
   background-color: transparent;
   color: var(--color-default-500);
-  border: var(--border-width-medium) solid var(--color-default-500);
+  border: var(--button-bordered-border-width) solid var(--color-default-500);
 }
 
 .aceui-button--bordered.aceui-button--color-default:hover:not(:disabled) {
@@ -239,7 +239,7 @@
 .aceui-button--bordered.aceui-button--color-primary {
   background-color: transparent;
   color: var(--color-primary-500);
-  border: var(--border-width-medium) solid var(--color-primary-500);
+  border: var(--button-bordered-border-width) solid var(--color-primary-500);
 }
 
 .aceui-button--bordered.aceui-button--color-primary:hover:not(:disabled) {
@@ -250,7 +250,7 @@
 .aceui-button--bordered.aceui-button--color-secondary {
   background-color: transparent;
   color: var(--color-secondary-500);
-  border: var(--border-width-medium) solid var(--color-secondary-500);
+  border: var(--button-bordered-border-width) solid var(--color-secondary-500);
 }
 
 .aceui-button--bordered.aceui-button--color-secondary:hover:not(:disabled) {
@@ -261,7 +261,7 @@
 .aceui-button--bordered.aceui-button--color-success {
   background-color: transparent;
   color: var(--color-success-500);
-  border: var(--border-width-medium) solid var(--color-success-500);
+  border: var(--button-bordered-border-width) solid var(--color-success-500);
 }
 
 .aceui-button--bordered.aceui-button--color-success:hover:not(:disabled) {
@@ -272,7 +272,7 @@
 .aceui-button--bordered.aceui-button--color-warning {
   background-color: transparent;
   color: var(--color-warning-500);
-  border: var(--border-width-medium) solid var(--color-warning-500);
+  border: var(--button-bordered-border-width) solid var(--color-warning-500);
 }
 
 .aceui-button--bordered.aceui-button--color-warning:hover:not(:disabled) {
@@ -283,7 +283,7 @@
 .aceui-button--bordered.aceui-button--color-danger {
   background-color: transparent;
   color: var(--color-danger-500);
-  border: var(--border-width-medium) solid var(--color-danger-500);
+  border: var(--button-bordered-border-width) solid var(--color-danger-500);
 }
 
 .aceui-button--bordered.aceui-button--color-danger:hover:not(:disabled) {
@@ -528,7 +528,7 @@
 .aceui-button--ghost.aceui-button--color-default {
   background-color: transparent;
   color: var(--color-default-500);
-  border: var(--border-width-small) solid var(--color-default-500);
+  border: var(--button-ghost-border-width) solid var(--color-default-500);
 }
 
 .aceui-button--ghost.aceui-button--color-default:hover:not(:disabled) {
@@ -540,7 +540,7 @@
 .aceui-button--ghost.aceui-button--color-primary {
   background-color: transparent;
   color: var(--color-primary-500);
-  border: var(--border-width-small) solid var(--color-primary-500);
+  border: var(--button-ghost-border-width) solid var(--color-primary-500);
 }
 
 .aceui-button--ghost.aceui-button--color-primary:hover:not(:disabled) {
@@ -552,7 +552,7 @@
 .aceui-button--ghost.aceui-button--color-secondary {
   background-color: transparent;
   color: var(--color-secondary-500);
-  border: var(--border-width-small) solid var(--color-secondary-500);
+  border: var(--button-ghost-border-width) solid var(--color-secondary-500);
 }
 
 .aceui-button--ghost.aceui-button--color-secondary:hover:not(:disabled) {
@@ -564,7 +564,7 @@
 .aceui-button--ghost.aceui-button--color-success {
   background-color: transparent;
   color: var(--color-success-500);
-  border: var(--border-width-small) solid var(--color-success-500);
+  border: var(--button-ghost-border-width) solid var(--color-success-500);
 }
 
 .aceui-button--ghost.aceui-button--color-success:hover:not(:disabled) {
@@ -576,7 +576,7 @@
 .aceui-button--ghost.aceui-button--color-warning {
   background-color: transparent;
   color: var(--color-warning-500);
-  border: var(--border-width-small) solid var(--color-warning-500);
+  border: var(--button-ghost-border-width) solid var(--color-warning-500);
 }
 
 .aceui-button--ghost.aceui-button--color-warning:hover:not(:disabled) {
@@ -588,7 +588,7 @@
 .aceui-button--ghost.aceui-button--color-danger {
   background-color: transparent;
   color: var(--color-danger-500);
-  border: var(--border-width-small) solid var(--color-danger-500);
+  border: var(--button-ghost-border-width) solid var(--color-danger-500);
 }
 
 .aceui-button--ghost.aceui-button--color-danger:hover:not(:disabled) {
@@ -657,48 +657,48 @@
 }
 
 /* First / Middle / Last Radius (Horizontal) */
-.aceui-button-group--horizontal > .aceui-button:first-of-type:not(:last-of-type) {
+.aceui-button-group--horizontal>.aceui-button:first-of-type:not(:last-of-type) {
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
 }
 
-.aceui-button-group--horizontal > .aceui-button:last-of-type:not(:first-of-type) {
+.aceui-button-group--horizontal>.aceui-button:last-of-type:not(:first-of-type) {
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
 }
 
-.aceui-button-group--horizontal > .aceui-button:not(:first-of-type):not(:last-of-type) {
+.aceui-button-group--horizontal>.aceui-button:not(:first-of-type):not(:last-of-type) {
   border-radius: 0;
 }
 
 /* First / Middle / Last Radius (Vertical) */
-.aceui-button-group--vertical > .aceui-button:first-of-type:not(:last-of-type) {
+.aceui-button-group--vertical>.aceui-button:first-of-type:not(:last-of-type) {
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
 }
 
-.aceui-button-group--vertical > .aceui-button:last-of-type:not(:first-of-type) {
+.aceui-button-group--vertical>.aceui-button:last-of-type:not(:first-of-type) {
   border-top-left-radius: 0;
   border-top-right-radius: 0;
 }
 
-.aceui-button-group--vertical > .aceui-button:not(:first-of-type):not(:last-of-type) {
+.aceui-button-group--vertical>.aceui-button:not(:first-of-type):not(:last-of-type) {
   border-radius: 0;
 }
 
 /* Border Collapse (Bordered Variant) */
-.aceui-button-group--horizontal > .aceui-button--bordered:not(:last-of-type) {
+.aceui-button-group--horizontal>.aceui-button--bordered:not(:last-of-type) {
   border-right-width: 0;
 }
 
-.aceui-button-group--horizontal > .aceui-button--bordered:not(:first-of-type) {
-  margin-left: calc(-1 * var(--border-width-medium, 1px));
+.aceui-button-group--horizontal>.aceui-button--bordered:not(:first-of-type) {
+  margin-left: calc(-1 * var(--button-bordered-border-width, 1px));
 }
 
-.aceui-button-group--vertical > .aceui-button--bordered:not(:last-of-type) {
+.aceui-button-group--vertical>.aceui-button--bordered:not(:last-of-type) {
   border-bottom-width: 0;
 }
 
-.aceui-button-group--vertical > .aceui-button--bordered:not(:first-of-type) {
-  margin-top: calc(-1 * var(--border-width-medium, 1px));
+.aceui-button-group--vertical>.aceui-button--bordered:not(:first-of-type) {
+  margin-top: calc(-1 * var(--button-bordered-border-width, 1px));
 }

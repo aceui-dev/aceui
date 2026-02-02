@@ -230,6 +230,7 @@
 - Focus states must use `--color-focus` token
 - Loading spinner should be smooth CSS animation
 - Shadow variant uses `--button-shadow-opacity` design token (theme-aware) in Button.css
+- Bordered and ghost variants use `--button-bordered-border-width` and `--button-ghost-border-width` (defined in design-tokens.css)
 
 ---
 
