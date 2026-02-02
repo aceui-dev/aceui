@@ -1,11 +1,24 @@
-:root {
-    /* Global */
-    --color-background: #ffffff;
-    --color-foreground: #000000;
-    --color-focus: #006FEE;
-    --color-overlay: #ffffff;
+/* =========================================================
+   DESIGN SYSTEM TOKENS
+   ========================================================= */
 
-    /* Default */
+:root {
+    /* =======================================================
+     GLOBAL SURFACES & FOCUS
+     ======================================================= */
+    --color-content1-background: #ffffff;
+    --color-content1-foreground: #000000;
+    --color-content2-background: #f4f4f5;
+    --color-content2-foreground: #000000;
+    --color-content3-background: #e4e4e7;
+    --color-content3-foreground: #000000;
+    --color-content4-background: #d4d4d8;
+    --color-content4-foreground: #000000;
+    --color-focus: #006FEE;
+
+    /* =======================================================
+     NEUTRAL / DEFAULT
+     ======================================================= */
     --color-default: #d4d4d8;
     --color-default-foreground: #000;
     --color-default-50: #fafafa;
@@ -19,6 +32,9 @@
     --color-default-800: #656567;
     --color-default-900: #404041;
 
+    /* =======================================================
+     BRAND COLORS
+     ======================================================= */
     /* Primary */
     --color-primary: #006fee;
     --color-primary-foreground: #fff;
@@ -47,6 +63,9 @@
     --color-secondary-800: #39135f;
     --color-secondary-900: #240c3c;
 
+    /* =======================================================
+     SEMANTIC COLORS
+     ======================================================= */
     /* Success */
     --color-success: #17c964;
     --color-success-foreground: #000;
@@ -89,49 +108,73 @@
     --color-danger-800: #73092e;
     --color-danger-900: #49051d;
 
-    /* Opacity */
+    /* =======================================================
+     OPACITY & EFFECTS
+     ======================================================= */
     --disabled-opacity: .5;
     --hover-opacity: 0.1;
 
-    /* Font */
+    /* =======================================================
+     TYPOGRAPHY
+     ======================================================= */
     --font-size-tiny: .75rem;
     --font-size-small: .875rem;
     --font-size-medium: 1rem;
     --font-size-large: 1.125rem;
 
-    /* Line Height */
     --line-height-tiny: 1rem;
     --line-height-small: 1.25rem;
     --line-height-medium: 1.5rem;
     --line-height-large: 1.75rem;
 
-    /* Radius */
+    /* =======================================================
+     LAYOUT & SHAPE
+     ======================================================= */
     --radius-small: 8px;
     --radius-medium: 12px;
     --radius-large: 14px;
 
-    /* Border Width */
     --border-width-small: 1px;
     --border-width-medium: 2px;
     --border-width-large: 3px;
 
-    /* Shadow Opacity */
     --shadow-opacity-small: 0.2;
     --shadow-opacity-medium: 0.4;
     --shadow-opacity-large: 0.6;
 
-    /* button properties */
+    --spacing-small: 8px;
+    --spacing-medium: 12px;
+    --spacing-large: 16px;
+
+    /* =======================================================
+     COMPONENT TOKENS
+     ======================================================= */
+    /* Button */
     --button-shadow-opacity: var(--shadow-opacity-medium);
+    --button-bordered-border-width: var(--border-width-medium);
+    --button-ghost-border-width: var(--border-width-small);
+
+    /* Accordion */
+    --accordion-border-radius: var(--radius-medium);
 }
 
 [data-theme="dark"] {
-    /* Global */
-    --color-background: #121212;
-    --color-foreground: #E8E8E8;
+    /* =======================================================
+     GLOBAL SURFACES & FOCUS
+     ======================================================= */
+    --color-content1-background: #18181b;
+    --color-content1-foreground: #ffffff;
+    --color-content2-background: #27272a;
+    --color-content2-foreground: #ffffff;
+    --color-content3-background: #3f3f46;
+    --color-content3-foreground: #ffffff;
+    --color-content4-background: #52525b;
+    --color-content4-foreground: #ffffff;
     --color-focus: #006FEE;
-    --color-overlay: #1E1E1E;
 
-    /* Default */
+    /* =======================================================
+     NEUTRAL / DEFAULT
+     ======================================================= */
     --color-default: #3F3F46;
     --color-default-foreground: #E8E8E8;
     --color-default-50: #0A0A0B;
@@ -145,6 +188,9 @@
     --color-default-800: #A1A1AA;
     --color-default-900: #D4D4D8;
 
+    /* =======================================================
+     BRAND COLORS
+     ======================================================= */
     /* Primary */
     --color-primary: #006FEE;
     --color-primary-foreground: #e3e3e4;
@@ -173,6 +219,9 @@
     --color-secondary-800: #D4BAEE;
     --color-secondary-900: #EADDF7;
 
+    /* =======================================================
+     SEMANTIC COLORS
+     ======================================================= */
     /* Success */
     --color-success: #17C964;
     --color-success-foreground: #000000;
@@ -215,6 +264,9 @@
     --color-danger-800: #F9A0BF;
     --color-danger-900: #FBD0DF;
 
-    /* button properties */
+    /* =======================================================
+     COMPONENT TOKENS
+     ======================================================= */
+    /* Button */
     --button-shadow-opacity: var(--shadow-opacity-small);
 }
