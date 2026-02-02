@@ -6,267 +6,267 @@
     /* =======================================================
      GLOBAL SURFACES & FOCUS
      ======================================================= */
-    --color-content1-background: #ffffff;
-    --color-content1-foreground: #000000;
-    --color-content2-background: #f4f4f5;
-    --color-content2-foreground: #000000;
-    --color-content3-background: #e4e4e7;
-    --color-content3-foreground: #000000;
-    --color-content4-background: #d4d4d8;
-    --color-content4-foreground: #000000;
-    --color-focus: #006FEE;
+    --aceui-color-content1-background: #ffffff;
+    --aceui-color-content1-foreground: #000000;
+    --aceui-color-content2-background: #f4f4f5;
+    --aceui-color-content2-foreground: #000000;
+    --aceui-color-content3-background: #e4e4e7;
+    --aceui-color-content3-foreground: #000000;
+    --aceui-color-content4-background: #d4d4d8;
+    --aceui-color-content4-foreground: #000000;
+    --aceui-color-focus: #006FEE;
 
     /* =======================================================
      NEUTRAL / DEFAULT
      ======================================================= */
-    --color-default: #d4d4d8;
-    --color-default-foreground: #000;
-    --color-default-50: #fafafa;
-    --color-default-100: #f2f2f3;
-    --color-default-200: #ebebec;
-    --color-default-300: #e3e3e6;
-    --color-default-400: #dcdcdf;
-    --color-default-500: #d4d4d8;
-    --color-default-600: #afafb2;
-    --color-default-700: #8a8a8c;
-    --color-default-800: #656567;
-    --color-default-900: #404041;
+    --aceui-color-default: #d4d4d8;
+    --aceui-color-default-foreground: #000;
+    --aceui-color-default-50: #fafafa;
+    --aceui-color-default-100: #f2f2f3;
+    --aceui-color-default-200: #ebebec;
+    --aceui-color-default-300: #e3e3e6;
+    --aceui-color-default-400: #dcdcdf;
+    --aceui-color-default-500: #d4d4d8;
+    --aceui-color-default-600: #afafb2;
+    --aceui-color-default-700: #8a8a8c;
+    --aceui-color-default-800: #656567;
+    --aceui-color-default-900: #404041;
 
     /* =======================================================
      BRAND COLORS
      ======================================================= */
     /* Primary */
-    --color-primary: #006fee;
-    --color-primary-foreground: #fff;
-    --color-primary-50: #dfedfd;
-    --color-primary-100: #b3d4fa;
-    --color-primary-200: #86bbf7;
-    --color-primary-300: #59a1f4;
-    --color-primary-400: #2d88f1;
-    --color-primary-500: #006fee;
-    --color-primary-600: #005cc4;
-    --color-primary-700: #00489b;
-    --color-primary-800: #003571;
-    --color-primary-900: #002147;
+    --aceui-color-primary: #006fee;
+    --aceui-color-primary-foreground: #fff;
+    --aceui-color-primary-50: #dfedfd;
+    --aceui-color-primary-100: #b3d4fa;
+    --aceui-color-primary-200: #86bbf7;
+    --aceui-color-primary-300: #59a1f4;
+    --aceui-color-primary-400: #2d88f1;
+    --aceui-color-primary-500: #006fee;
+    --aceui-color-primary-600: #005cc4;
+    --aceui-color-primary-700: #00489b;
+    --aceui-color-primary-800: #003571;
+    --aceui-color-primary-900: #002147;
 
     /* Secondary */
-    --color-secondary: #7828c8;
-    --color-secondary-foreground: #fff;
-    --color-secondary-50: #eee4f8;
-    --color-secondary-100: #d7bfef;
-    --color-secondary-200: #bf99e5;
-    --color-secondary-300: #a773db;
-    --color-secondary-400: #904ed2;
-    --color-secondary-500: #7828c8;
-    --color-secondary-600: #6321a5;
-    --color-secondary-700: #4e1a82;
-    --color-secondary-800: #39135f;
-    --color-secondary-900: #240c3c;
+    --aceui-color-secondary: #7828c8;
+    --aceui-color-secondary-foreground: #fff;
+    --aceui-color-secondary-50: #eee4f8;
+    --aceui-color-secondary-100: #d7bfef;
+    --aceui-color-secondary-200: #bf99e5;
+    --aceui-color-secondary-300: #a773db;
+    --aceui-color-secondary-400: #904ed2;
+    --aceui-color-secondary-500: #7828c8;
+    --aceui-color-secondary-600: #6321a5;
+    --aceui-color-secondary-700: #4e1a82;
+    --aceui-color-secondary-800: #39135f;
+    --aceui-color-secondary-900: #240c3c;
 
     /* =======================================================
      SEMANTIC COLORS
      ======================================================= */
     /* Success */
-    --color-success: #17c964;
-    --color-success-foreground: #000;
-    --color-success-50: #e2f8ec;
-    --color-success-100: #b9efd1;
-    --color-success-200: #91e5b5;
-    --color-success-300: #68dc9a;
-    --color-success-400: #40d27f;
-    --color-success-500: #17c964;
-    --color-success-600: #13a653;
-    --color-success-700: #0f8341;
-    --color-success-800: #0b5f30;
-    --color-success-900: #073c1e;
+    --aceui-color-success: #17c964;
+    --aceui-color-success-foreground: #000;
+    --aceui-color-success-50: #e2f8ec;
+    --aceui-color-success-100: #b9efd1;
+    --aceui-color-success-200: #91e5b5;
+    --aceui-color-success-300: #68dc9a;
+    --aceui-color-success-400: #40d27f;
+    --aceui-color-success-500: #17c964;
+    --aceui-color-success-600: #13a653;
+    --aceui-color-success-700: #0f8341;
+    --aceui-color-success-800: #0b5f30;
+    --aceui-color-success-900: #073c1e;
 
     /* Warning */
-    --color-warning: #f5a524;
-    --color-warning-foreground: #000;
-    --color-warning-50: #fef4e4;
-    --color-warning-100: #fce4bd;
-    --color-warning-200: #fad497;
-    --color-warning-300: #f9c571;
-    --color-warning-400: #f7b54a;
-    --color-warning-500: #f5a524;
-    --color-warning-600: #ca881e;
-    --color-warning-700: #9f6b17;
-    --color-warning-800: #744e11;
-    --color-warning-900: #4a320b;
+    --aceui-color-warning: #f5a524;
+    --aceui-color-warning-foreground: #000;
+    --aceui-color-warning-50: #fef4e4;
+    --aceui-color-warning-100: #fce4bd;
+    --aceui-color-warning-200: #fad497;
+    --aceui-color-warning-300: #f9c571;
+    --aceui-color-warning-400: #f7b54a;
+    --aceui-color-warning-500: #f5a524;
+    --aceui-color-warning-600: #ca881e;
+    --aceui-color-warning-700: #9f6b17;
+    --aceui-color-warning-800: #744e11;
+    --aceui-color-warning-900: #4a320b;
 
     /* Danger */
-    --color-danger: #f31260;
-    --color-danger-foreground: #fff;
-    --color-danger-50: #fee1eb;
-    --color-danger-100: #fbb8cf;
-    --color-danger-200: #f98eb3;
-    --color-danger-300: #f76598;
-    --color-danger-400: #f53b7c;
-    --color-danger-500: #f31260;
-    --color-danger-600: #c80f4f;
-    --color-danger-700: #9e0c3e;
-    --color-danger-800: #73092e;
-    --color-danger-900: #49051d;
+    --aceui-color-danger: #f31260;
+    --aceui-color-danger-foreground: #fff;
+    --aceui-color-danger-50: #fee1eb;
+    --aceui-color-danger-100: #fbb8cf;
+    --aceui-color-danger-200: #f98eb3;
+    --aceui-color-danger-300: #f76598;
+    --aceui-color-danger-400: #f53b7c;
+    --aceui-color-danger-500: #f31260;
+    --aceui-color-danger-600: #c80f4f;
+    --aceui-color-danger-700: #9e0c3e;
+    --aceui-color-danger-800: #73092e;
+    --aceui-color-danger-900: #49051d;
 
     /* =======================================================
      OPACITY & EFFECTS
      ======================================================= */
-    --disabled-opacity: .5;
-    --hover-opacity: 0.1;
+    --aceui-disabled-opacity: .5;
+    --aceui-hover-opacity: 0.1;
 
     /* =======================================================
      TYPOGRAPHY
      ======================================================= */
-    --font-size-tiny: .75rem;
-    --font-size-small: .875rem;
-    --font-size-medium: 1rem;
-    --font-size-large: 1.125rem;
+    --aceui-font-size-tiny: .75rem;
+    --aceui-font-size-small: .875rem;
+    --aceui-font-size-medium: 1rem;
+    --aceui-font-size-large: 1.125rem;
 
-    --line-height-tiny: 1rem;
-    --line-height-small: 1.25rem;
-    --line-height-medium: 1.5rem;
-    --line-height-large: 1.75rem;
+    --aceui-line-height-tiny: 1rem;
+    --aceui-line-height-small: 1.25rem;
+    --aceui-line-height-medium: 1.5rem;
+    --aceui-line-height-large: 1.75rem;
 
     /* =======================================================
      LAYOUT & SHAPE
      ======================================================= */
-    --radius-small: 8px;
-    --radius-medium: 12px;
-    --radius-large: 14px;
+    --aceui-radius-small: 8px;
+    --aceui-radius-medium: 12px;
+    --aceui-radius-large: 14px;
 
-    --border-width-small: 1px;
-    --border-width-medium: 2px;
-    --border-width-large: 3px;
+    --aceui-border-width-small: 1px;
+    --aceui-border-width-medium: 2px;
+    --aceui-border-width-large: 3px;
 
-    --shadow-opacity-small: 0.2;
-    --shadow-opacity-medium: 0.4;
-    --shadow-opacity-large: 0.6;
+    --aceui-shadow-opacity-small: 0.2;
+    --aceui-shadow-opacity-medium: 0.4;
+    --aceui-shadow-opacity-large: 0.6;
 
-    --spacing-small: 8px;
-    --spacing-medium: 12px;
-    --spacing-large: 16px;
+    --aceui-spacing-small: 8px;
+    --aceui-spacing-medium: 12px;
+    --aceui-spacing-large: 16px;
 
     /* =======================================================
      COMPONENT TOKENS
      ======================================================= */
     /* Button */
-    --button-shadow-opacity: var(--shadow-opacity-medium);
-    --button-bordered-border-width: var(--border-width-medium);
-    --button-ghost-border-width: var(--border-width-small);
+    --aceui-button-shadow-opacity: var(--aceui-shadow-opacity-medium);
+    --aceui-button-bordered-border-width: var(--aceui-border-width-medium);
+    --aceui-button-ghost-border-width: var(--aceui-border-width-small);
 
     /* Accordion */
-    --accordion-border-radius: var(--radius-medium);
+    --aceui-accordion-border-radius: var(--aceui-radius-medium);
 }
 
 [data-theme="dark"] {
     /* =======================================================
      GLOBAL SURFACES & FOCUS
      ======================================================= */
-    --color-content1-background: #18181b;
-    --color-content1-foreground: #ffffff;
-    --color-content2-background: #27272a;
-    --color-content2-foreground: #ffffff;
-    --color-content3-background: #3f3f46;
-    --color-content3-foreground: #ffffff;
-    --color-content4-background: #52525b;
-    --color-content4-foreground: #ffffff;
-    --color-focus: #006FEE;
+    --aceui-color-content1-background: #18181b;
+    --aceui-color-content1-foreground: #ffffff;
+    --aceui-color-content2-background: #27272a;
+    --aceui-color-content2-foreground: #ffffff;
+    --aceui-color-content3-background: #3f3f46;
+    --aceui-color-content3-foreground: #ffffff;
+    --aceui-color-content4-background: #52525b;
+    --aceui-color-content4-foreground: #ffffff;
+    --aceui-color-focus: #006FEE;
 
     /* =======================================================
      NEUTRAL / DEFAULT
      ======================================================= */
-    --color-default: #3F3F46;
-    --color-default-foreground: #E8E8E8;
-    --color-default-50: #0A0A0B;
-    --color-default-100: #18181B;
-    --color-default-200: #27272A;
-    --color-default-300: #333338;
-    --color-default-400: #3B3B42;
-    --color-default-500: #3F3F46;
-    --color-default-600: #52525B;
-    --color-default-700: #71717A;
-    --color-default-800: #A1A1AA;
-    --color-default-900: #D4D4D8;
+    --aceui-color-default: #3F3F46;
+    --aceui-color-default-foreground: #E8E8E8;
+    --aceui-color-default-50: #0A0A0B;
+    --aceui-color-default-100: #18181B;
+    --aceui-color-default-200: #27272A;
+    --aceui-color-default-300: #333338;
+    --aceui-color-default-400: #3B3B42;
+    --aceui-color-default-500: #3F3F46;
+    --aceui-color-default-600: #52525B;
+    --aceui-color-default-700: #71717A;
+    --aceui-color-default-800: #A1A1AA;
+    --aceui-color-default-900: #D4D4D8;
 
     /* =======================================================
      BRAND COLORS
      ======================================================= */
     /* Primary */
-    --color-primary: #006FEE;
-    --color-primary-foreground: #e3e3e4;
-    --color-primary-50: #001731;
-    --color-primary-100: #002E62;
-    --color-primary-200: #004493;
-    --color-primary-300: #005BC4;
-    --color-primary-400: #0072F5;
-    --color-primary-500: #006FEE;
-    --color-primary-600: #338EF7;
-    --color-primary-700: #66ADF9;
-    --color-primary-800: #99CCFB;
-    --color-primary-900: #CCE6FD;
+    --aceui-color-primary: #006FEE;
+    --aceui-color-primary-foreground: #e3e3e4;
+    --aceui-color-primary-50: #001731;
+    --aceui-color-primary-100: #002E62;
+    --aceui-color-primary-200: #004493;
+    --aceui-color-primary-300: #005BC4;
+    --aceui-color-primary-400: #0072F5;
+    --aceui-color-primary-500: #006FEE;
+    --aceui-color-primary-600: #338EF7;
+    --aceui-color-primary-700: #66ADF9;
+    --aceui-color-primary-800: #99CCFB;
+    --aceui-color-primary-900: #CCE6FD;
 
     /* Secondary */
-    --color-secondary: #9353D3;
-    --color-secondary-foreground: #e3e3e4;
-    --color-secondary-50: #1E0A33;
-    --color-secondary-100: #331551;
-    --color-secondary-200: #4A1F70;
-    --color-secondary-300: #622A8E;
-    --color-secondary-400: #7A35AD;
-    --color-secondary-500: #9353D3;
-    --color-secondary-600: #A975DC;
-    --color-secondary-700: #BF98E5;
-    --color-secondary-800: #D4BAEE;
-    --color-secondary-900: #EADDF7;
+    --aceui-color-secondary: #9353D3;
+    --aceui-color-secondary-foreground: #e3e3e4;
+    --aceui-color-secondary-50: #1E0A33;
+    --aceui-color-secondary-100: #331551;
+    --aceui-color-secondary-200: #4A1F70;
+    --aceui-color-secondary-300: #622A8E;
+    --aceui-color-secondary-400: #7A35AD;
+    --aceui-color-secondary-500: #9353D3;
+    --aceui-color-secondary-600: #A975DC;
+    --aceui-color-secondary-700: #BF98E5;
+    --aceui-color-secondary-800: #D4BAEE;
+    --aceui-color-secondary-900: #EADDF7;
 
     /* =======================================================
      SEMANTIC COLORS
      ======================================================= */
     /* Success */
-    --color-success: #17C964;
-    --color-success-foreground: #000000;
-    --color-success-50: #052814;
-    --color-success-100: #094527;
-    --color-success-200: #0E623B;
-    --color-success-300: #13804E;
-    --color-success-400: #179D61;
-    --color-success-500: #17C964;
-    --color-success-600: #45D483;
-    --color-success-700: #73DFA2;
-    --color-success-800: #A1EAC1;
-    --color-success-900: #D0F5E0;
+    --aceui-color-success: #17C964;
+    --aceui-color-success-foreground: #000000;
+    --aceui-color-success-50: #052814;
+    --aceui-color-success-100: #094527;
+    --aceui-color-success-200: #0E623B;
+    --aceui-color-success-300: #13804E;
+    --aceui-color-success-400: #179D61;
+    --aceui-color-success-500: #17C964;
+    --aceui-color-success-600: #45D483;
+    --aceui-color-success-700: #73DFA2;
+    --aceui-color-success-800: #A1EAC1;
+    --aceui-color-success-900: #D0F5E0;
 
     /* Warning */
-    --color-warning: #F5A524;
-    --color-warning-foreground: #000000;
-    --color-warning-50: #312107;
-    --color-warning-100: #51380C;
-    --color-warning-200: #724F11;
-    --color-warning-300: #936616;
-    --color-warning-400: #B47D1B;
-    --color-warning-500: #F5A524;
-    --color-warning-600: #F7B750;
-    --color-warning-700: #F9C97C;
-    --color-warning-800: #FBDBA8;
-    --color-warning-900: #FDEDD3;
+    --aceui-color-warning: #F5A524;
+    --aceui-color-warning-foreground: #000000;
+    --aceui-color-warning-50: #312107;
+    --aceui-color-warning-100: #51380C;
+    --aceui-color-warning-200: #724F11;
+    --aceui-color-warning-300: #936616;
+    --aceui-color-warning-400: #B47D1B;
+    --aceui-color-warning-500: #F5A524;
+    --aceui-color-warning-600: #F7B750;
+    --aceui-color-warning-700: #F9C97C;
+    --aceui-color-warning-800: #FBDBA8;
+    --aceui-color-warning-900: #FDEDD3;
 
     /* Danger */
-    --color-danger: #F31260;
-    --color-danger-foreground: #e3e3e4;
-    --color-danger-50: #310413;
-    --color-danger-100: #510721;
-    --color-danger-200: #720A30;
-    --color-danger-300: #930D3E;
-    --color-danger-400: #B4104D;
-    --color-danger-500: #F31260;
-    --color-danger-600: #F54180;
-    --color-danger-700: #F771A0;
-    --color-danger-800: #F9A0BF;
-    --color-danger-900: #FBD0DF;
+    --aceui-color-danger: #F31260;
+    --aceui-color-danger-foreground: #e3e3e4;
+    --aceui-color-danger-50: #310413;
+    --aceui-color-danger-100: #510721;
+    --aceui-color-danger-200: #720A30;
+    --aceui-color-danger-300: #930D3E;
+    --aceui-color-danger-400: #B4104D;
+    --aceui-color-danger-500: #F31260;
+    --aceui-color-danger-600: #F54180;
+    --aceui-color-danger-700: #F771A0;
+    --aceui-color-danger-800: #F9A0BF;
+    --aceui-color-danger-900: #FBD0DF;
 
     /* =======================================================
      COMPONENT TOKENS
      ======================================================= */
     /* Button */
-    --button-shadow-opacity: var(--shadow-opacity-small);
+    --aceui-button-shadow-opacity: var(--aceui-shadow-opacity-small);
 }

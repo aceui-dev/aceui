@@ -19,12 +19,12 @@
 }
 
 .aceui-accordion__item--disabled {
-  opacity: var(--disabled-opacity, 0.5);
+  opacity: var(--aceui-disabled-opacity, 0.5);
   pointer-events: none;
 }
 
 .aceui-accordion__item--focused .aceui-accordion__header:focus-visible {
-  outline: 2px solid var(--color-focus);
+  outline: 2px solid var(--aceui-color-focus);
   outline-offset: 2px;
 }
 
@@ -35,15 +35,15 @@
 .aceui-accordion__header {
   display: flex;
   align-items: center;
-  gap: var(--spacing-small, 8px);
+  gap: var(--aceui-spacing-small, 8px);
   width: 100%;
-  padding: var(--spacing-medium, 16px) calc(var(--spacing-medium, 16px) + 4px);
+  padding: var(--aceui-spacing-medium, 16px) calc(var(--aceui-spacing-medium, 16px) + 4px);
   border: none;
   background: transparent;
   font-family: inherit;
-  font-size: var(--font-size-medium);
-  line-height: var(--line-height-medium);
-  color: var(--color-content1-foreground);
+  font-size: var(--aceui-font-size-medium);
+  line-height: var(--aceui-line-height-medium);
+  color: var(--aceui-color-content1-foreground);
   text-align: left;
   cursor: pointer;
   outline: none;
@@ -51,11 +51,11 @@
 }
 
 .aceui-accordion__header:hover {
-  background-color: color-mix(in srgb, var(--color-default-500) calc(var(--hover-opacity, 0.1) * 100%), transparent);
+  background-color: color-mix(in srgb, var(--aceui-color-default-500) calc(var(--aceui-hover-opacity, 0.1) * 100%), transparent);
 }
 
 .aceui-accordion__header:focus-visible {
-  outline: 2px solid var(--color-focus);
+  outline: 2px solid var(--aceui-color-focus);
   outline-offset: 2px;
 }
 
@@ -88,9 +88,9 @@
 }
 
 .aceui-accordion__subtitle {
-  font-size: var(--font-size-small);
-  color: var(--color-default-400);
-  line-height: var(--line-height-small);
+  font-size: var(--aceui-font-size-small);
+  color: var(--aceui-color-default-400);
+  line-height: var(--aceui-line-height-small);
 }
 
 .aceui-accordion__indicator {
@@ -114,7 +114,7 @@
 }
 
 .aceui-accordion__content-inner {
-  padding: var(--spacing-medium, 16px);
+  padding: var(--aceui-spacing-medium, 16px);
 }
 
 /* ============================================
@@ -122,11 +122,11 @@
    ============================================ */
 
 .aceui-accordion--light {
-  background: var(--color-content1-background);
+  background: var(--aceui-color-content1-background);
 }
 
 .aceui-accordion--light .aceui-accordion__item {
-  border-bottom: 1px solid var(--color-content2-background);
+  border-bottom: 1px solid var(--aceui-color-content2-background);
 }
 
 .aceui-accordion--light .aceui-accordion__item:last-child {
@@ -138,19 +138,19 @@
    ============================================ */
 
 .aceui-accordion--shadow {
-  background: var(--color-content1-background);
-  gap: var(--spacing-small, 8px);
+  background: var(--aceui-color-content1-background);
+  gap: var(--aceui-spacing-small, 8px);
 }
 
 .aceui-accordion--shadow .aceui-accordion__item {
-  background: var(--color-content1-background);
-  box-shadow: 0 1px 3px 0 color-mix(in srgb, var(--color-content1-foreground) 12%, transparent);
-  border-radius: var(--accordion-border-radius);
+  background: var(--aceui-color-content1-background);
+  box-shadow: 0 1px 3px 0 color-mix(in srgb, var(--aceui-color-content1-foreground) 12%, transparent);
+  border-radius: var(--aceui-accordion-border-radius);
   overflow: hidden;
 }
 
 .aceui-accordion--shadow .aceui-accordion__header {
-  border-radius: var(--accordion-border-radius);
+  border-radius: var(--aceui-accordion-border-radius);
 }
 
 /* ============================================
@@ -158,14 +158,14 @@
    ============================================ */
 
 .aceui-accordion--bordered {
-  background: var(--color-content1-background);
-  border: var(--border-width-medium) solid var(--color-content2-background);
-  border-radius: var(--accordion-border-radius);
+  background: var(--aceui-color-content1-background);
+  border: var(--aceui-border-width-medium) solid var(--aceui-color-content2-background);
+  border-radius: var(--aceui-accordion-border-radius);
   overflow: hidden;
 }
 
 .aceui-accordion--bordered .aceui-accordion__item {
-  border-bottom: 1px solid var(--color-content2-background);
+  border-bottom: 1px solid var(--aceui-color-content2-background);
 }
 
 .aceui-accordion--bordered .aceui-accordion__item:last-child {
@@ -178,17 +178,17 @@
 
 .aceui-accordion--splitted {
   background: transparent;
-  gap: var(--spacing-small, 8px);
+  gap: var(--aceui-spacing-small, 8px);
 }
 
 .aceui-accordion--splitted .aceui-accordion__item {
-  background: var(--color-content1-background);
-  border: var(--border-width-medium) solid var(--color-content2-background);
-  border-radius: var(--accordion-border-radius);
+  background: var(--aceui-color-content1-background);
+  border: var(--aceui-border-width-medium) solid var(--aceui-color-content2-background);
+  border-radius: var(--aceui-accordion-border-radius);
   overflow: hidden;
-  box-shadow: 0 1px 3px 0 color-mix(in srgb, var(--color-content1-foreground) 8%, transparent);
+  box-shadow: 0 1px 3px 0 color-mix(in srgb, var(--aceui-color-content1-foreground) 8%, transparent);
 }
 
 .aceui-accordion--splitted .aceui-accordion__header {
-  border-radius: var(--accordion-border-radius);
+  border-radius: var(--aceui-accordion-border-radius);
 }

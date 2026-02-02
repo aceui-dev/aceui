@@ -19,7 +19,7 @@
 
 ### 1.2 Base Styling
 - [x] ✅ Create base `.aceui-button` styles with design tokens
-- [x] ✅ Add focus-visible styles using `--color-focus`
+- [x] ✅ Add focus-visible styles using `--aceui-color-focus`
 - [x] ✅ Add smooth transitions (200-300ms)
 - [x] ✅ Ensure keyboard accessibility (Enter/Space)
 
@@ -33,7 +33,7 @@
 - [x] ✅ Add `.aceui-button--bordered` styles with border and hover
 - [x] ✅ Add `.aceui-button--light` styles with light background
 - [x] ✅ Add `.aceui-button--flat` styles with hover opacity overlay
-- [x] ✅ Add `.aceui-button--shadow` styles using `--button-shadow-opacity` token (theme-aware)
+- [x] ✅ Add `.aceui-button--shadow` styles using `--aceui-button-shadow-opacity` token (theme-aware)
 - [x] ✅ Add `.aceui-button--ghost` styles with solid border using base color (and hover flip)
 
 ### 2.2 Color System
@@ -42,7 +42,7 @@
 - [x] ✅ Apply color tokens for each variant × color combination
 - [x] ✅ Add hover states using darker shades (600)
 - [x] ✅ Add active states using darkest shades (700)
-- [x] ✅ Ensure foreground colors use `--color-{name}-foreground` tokens
+- [x] ✅ Ensure foreground colors use `--aceui-color-{name}-foreground` tokens
 
 ---
 
@@ -60,9 +60,9 @@
 ### 3.2 Border Radius
 - [x] ✅ Implement `radius` prop (none, small, medium, large, full)
 - [x] ✅ Add `.aceui-button--radius-none` with border-radius: 0 (square corners)
-- [x] ✅ Add `.aceui-button--radius-small` using `--radius-small`
-- [x] ✅ Add `.aceui-button--radius-medium` (default) using `--radius-medium`
-- [x] ✅ Add `.aceui-button--radius-large` using `--radius-large`
+- [x] ✅ Add `.aceui-button--radius-small` using `--aceui-radius-small`
+- [x] ✅ Add `.aceui-button--radius-medium` (default) using `--aceui-radius-medium`
+- [x] ✅ Add `.aceui-button--radius-large` using `--aceui-radius-large`
 - [x] ✅ Add `.aceui-button--radius-full` with 9999px (pill shape)
 
 ---
@@ -73,7 +73,7 @@
 - [x] ✅ Implement `isDisabled` prop
 - [x] ✅ Add `disabled` HTML attribute when `isDisabled` is true (no `aria-disabled`; native `<button>` uses `disabled` only)
 - [x] ✅ Apply `.aceui-button--disabled` modifier class
-- [x] ✅ Use `--disabled-opacity` for visual indication
+- [x] ✅ Use `--aceui-disabled-opacity` for visual indication
 - [x] ✅ Set `cursor: not-allowed`
 - [x] ✅ Prevent click events when disabled
 - [x] ✅ Ensure hover/active states don't apply when disabled
@@ -84,7 +84,7 @@
 - [x] ✅ Apply `.aceui-button--loading` modifier class
 - [x] ✅ Create `.aceui-button__spinner` element
 - [x] ✅ Add CSS animation for spinner
-- [x] ✅ Use `--disabled-opacity` for visual indication
+- [x] ✅ Use `--aceui-disabled-opacity` for visual indication
 - [x] ✅ Disable button interaction during loading
 - [x] ✅ Support `loadingText` prop to show custom text
 - [x] ✅ Maintain button width to prevent layout shift
@@ -145,7 +145,7 @@
 - [x] ✅ Ensure all design tokens are used (no hardcoded values)
 - [x] ✅ Add hover states for all variant × color combinations
 - [x] ✅ Add active states for all variant × color combinations
-- [x] ✅ Ensure shadow variant uses `--button-shadow-opacity` (theme-aware: medium in light, small in dark)
+- [x] ✅ Ensure shadow variant uses `--aceui-button-shadow-opacity` (theme-aware: medium in light, small in dark)
 
 ### 7.2 Edge Cases
 - [x] ✅ Handle disabled + loading combination
@@ -227,10 +227,10 @@
 - All font sizes, line heights, and spacing must use design tokens
 - BEM naming convention must be followed strictly
 - Accessibility is critical - ensure ARIA attributes and keyboard navigation work
-- Focus states must use `--color-focus` token
+- Focus states must use `--aceui-color-focus` token
 - Loading spinner should be smooth CSS animation
-- Shadow variant uses `--button-shadow-opacity` design token (theme-aware) in Button.css
-- Bordered and ghost variants use `--button-bordered-border-width` and `--button-ghost-border-width` (defined in design-tokens.css)
+- Shadow variant uses `--aceui-button-shadow-opacity` design token (theme-aware) in Button.css
+- Bordered and ghost variants use `--aceui-button-bordered-border-width` and `--aceui-button-ghost-border-width` (defined in design-tokens.css)
 
 ---
 
