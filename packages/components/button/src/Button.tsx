@@ -184,7 +184,7 @@ export const Button = ({
       disabled={isActuallyDisabled}
       onClick={handleClick}
       aria-label={ariaLabel}
-      aria-busy={isLoading}
+      aria-busy={isLoading ? 'true' : undefined}
       data-testid={testId}
     >
       {wave && (

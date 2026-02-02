@@ -1,7 +1,7 @@
 # Feature Requirements
 
 ## Version: 1.0.0
-Last Updated: 2025-01-28
+Last Updated: 2026-02-01
 
 ---
 
@@ -104,7 +104,7 @@ Support color variants via `color` prop using design token color system:
   
 - **Danger**: Uses `--color-danger` system
   - Base: `var(--color-danger-500)` (#f31260)
-  - Foreground: `var(--color-danger-foreground)` (#000)
+  - Foreground: `var(--color-danger-foreground)` (#fff)
   - Hover: `var(--color-danger-600)`
   - Active: `var(--color-danger-700)`
 
@@ -135,12 +135,12 @@ Support style variants via `variant` prop:
   - Background: Transparent
   - Text: Color token (e.g., `var(--color-primary-500)`)
   - Border: None
-  - Hover: Light background using `--hover-opacity` overlay (rgba with 0.1 opacity)
+  - Hover: Light background tint using color-50 (e.g., `var(--color-primary-50)`)
   
 - **Shadow**: `.aceui-button--shadow`
   - Same as solid variant
-  - Medium shadow (0 4px 14px) using button's base color via `color-mix(in srgb, var(--color-X-500) 40%, transparent)`
-  - Defined directly in Button.css (no design token variables)
+  - Shadow (0 4px 14px) using button's base color via `color-mix(in srgb, var(--color-X-500) calc(var(--button-shadow-opacity) * 100%), transparent)`
+  - Uses design token `--button-shadow-opacity` (theme-aware: medium in light mode, small in dark mode)
 
 - **Ghost**: `.aceui-button--ghost`
   - Default: Transparent background, border `var(--border-width-small)` solid base color (e.g., `var(--color-primary-500)`), text base color
@@ -318,7 +318,7 @@ Use design tokens for all styling:
   background-color: var(--color-primary-100);
 }
 
-/* Example: Flat Variant with hover opacity */
+/* Example: Flat Variant (hover uses color-50) */
 .aceui-button.aceui-button--flat.aceui-button--color-primary {
   background-color: transparent;
   color: var(--color-primary-500);
@@ -326,7 +326,7 @@ Use design tokens for all styling:
 }
 
 .aceui-button.aceui-button--flat.aceui-button--color-primary:hover:not(:disabled) {
-  background-color: rgba(0, 111, 238, var(--hover-opacity)); /* primary with hover opacity */
+  background-color: var(--color-primary-50);
 }
 
 /* Sizes */
@@ -372,9 +372,9 @@ Use design tokens for all styling:
   border-radius: 9999px;
 }
 
-/* Shadow variant - medium shadow using button's base color, defined directly in Button.css */
+/* Shadow variant - uses --button-shadow-opacity (theme-aware) */
 .aceui-button.aceui-button--shadow.aceui-button--color-primary {
-  box-shadow: 0 4px 14px 0 color-mix(in srgb, var(--color-primary-500) 40%, transparent);
+  box-shadow: 0 4px 14px 0 color-mix(in srgb, var(--color-primary-500) calc(var(--button-shadow-opacity) * 100%), transparent);
 }
 /* Same pattern for each color: default, primary, secondary, success, warning, danger */
 
@@ -412,7 +412,7 @@ Use design tokens for all styling:
 - [ ] Icon renders in correct position
 - [ ] Icon-only button is square
 - [ ] Click handler fires correctly
-- [ ] Hover opacity uses `--hover-opacity` for flat variant
+- [ ] Flat variant hover uses color-50 (e.g., `var(--color-primary-50)`)
 
 #### Design Token Integration
 - [ ] All colors use design token CSS variables
@@ -420,7 +420,7 @@ Use design tokens for all styling:
 - [ ] All line heights use design token variables
 - [ ] All border radius use design token variables
 - [ ] All border widths use design token variables
-- [ ] All box shadows use design token variables
+- [ ] All box shadows use design token variables (shadow variant uses `--button-shadow-opacity`)
 - [ ] Disabled opacity uses `--disabled-opacity`
 - [ ] Hover opacity uses `--hover-opacity`
 - [ ] Focus outline uses `--color-focus`
@@ -446,7 +446,7 @@ Use design tokens for all styling:
 - [ ] Focus states visible using `--color-focus`
 - [ ] Smooth transitions (200-300ms)
 - [ ] Loading spinner animated
-- [ ] Shadow variant uses correct box-shadow tokens
+- [ ] Shadow variant uses `--button-shadow-opacity` token (theme-aware: medium in light, small in dark)
 - [ ] All color shades (50-900) work correctly
 
 #### Combinations
@@ -472,12 +472,12 @@ Use design tokens for all styling:
 #### Documentation
 - [ ] JSDoc comments on component
 - [ ] JSDoc comments on all props
-- [ ] Storybook stories for all 6 variants
-- [ ] Storybook stories for all 6 colors
-- [ ] Storybook stories showing all combinations
-- [ ] Storybook controls interactive
+- [ ] Demo sections for all 6 variants
+- [ ] Demo sections for all 6 colors
+- [ ] Demo sections showing all combinations
+- [ ] Demo page navigation and interactive examples
 - [ ] Design token usage documented
-- [ ] Usage examples in stories
+- [ ] Usage examples in demo sections
 - [ ] README.md in Button folder
 
 #### Code Quality
@@ -585,6 +585,7 @@ The button component should import and use tokens from `design-tokens.css`:
 **Box Shadow**: `--box-shadow-{size}` (small, medium, large)
 **Opacity**: `--disabled-opacity`, `--hover-opacity`
 **Focus**: `--color-focus`
+**Button Shadow**: `--button-shadow-opacity` (references `--shadow-opacity-*`; theme-aware for light/dark)
 
 ### Notes
 - All colors must use design token CSS variables
@@ -595,7 +596,7 @@ The button component should import and use tokens from `design-tokens.css`:
 - Loading spinner should be smooth (CSS animation)
 - Each color has 10 shades (50-900) - use appropriately for hover/active states
 - Consider dark mode support in future (design tokens make this easier)
-- Shadow variant uses medium colored shadow (button base color) defined in Button.css
+- Shadow variant uses `--button-shadow-opacity` design token (theme-aware); defined in design-tokens.css
 
 ---
 
