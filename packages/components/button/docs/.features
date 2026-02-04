@@ -193,6 +193,12 @@ Support icons via `icon` and `iconPosition` props:
 - Optional `disableWave` prop to turn off the effect
 - Clean up wave element in `onAnimationComplete` (no CSS animationend or timeout)
 
+#### 10. Custom Width
+- Support optional `width` prop (any valid CSS width value)
+- When provided, apply via inline style so any value is supported: e.g. `4rem`, `auto`, `10px`, `100%`, `100vw`
+- Type: `React.CSSProperties['width']` (string or number; number treated as px by React)
+- When omitted, button uses default width (content-based, from size/icon/text)
+
 ### Component API
 ```typescript
 interface ButtonProps {
@@ -227,6 +233,7 @@ interface ButtonProps {
   
   // HTML attributes
   type?: 'button' | 'submit' | 'reset';
+  width?: React.CSSProperties['width'];
   className?: string;
   testId?: string;
 }
