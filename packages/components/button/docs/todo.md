@@ -127,6 +127,7 @@
 ### 6.3 Additional Props
 - [x] ✅ Support `className` prop (append to base classes)
 - [x] ✅ Support `testId` prop for testing
+- [x] ✅ Support `width` prop (any CSS width: e.g. 4rem, auto, 10px, 100%, 100vw) via inline style when provided
 
 ### 6.4 Click Wave (Ripple) Effect
 - [x] ✅ Add wave state and click math (x, y, size from getBoundingClientRect + clientX/clientY)

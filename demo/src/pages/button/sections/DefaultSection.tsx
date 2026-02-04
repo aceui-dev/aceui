@@ -15,7 +15,7 @@ export default function DefaultSection() {
       <p>Default button with primary color and solid variant.</p>
       <div className="demo-row">
         <Button onClick={() => console.log("Button clicked!")}>Click me</Button>
-        <Button onClick={handleClick} isLoading={isLoading} loadingText="Submitting...">Submit</Button>
+        <Button onClick={handleClick} isLoading={isLoading} loadingText="Processing..." width="12rem">Proceed</Button>
       </div>
     </section>
   );

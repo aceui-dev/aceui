@@ -48,6 +48,9 @@ export interface ButtonProps {
   /** Whether to disable the click wave (ripple) effect */
   disableWave?: boolean;
   
+  /** Custom width (any valid CSS width: e.g. "4rem", "auto", "10px", "100%", "100vw") */
+  width?: React.CSSProperties['width'];
+  
   /** Additional CSS class names */
   className?: string;
   
@@ -81,6 +84,7 @@ export const Button = ({
   onClick,
   ariaLabel,
   type = 'button',
+  width,
   className = '',
   testId,
   disableWave = false,
@@ -181,6 +185,7 @@ export const Button = ({
     <button
       type={type}
       className={buildClassName()}
+      style={width != null ? { width } : undefined}
       disabled={isActuallyDisabled}
       onClick={handleClick}
       aria-label={ariaLabel}

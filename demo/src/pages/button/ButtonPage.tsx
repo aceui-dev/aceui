@@ -10,6 +10,7 @@ import IconSection from "./sections/IconSection";
 import CombinationsSection from "./sections/CombinationsSection";
 import ButtonGroupSection from "./sections/ButtonGroupSection";
 import ButtonGroupDisabledSection from "./sections/ButtonGroupDisabledSection";
+import WidthSection from "./sections/WidthSection";
 import { useSidebar } from "../../contexts/SidebarContext";
 
 const SECTIONS = [
@@ -18,6 +19,7 @@ const SECTIONS = [
   { id: "colors", label: "Colors", component: ColorsSection },
   { id: "sizes", label: "Sizes", component: SizesSection },
   { id: "radius", label: "Radius", component: RadiusSection },
+  { id: "width", label: "Custom Width", component: WidthSection },
   { id: "disabled", label: "Disabled", component: DisabledSection },
   { id: "loading", label: "Loading", component: LoadingSection },
   { id: "icon", label: "Icon", component: IconSection },
