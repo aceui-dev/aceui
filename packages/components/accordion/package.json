@@ -1,7 +1,7 @@
 {
   "name": "@aceuidev/accordion",
   "version": "0.1.0-beta.0",
-  "description": "One accordion component for your whole app: collapsible content, expandable sections, and smooth animations—ready to drop in.",
+  "description": "A flexible, accessible accordion for expanding and collapsing content sections. Supports single or multiple expansion, light/bordered/splitted variants, optional subtitles and start content, custom indicators, and default/lazy render strategies.",
   "keywords": [
     "react",
     "accordion",
