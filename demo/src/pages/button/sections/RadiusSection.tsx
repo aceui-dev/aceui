@@ -3,7 +3,7 @@ import { Button } from "@aceuidev/button";
 export default function RadiusSection() {
   return (
     <section className="demo-section">
-      <h2>Button · Border Radius</h2>
+      <h2 className="demo-title">Button · Border Radius</h2>
       <p>Five border radius options: none, small, medium (default), large, and full (pill).</p>
       <div className="demo-row">
         <Button radius="none">No Radius</Button>

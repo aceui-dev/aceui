@@ -3,22 +3,32 @@
    ========================================================= */
 
 :root {
-    /* =======================================================
-     GLOBAL SURFACES & FOCUS
-     ======================================================= */
-    --aceui-color-content1-background: #ffffff;
-    --aceui-color-content1-foreground: #000000;
-    --aceui-color-content2-background: #f4f4f5;
-    --aceui-color-content2-foreground: #000000;
-    --aceui-color-content3-background: #e4e4e7;
-    --aceui-color-content3-foreground: #000000;
-    --aceui-color-content4-background: #d4d4d8;
-    --aceui-color-content4-foreground: #000000;
-    --aceui-color-focus: #006FEE;
+    /* =======================
+     Surfaces
+     ======================= */
+    --aceui-color-surface-0-background: #f7f8fd;
+    --aceui-color-surface-1-background: #ffffff;
+    --aceui-color-surface-2-background: #f0f1f7;
+    --aceui-color-surface-3-background: #e4e6ef;
 
-    /* =======================================================
-     NEUTRAL / DEFAULT
-     ======================================================= */
+    /* =======================
+     Text Colors
+     ======================= */
+    --aceui-color-text-default: #18181b;
+    --aceui-color-text-muted: #71717a;
+    --aceui-color-text-subtle: #a1a1aa;
+    --aceui-color-text-disabled: #d4d4d8;
+
+    /* =======================
+     Border Colors
+     ======================= */
+    --aceui-color-border-default: #e3e3e6;
+    --aceui-color-border-muted: #ebebec;
+    --aceui-color-border-strong: #dcdcdf;
+
+    /* =======================
+     Neutral (Default)
+     ======================= */
     --aceui-color-default: #d4d4d8;
     --aceui-color-default-foreground: #000;
     --aceui-color-default-50: #fafafa;
@@ -32,9 +42,9 @@
     --aceui-color-default-800: #656567;
     --aceui-color-default-900: #404041;
 
-    /* =======================================================
-     BRAND COLORS
-     ======================================================= */
+    /* =======================
+     Brand Colors
+     ======================= */
     /* Primary */
     --aceui-color-primary: #006fee;
     --aceui-color-primary-foreground: #fff;
@@ -63,9 +73,9 @@
     --aceui-color-secondary-800: #39135f;
     --aceui-color-secondary-900: #240c3c;
 
-    /* =======================================================
-     SEMANTIC COLORS
-     ======================================================= */
+    /* =======================
+     Semantic Colors
+     ======================= */
     /* Success */
     --aceui-color-success: #17c964;
     --aceui-color-success-foreground: #000;
@@ -108,15 +118,16 @@
     --aceui-color-danger-800: #73092e;
     --aceui-color-danger-900: #49051d;
 
-    /* =======================================================
-     OPACITY & EFFECTS
-     ======================================================= */
+    /* =======================
+     Effects & States
+     ======================= */
+    --aceui-color-focus: var(--aceui-color-primary);
     --aceui-disabled-opacity: .5;
     --aceui-hover-opacity: 0.1;
 
-    /* =======================================================
-     TYPOGRAPHY
-     ======================================================= */
+    /* =======================
+     Typography
+     ======================= */
     --aceui-font-size-tiny: .75rem;
     --aceui-font-size-small: .875rem;
     --aceui-font-size-medium: 1rem;
@@ -127,9 +138,9 @@
     --aceui-line-height-medium: 1.5rem;
     --aceui-line-height-large: 1.75rem;
 
-    /* =======================================================
-     LAYOUT & SHAPE
-     ======================================================= */
+    /* =======================
+     Layout & Shape
+     ======================= */
     --aceui-radius-small: 8px;
     --aceui-radius-medium: 12px;
     --aceui-radius-large: 14px;
@@ -146,9 +157,9 @@
     --aceui-spacing-medium: 12px;
     --aceui-spacing-large: 16px;
 
-    /* =======================================================
-     COMPONENT TOKENS
-     ======================================================= */
+    /* =======================
+     Component Tokens
+     ======================= */
     /* Button */
     --aceui-button-shadow-opacity: var(--aceui-shadow-opacity-medium);
     --aceui-button-bordered-border-width: var(--aceui-border-width-medium);
@@ -156,25 +167,37 @@
 
     /* Accordion */
     --aceui-accordion-border-radius: var(--aceui-radius-medium);
+    --aceui-accordion-background: var(--aceui-color-surface-1-background);
+    --aceui-accordion-foreground: var(--aceui-color-surface-1-foreground);
 }
 
 [data-theme="dark"] {
-    /* =======================================================
-     GLOBAL SURFACES & FOCUS
-     ======================================================= */
-    --aceui-color-content1-background: #18181b;
-    --aceui-color-content1-foreground: #ffffff;
-    --aceui-color-content2-background: #27272a;
-    --aceui-color-content2-foreground: #ffffff;
-    --aceui-color-content3-background: #3f3f46;
-    --aceui-color-content3-foreground: #ffffff;
-    --aceui-color-content4-background: #52525b;
-    --aceui-color-content4-foreground: #ffffff;
-    --aceui-color-focus: #006FEE;
+    /* =======================
+     Surfaces
+     ======================= */
+    --aceui-color-surface-0-background: #1C1D25;
+    --aceui-color-surface-1-background: #252734;
+    --aceui-color-surface-2-background: #2F3142;
+    --aceui-color-surface-3-background: #3A3C50;
 
-    /* =======================================================
-     NEUTRAL / DEFAULT
-     ======================================================= */
+    /* =======================
+     Text Colors
+     ======================= */
+    --aceui-color-text-default: #bbbcbe;
+    --aceui-color-text-muted: #a1a1aa;
+    --aceui-color-text-subtle: #71717a;
+    --aceui-color-text-disabled: #52525b;
+
+    /* =======================
+     Border Colors
+     ======================= */
+    --aceui-color-border-default: #3b3b42;
+    --aceui-color-border-muted: #27272a;
+    --aceui-color-border-strong: #52525b;
+
+    /* =======================
+     Neutral (Default)
+     ======================= */
     --aceui-color-default: #3F3F46;
     --aceui-color-default-foreground: #E8E8E8;
     --aceui-color-default-50: #0A0A0B;
@@ -188,9 +211,9 @@
     --aceui-color-default-800: #A1A1AA;
     --aceui-color-default-900: #D4D4D8;
 
-    /* =======================================================
-     BRAND COLORS
-     ======================================================= */
+    /* =======================
+     Brand Colors
+     ======================= */
     /* Primary */
     --aceui-color-primary: #006FEE;
     --aceui-color-primary-foreground: #e3e3e4;
@@ -219,9 +242,9 @@
     --aceui-color-secondary-800: #D4BAEE;
     --aceui-color-secondary-900: #EADDF7;
 
-    /* =======================================================
-     SEMANTIC COLORS
-     ======================================================= */
+    /* =======================
+     Semantic Colors
+     ======================= */
     /* Success */
     --aceui-color-success: #17C964;
     --aceui-color-success-foreground: #000000;
@@ -264,9 +287,9 @@
     --aceui-color-danger-800: #F9A0BF;
     --aceui-color-danger-900: #FBD0DF;
 
-    /* =======================================================
-     COMPONENT TOKENS
-     ======================================================= */
+    /* =======================
+     Component Tokens
+     ======================= */
     /* Button */
     --aceui-button-shadow-opacity: var(--aceui-shadow-opacity-small);
 }

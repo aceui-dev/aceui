@@ -3,7 +3,7 @@ import { Button, ButtonGroup } from "@aceuidev/button";
 export default function ButtonGroupSection() {
   return (
     <section className="demo-section">
-      <h2>Button Group</h2>
+      <h2 className="demo-title">Button Group</h2>
       <p>Group multiple buttons into a single visual unit. Buttons are seamlessly connected with shared borders and radius.</p>
       <h3>Bordered × Default</h3>
       <div className="demo-row">
@@ -13,7 +13,7 @@ export default function ButtonGroupSection() {
           <Button variant="bordered" color="default">Three</Button>
         </ButtonGroup>
       </div>
-      <h3>Default × Disabled</h3>
+      <h3 className="demo-subtitle">Default × Disabled</h3>
       <div className="demo-row">
         <ButtonGroup>
           <Button>One</Button>
@@ -21,7 +21,7 @@ export default function ButtonGroupSection() {
           <Button isDisabled>Three</Button>
         </ButtonGroup>
       </div>
-      <h3>Light × Secondary × Radius None</h3>
+      <h3 className="demo-subtitle">Light × Secondary × Radius None</h3>
       <div className="demo-row">
         <ButtonGroup>
           <Button variant="light" radius="none" color="secondary">One</Button>
@@ -29,7 +29,7 @@ export default function ButtonGroupSection() {
           <Button variant="light" radius="none" color="secondary">Three</Button>
         </ButtonGroup>
       </div>
-      <h3>Flat × Success × Radius Full</h3>
+      <h3 className="demo-subtitle">Flat × Success × Radius Full</h3>
       <div className="demo-row">
         <ButtonGroup>
           <Button variant="flat" radius="full" color="success">One</Button>
@@ -37,7 +37,7 @@ export default function ButtonGroupSection() {
           <Button variant="flat" radius="full" color="success">Three</Button>
         </ButtonGroup>
       </div>
-      <h3>Shadow × Warning × Large</h3>
+      <h3 className="demo-subtitle">Shadow × Warning × Large</h3>
       <div className="demo-row">
         <ButtonGroup>
           <Button variant="shadow" size="large" color="warning">One</Button>
@@ -45,7 +45,7 @@ export default function ButtonGroupSection() {
           <Button variant="shadow" size="large" color="warning">Three</Button>
         </ButtonGroup>
       </div>
-      <h3>Ghost × Danger × Small</h3>
+      <h3 className="demo-subtitle">Ghost × Danger × Small</h3>
       <div className="demo-row">
         <ButtonGroup>
           <Button variant="ghost" size="small" color="danger">One</Button>

@@ -9,17 +9,22 @@ import React, {
   useEffect,
   type ReactNode,
 } from 'react';
-import { motion } from 'framer-motion';
 import './Accordion.css';
 
 /* ============================================
    Types
    ============================================ */
 
-export type AccordionVariant = 'light' | 'shadow' | 'bordered' | 'splitted';
+export type AccordionVariant = 'light' | 'bordered' | 'splitted';
 export type AccordionSelectionMode = 'single' | 'multiple';
 export type AccordionRenderStrategy = 'default' | 'lazy';
 export type AccordionHeadingLevel = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
+
+export type AccordionIndicatorRender = (params: {
+  isOpen: boolean;
+  isDisabled: boolean;
+  defaultIndicator: ReactNode;
+}) => ReactNode;
 
 export interface AccordionProps {
   /** Child AccordionItem components */
@@ -38,8 +43,6 @@ export interface AccordionProps {
   renderStrategy?: AccordionRenderStrategy;
   /** Disable all accordion items */
   isDisabled?: boolean;
-  /** Disable expand/collapse animations */
-  disableAnimation?: boolean;
   /** Called when expansion state changes */
   onExpandedChange?: (keys: (string | number)[]) => void;
   /** Additional CSS classes */
@@ -61,8 +64,8 @@ export interface AccordionItemProps {
   children: ReactNode;
   /** Custom content before title (e.g. avatar, icon) */
   startContent?: ReactNode;
-  /** Custom expand/collapse indicator (replaces default chevron) */
-  indicator?: ReactNode;
+  /** Custom expand/collapse indicator: ReactNode or function (isOpen, isDisabled, defaultIndicator) => ReactNode */
+  indicator?: ReactNode | AccordionIndicatorRender;
   /** Disable this item */
   isDisabled?: boolean;
   /** Additional CSS classes */
@@ -88,7 +91,6 @@ interface AccordionContextValue {
   variant: AccordionVariant;
   selectionMode: AccordionSelectionMode;
   renderStrategy: AccordionRenderStrategy;
-  disableAnimation: boolean;
   accordionId: string;
   focusedKey: string | number | null;
   setFocusedKey: (key: string | number | null) => void;
@@ -143,7 +145,6 @@ export const Accordion = ({
   disabledKeys = [],
   renderStrategy = 'default',
   isDisabled = false,
-  disableAnimation = false,
   onExpandedChange,
   className = '',
   ariaLabel,
@@ -240,7 +241,6 @@ export const Accordion = ({
       variant,
       selectionMode,
       renderStrategy,
-      disableAnimation,
       accordionId,
       focusedKey,
       setFocusedKey,
@@ -256,7 +256,6 @@ export const Accordion = ({
       variant,
       selectionMode,
       renderStrategy,
-      disableAnimation,
       accordionId,
       focusedKey,
       registerItem,
@@ -314,7 +313,6 @@ export const AccordionItem = ({
     toggle,
     isExpanded,
     isDisabled,
-    disableAnimation,
     accordionId,
     focusedKey,
     setFocusedKey,
@@ -391,6 +389,13 @@ export const AccordionItem = ({
 
   const HeadingTag = headingLevel;
 
+  const defaultIndicator = <ChevronRightIcon />;
+  const resolvedIndicator =
+    typeof indicator === 'function'
+      ? indicator({ isOpen: expanded, isDisabled: disabled, defaultIndicator })
+      : (indicator ?? defaultIndicator);
+  const hasCustomIndicator = indicator !== undefined && indicator !== null;
+
   const itemClasses = [
     'aceui-accordion__item',
     expanded && 'aceui-accordion__item--expanded',
@@ -425,34 +430,23 @@ export const AccordionItem = ({
           )}
         </div>
         <div
-          className={`aceui-accordion__indicator ${indicator ? 'aceui-accordion__indicator--custom' : ''} ${expanded ? 'aceui-accordion__indicator--rotated' : ''}`}
+          className={`aceui-accordion__indicator ${hasCustomIndicator ? 'aceui-accordion__indicator--custom' : ''} ${expanded ? 'aceui-accordion__indicator--rotated' : ''}`}
           aria-hidden
         >
-          {indicator ?? <ChevronRightIcon />}
+          {resolvedIndicator}
         </div>
       </div>
 
       {shouldRenderContent && (
         <div
           id={contentId}
-          className={`aceui-accordion__content ${expanded ? 'aceui-accordion__content--expanded' : 'aceui-accordion__content--collapsed'}`}
+          className={`aceui-accordion__content aceui-accordion__content--animated ${expanded ? 'aceui-accordion__content--expanded' : 'aceui-accordion__content--collapsed'}`}
           role="region"
           aria-labelledby={headerId}
-          hidden={!expanded}
         >
-          {disableAnimation ? (
-            <div className="aceui-accordion__content-inner">{children}</div>
-          ) : (
-            <motion.div
-              className="aceui-accordion__content-inner"
-              initial={false}
-              animate={{ height: expanded ? 'auto' : 0, opacity: expanded ? 1 : 0 }}
-              transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
-              style={{ overflow: 'hidden' }}
-            >
-              {children}
-            </motion.div>
-          )}
+          <div className="aceui-accordion__content-inner">
+            {children}
+          </div>
         </div>
       )}
     </div>

@@ -1,7 +1,7 @@
 # Feature Requirements
 
 ## Version: 1.0.0
-Last Updated: 2026-02-02
+Last Updated: 2026-02-08
 
 ---
 
@@ -37,7 +37,7 @@ Each accordion item should support:
   - Element: `.aceui-accordion__subtitle`
   - Displayed below title in muted color
   - Font size: `var(--aceui-font-size-small)`
-  - Color: `var(--aceui-color-default-400)`
+  - Color: `var(--aceui-color-text-muted)`
   
 - **Content**: Expandable body content
   - Element: `.aceui-accordion__content`
@@ -67,29 +67,23 @@ Support different expansion behaviors via `selectionMode` prop:
 Support style variants via `variant` prop:
 
 - **Light** (default): `.aceui-accordion--light`
-  - Background: `var(--aceui-color-content1-background)`
-  - Border: None
-  - Minimal padding between items
+  - Background: transparent
+  - Border: None on container; bottom border between items
+  - No inline padding on header/content (flush layout)
   - Clean, airy appearance
   
-- **Shadow**: `.aceui-accordion--shadow`
-  - Background: `var(--aceui-color-content1-background)`
-  - Each item has subtle shadow (color-mix with `var(--aceui-color-content1-foreground)`)
-  - Padding/margin between items
-  - Elevated appearance
-  
 - **Bordered**: `.aceui-accordion--bordered`
-  - Background: `var(--aceui-color-content1-background)`
-  - Border: `var(--aceui-border-width-medium)` solid `var(--aceui-color-content2-background)`
-  - All items within single bordered container
+  - Single bordered container
+  - Border: `var(--aceui-border-width-medium)` solid `var(--aceui-color-border-default)`
+  - Container padding: `var(--aceui-spacing-medium)` inline
   - Dividers between items
   
 - **Splitted**: `.aceui-accordion--splitted`
   - Each item is a separate card
-  - Background: `var(--aceui-color-content1-background)`
-  - Border: `var(--aceui-border-width-medium)` solid `var(--aceui-color-content2-background)`
-  - Spacing between items: `var(--aceui-spacing-small)` (8px)
-  - Individual item borders and shadows
+  - Gap between items: `var(--aceui-spacing-small)` (8px)
+  - Border: `var(--aceui-border-width-medium)` solid `var(--aceui-color-border-default)` per item
+  - Border radius: `var(--aceui-accordion-border-radius)`
+  - Header and content have inline padding; individual item shadows
 
 #### 5. Default Expanded Keys
 - Support `defaultExpandedKeys` prop (array of strings/numbers)
@@ -117,12 +111,11 @@ Support style variants via `variant` prop:
 - Maintains alignment with indicator
 
 #### 8. Custom Indicator
-- Support `indicator` prop on accordion items
-- Allow custom React elements to replace default chevron
-- Element: `.aceui-accordion__indicator--custom`
-- Should still animate on expand/collapse
+- Support `indicator` prop on accordion items: `ReactNode` or render function
+- **ReactNode**: Custom element replaces default chevron; receives `.aceui-accordion__indicator--rotated` when expanded (CSS rotation).
+- **Function**: `(params: { isOpen, isDisabled, defaultIndicator }) => ReactNode` for state-dependent icons (e.g. plus when closed, minus when open).
+- Element: `.aceui-accordion__indicator--custom` when custom indicator is provided
 - Common use cases: plus/minus icons, custom arrows, theme-specific icons
-- Provide default transform for common patterns (rotate, scale)
 
 #### 9. Render Strategy
 Support optimized rendering via `renderStrategy` prop:
@@ -142,12 +135,10 @@ Support optimized rendering via `renderStrategy` prop:
   - Implementation: conditional rendering based on expansion state + cache
 
 #### 10. Animations
-- Smooth expand/collapse transitions
-- Use **framer-motion** for expand/collapse height animation (recommended: `AnimatePresence` with layout animations)
-- Duration: 300ms ease-in-out
-- Indicator rotation: 200ms ease
-- Support `disableAnimation` prop to disable all animations
-- No animation when disabled
+- Smooth expand/collapse transitions via CSS (grid-template-rows 0fr/1fr with transition)
+- Duration: 300ms cubic-bezier for content height
+- Indicator rotation: 200ms ease (CSS transform)
+- No `disableAnimation` prop in current implementation
 
 #### 11. Accessibility Features
 - Keyboard navigation:
@@ -174,58 +165,39 @@ Support optimized rendering via `renderStrategy` prop:
 ### Component API
 
 ```typescript
+type AccordionVariant = 'light' | 'bordered' | 'splitted';
+type AccordionIndicatorRender = (params: {
+  isOpen: boolean;
+  isDisabled: boolean;
+  defaultIndicator: ReactNode;
+}) => ReactNode;
+
 interface AccordionProps {
-  // Content
   children?: React.ReactNode;
-  
-  // Variants
-  variant?: 'light' | 'shadow' | 'bordered' | 'splitted';
-  
-  // Behavior
+  variant?: AccordionVariant;
   selectionMode?: 'single' | 'multiple';
   defaultExpandedKeys?: (string | number)[];
+  expandedKeys?: (string | number)[];
   disabledKeys?: (string | number)[];
   renderStrategy?: 'default' | 'lazy';
-  
-  // States
   isDisabled?: boolean;
-  disableAnimation?: boolean;
-  
-  // Events
   onExpandedChange?: (keys: (string | number)[]) => void;
-  
-  // Styling
   className?: string;
-  
-  // Accessibility
   ariaLabel?: string;
-  
-  // Testing
   testId?: string;
 }
 
 interface AccordionItemProps {
-  // Content
-  key: string | number;
+  itemKey: string | number;
   title: React.ReactNode;
   subtitle?: React.ReactNode;
   children: React.ReactNode;
-  
-  // Custom elements
   startContent?: React.ReactNode;
-  indicator?: React.ReactNode;
-  
-  // States
+  indicator?: React.ReactNode | AccordionIndicatorRender;
   isDisabled?: boolean;
-  
-  // Styling
   className?: string;
-  
-  // Accessibility
   ariaLabel?: string;
   headingLevel?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
-  
-  // Testing
   testId?: string;
 }
 ```
@@ -240,7 +212,7 @@ interface AccordionItemProps {
 - Each item has unique key for identification
 
 #### Animation Implementation
-- Use framer-motion for expand/collapse animations (recommended: `AnimatePresence` with layout animations)
+- Expand/collapse: CSS grid (grid-template-rows 0fr/1fr) with transition
 - Indicator rotation: CSS transition 200ms ease
 
 #### Render Strategy Implementation
@@ -254,7 +226,7 @@ const handleExpand = (key) => {
 };
 
 // In render
-{renderedItems.has(item.key) && (
+{renderedItems.has(item.itemKey) && (
   <div className="aceui-accordion__content">
     {item.children}
   </div>
@@ -273,7 +245,6 @@ const handleExpand = (key) => {
 ```css
 .aceui-accordion { }
   .aceui-accordion--light { }
-  .aceui-accordion--shadow { }
   .aceui-accordion--bordered { }
   .aceui-accordion--splitted { }
   .aceui-accordion--single { }
@@ -346,9 +317,8 @@ const handleExpand = (key) => {
 
 #### Variants
 - [ ] Light variant displays correctly
-- [ ] Shadow variant has proper shadows
-- [ ] Bordered variant has borders and dividers
-- [ ] Splitted variant shows separated items
+- [ ] Bordered variant has borders, dividers, and container padding
+- [ ] Splitted variant shows separated items with per-item padding
 
 #### Combinations
 - [ ] Single mode + default expanded works
@@ -401,13 +371,13 @@ const handleExpand = (key) => {
 ```tsx
 // Basic accordion (defaults: light variant, single mode)
 <Accordion>
-  <AccordionItem key="1" title="Accordion 1">
+  <AccordionItem itemKey="1" title="Accordion 1">
     Content for accordion 1
   </AccordionItem>
-  <AccordionItem key="2" title="Accordion 2">
+  <AccordionItem itemKey="2" title="Accordion 2">
     Content for accordion 2
   </AccordionItem>
-  <AccordionItem key="3" title="Accordion 3">
+  <AccordionItem itemKey="3" title="Accordion 3">
     Content for accordion 3
   </AccordionItem>
 </Accordion>
@@ -415,14 +385,14 @@ const handleExpand = (key) => {
 // With subtitle
 <Accordion>
   <AccordionItem 
-    key="1" 
+    itemKey="1" 
     title="Accordion 1"
     subtitle="Press to expand"
   >
     Content here
   </AccordionItem>
   <AccordionItem 
-    key="2" 
+    itemKey="2" 
     title="Accordion 2"
     subtitle="Press to expand key 2"
   >
@@ -432,57 +402,50 @@ const handleExpand = (key) => {
 
 // Multiple expansion mode
 <Accordion selectionMode="multiple">
-  <AccordionItem key="1" title="Item 1">Content 1</AccordionItem>
-  <AccordionItem key="2" title="Item 2">Content 2</AccordionItem>
-  <AccordionItem key="3" title="Item 3">Content 3</AccordionItem>
+  <AccordionItem itemKey="1" title="Item 1">Content 1</AccordionItem>
+  <AccordionItem itemKey="2" title="Item 2">Content 2</AccordionItem>
+  <AccordionItem itemKey="3" title="Item 3">Content 3</AccordionItem>
 </Accordion>
 
 // Light variant (default)
 <Accordion variant="light">
-  <AccordionItem key="1" title="Light Item 1">Content</AccordionItem>
-  <AccordionItem key="2" title="Light Item 2">Content</AccordionItem>
-  <AccordionItem key="3" title="Light Item 3">Content</AccordionItem>
-</Accordion>
-
-// Shadow variant
-<Accordion variant="shadow">
-  <AccordionItem key="1" title="Shadow Item 1">Content</AccordionItem>
-  <AccordionItem key="2" title="Shadow Item 2">Content</AccordionItem>
-  <AccordionItem key="3" title="Shadow Item 3">Content</AccordionItem>
+  <AccordionItem itemKey="1" title="Light Item 1">Content</AccordionItem>
+  <AccordionItem itemKey="2" title="Light Item 2">Content</AccordionItem>
+  <AccordionItem itemKey="3" title="Light Item 3">Content</AccordionItem>
 </Accordion>
 
 // Bordered variant
 <Accordion variant="bordered">
-  <AccordionItem key="1" title="Bordered Item 1">Content</AccordionItem>
-  <AccordionItem key="2" title="Bordered Item 2">Content</AccordionItem>
-  <AccordionItem key="3" title="Bordered Item 3">Content</AccordionItem>
+  <AccordionItem itemKey="1" title="Bordered Item 1">Content</AccordionItem>
+  <AccordionItem itemKey="2" title="Bordered Item 2">Content</AccordionItem>
+  <AccordionItem itemKey="3" title="Bordered Item 3">Content</AccordionItem>
 </Accordion>
 
 // Splitted variant
 <Accordion variant="splitted">
-  <AccordionItem key="1" title="Splitted Item 1">Content</AccordionItem>
-  <AccordionItem key="2" title="Splitted Item 2">Content</AccordionItem>
-  <AccordionItem key="3" title="Splitted Item 3">Content</AccordionItem>
+  <AccordionItem itemKey="1" title="Splitted Item 1">Content</AccordionItem>
+  <AccordionItem itemKey="2" title="Splitted Item 2">Content</AccordionItem>
+  <AccordionItem itemKey="3" title="Splitted Item 3">Content</AccordionItem>
 </Accordion>
 
 // Default expanded keys
 <Accordion defaultExpandedKeys={['1', '3']}>
-  <AccordionItem key="1" title="Initially Open">This is expanded</AccordionItem>
-  <AccordionItem key="2" title="Initially Closed">This is collapsed</AccordionItem>
-  <AccordionItem key="3" title="Also Open">This is expanded</AccordionItem>
+  <AccordionItem itemKey="1" title="Initially Open">This is expanded</AccordionItem>
+  <AccordionItem itemKey="2" title="Initially Closed">This is collapsed</AccordionItem>
+  <AccordionItem itemKey="3" title="Also Open">This is expanded</AccordionItem>
 </Accordion>
 
 // Disabled keys
 <Accordion disabledKeys={['2']}>
-  <AccordionItem key="1" title="Enabled Item">You can click this</AccordionItem>
-  <AccordionItem key="2" title="Disabled Item">You cannot interact with this</AccordionItem>
-  <AccordionItem key="3" title="Enabled Item">You can click this too</AccordionItem>
+  <AccordionItem itemKey="1" title="Enabled Item">You can click this</AccordionItem>
+  <AccordionItem itemKey="2" title="Disabled Item">You cannot interact with this</AccordionItem>
+  <AccordionItem itemKey="3" title="Enabled Item">You can click this too</AccordionItem>
 </Accordion>
 
 // With start content (icons, avatars, etc.)
 <Accordion variant="splitted">
   <AccordionItem 
-    key="1" 
+    itemKey="1" 
     title="Chung Miller"
     subtitle="4 unread messages"
     startContent={<Avatar src="/avatar1.jpg" />}
@@ -490,7 +453,7 @@ const handleExpand = (key) => {
     Message content here
   </AccordionItem>
   <AccordionItem 
-    key="2" 
+    itemKey="2" 
     title="Janelle Lenard"
     subtitle="3 incompleted steps"
     startContent={<Avatar src="/avatar2.jpg" />}
@@ -498,7 +461,7 @@ const handleExpand = (key) => {
     Steps content here
   </AccordionItem>
   <AccordionItem 
-    key="3" 
+    itemKey="3" 
     title="Zoey Lang"
     subtitle="2 issues to fix now"
     startContent={<Avatar src="/avatar3.jpg" />}
@@ -507,40 +470,41 @@ const handleExpand = (key) => {
   </AccordionItem>
 </Accordion>
 
-// Custom indicators
+// Custom indicator (ReactNode)
 <Accordion>
-  <AccordionItem 
-    key="1" 
-    title="Anchor"
-    indicator={<AnchorIcon />}
-  >
+  <AccordionItem itemKey="1" title="Anchor" indicator={<AnchorIcon />}>
     Content with anchor icon
   </AccordionItem>
-  <AccordionItem 
-    key="2" 
-    title="Moon"
-    indicator={<MoonIcon />}
-  >
+  <AccordionItem itemKey="2" title="Moon" indicator={<MoonIcon />}>
     Content with moon icon
   </AccordionItem>
-  <AccordionItem 
-    key="3" 
-    title="Sun"
-    indicator={<SunIcon />}
+</Accordion>
+
+// Custom indicator (function: isOpen, isDisabled, defaultIndicator)
+<Accordion disabledKeys={['2']}>
+  <AccordionItem
+    itemKey="1"
+    title="Expandable"
+    indicator={({ isOpen, isDisabled, defaultIndicator }) =>
+      isDisabled ? defaultIndicator : isOpen ? <MinusIcon /> : <PlusIcon />
+    }
   >
-    Content with sun icon
+    Content
+  </AccordionItem>
+  <AccordionItem itemKey="2" title="Disabled" indicator={({ isDisabled, defaultIndicator }) => isDisabled ? defaultIndicator : <PlusIcon />}>
+    Content
   </AccordionItem>
 </Accordion>
 
 // Lazy render strategy (performance optimization)
 <Accordion renderStrategy="lazy">
-  <AccordionItem key="1" title="Large Content 1">
+  <AccordionItem itemKey="1" title="Large Content 1">
     <ExpensiveComponent />
   </AccordionItem>
-  <AccordionItem key="2" title="Large Content 2">
+  <AccordionItem itemKey="2" title="Large Content 2">
     <ExpensiveComponent />
   </AccordionItem>
-  <AccordionItem key="3" title="Large Content 3">
+  <AccordionItem itemKey="3" title="Large Content 3">
     <ExpensiveComponent />
   </AccordionItem>
 </Accordion>
@@ -552,8 +516,8 @@ const [expandedKeys, setExpandedKeys] = useState(['1']);
   expandedKeys={expandedKeys}
   onExpandedChange={setExpandedKeys}
 >
-  <AccordionItem key="1" title="Controlled Item 1">Content</AccordionItem>
-  <AccordionItem key="2" title="Controlled Item 2">Content</AccordionItem>
+  <AccordionItem itemKey="1" title="Controlled Item 1">Content</AccordionItem>
+  <AccordionItem itemKey="2" title="Controlled Item 2">Content</AccordionItem>
 </Accordion>
 
 // Complete example with all features
@@ -566,7 +530,7 @@ const [expandedKeys, setExpandedKeys] = useState(['1']);
   onExpandedChange={(keys) => console.log('Expanded:', keys)}
 >
   <AccordionItem 
-    key="1" 
+    itemKey="1" 
     title="User Profile"
     subtitle="Manage your account"
     startContent={<UserIcon />}
@@ -576,7 +540,7 @@ const [expandedKeys, setExpandedKeys] = useState(['1']);
   </AccordionItem>
   
   <AccordionItem 
-    key="2" 
+    itemKey="2" 
     title="Notification Settings"
     subtitle="Configure alerts"
     startContent={<BellIcon />}
@@ -585,7 +549,7 @@ const [expandedKeys, setExpandedKeys] = useState(['1']);
   </AccordionItem>
   
   <AccordionItem 
-    key="3" 
+    itemKey="3" 
     title="Billing Information"
     subtitle="View your plan"
     startContent={<CreditCardIcon />}
@@ -599,8 +563,7 @@ const [expandedKeys, setExpandedKeys] = useState(['1']);
 
 The accordion component should import and use tokens from `design-tokens.css`. All design tokens use the `--aceui` prefix.
 
-**Colors**: `--aceui-color-default-{shade}` (e.g., `--aceui-color-default-50`, `--aceui-color-default-200`, `--aceui-color-default-400`)
-**Content surfaces**: `--aceui-color-content1-background`, `--aceui-color-content1-foreground`, `--aceui-color-content2-background`
+**Colors**: `--aceui-color-text-default`, `--aceui-color-text-muted`, `--aceui-color-border-default`, `--aceui-color-default-{shade}` where needed
 **Font Sizes**: `--aceui-font-size-{size}` (small, medium, large)
 **Line Heights**: `--aceui-line-height-{size}`
 **Spacing**: `--aceui-spacing-{size}` (small, medium, large)
@@ -619,7 +582,7 @@ The accordion component should import and use tokens from `design-tokens.css`. A
 - Consider performance for accordions with many items
 - renderStrategy 'lazy' improves performance for complex content
 - Support both controlled and uncontrolled modes
-- Each accordion item must have a unique key
+- Each accordion item must have a unique `itemKey` (prop name is `itemKey`, not `key`, because `key` is reserved in React)
 - Consider implementing with native `<details>` element for progressive enhancement
 - Ensure proper ARIA labeling for screen readers
 - Test with various content types (text, images, forms, etc.)

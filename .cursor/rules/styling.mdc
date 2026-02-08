@@ -12,6 +12,7 @@ alwaysApply: false
 - One `.css` file per component; import as side-effect: `import './Component.css'`.
 - Follow BEM methodology with `aceui-` prefix for all class names.
 - Use design tokens (CSS variables) for all values; avoid hardcoded colors/sizes.
+- **Do NOT set `font-family` in components** — let it inherit from the consumer's global styles. Use `font-family: inherit` if needed to ensure inheritance.
 
 ## Design Tokens
 

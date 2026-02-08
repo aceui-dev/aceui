@@ -6,4 +6,5 @@ export type {
   AccordionSelectionMode,
   AccordionRenderStrategy,
   AccordionHeadingLevel,
+  AccordionIndicatorRender,
 } from './Accordion';

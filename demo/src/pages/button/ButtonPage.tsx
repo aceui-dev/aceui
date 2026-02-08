@@ -9,6 +9,7 @@ import LoadingSection from "./sections/LoadingSection";
 import IconSection from "./sections/IconSection";
 import CombinationsSection from "./sections/CombinationsSection";
 import ButtonGroupSection from "./sections/ButtonGroupSection";
+import ButtonGroupOrientationSection from "./sections/ButtonGroupOrientationSection";
 import ButtonGroupDisabledSection from "./sections/ButtonGroupDisabledSection";
 import WidthSection from "./sections/WidthSection";
 import { useSidebar } from "../../contexts/SidebarContext";
@@ -25,6 +26,7 @@ const SECTIONS = [
   { id: "icon", label: "Icon", component: IconSection },
   { id: "combinations", label: "Combinations", component: CombinationsSection },
   { id: "button-group", label: "Button Group", component: ButtonGroupSection },
+  { id: "group-orientation", label: "Group Orientation", component: ButtonGroupOrientationSection },
   { id: "group-disabled", label: "Group Disabled", component: ButtonGroupDisabledSection },
 ];
 
@@ -54,9 +56,7 @@ export default function ButtonPage() {
         </nav>
       </aside>
       <main className="page-content">
-        <h1 style={{ marginTop: 0, marginBottom: "2rem", fontSize: "1.5rem" }}>
-          AceUI · Button
-        </h1>
+        <h1 className="page-heading">AceUI · Button</h1>
         <CurrentComponent />
       </main>
     </div>

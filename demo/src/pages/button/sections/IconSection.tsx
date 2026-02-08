@@ -33,7 +33,7 @@ const ArrowLeftIcon = () => (
 export default function IconSection() {
   return (
     <section className="demo-section">
-      <h2>Button · Icon</h2>
+      <h2 className="demo-title">Button · Icon</h2>
       <p>Buttons can include icons on the left or right, or be icon-only.</p>
       <div className="demo-row">
         <Button icon={<SaveIcon />} iconPosition="left">
