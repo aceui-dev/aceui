@@ -4,7 +4,7 @@
   "type": "module",
   "scripts": {
     "postinstall": "npm run build:all",
-    "build:all": "npm run build --workspace=@aceuidev/button && npm run build --workspace=@aceuidev/accordion",
+    "build:all": "npm run build --workspace=@aceuidev/button && npm run build --workspace=@aceuidev/accordion && npm run build --workspace=@aceuidev/badge",
     "build:button": "npm run build --workspace=@aceuidev/button",
     "build:accordion": "npm run build --workspace=@aceuidev/accordion",
     "clean": "rimraf ../../packages/components/*/dist",
@@ -13,9 +13,12 @@
     "dev:accordion": "npm run dev --workspace=@aceuidev/accordion",
     "dev:with:button": "npm-run-all --parallel dev:button dev",
     "dev:with:accordion": "npm-run-all --parallel dev:accordion dev",
-    "dev:all": "npm-run-all --parallel dev:button dev:accordion",
+    "dev:all": "npm-run-all --parallel dev:button dev:accordion dev:badge",
     "build": "npm run build:all && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "build:badge": "npm run build --workspace=@aceuidev/badge",
+    "dev:badge": "npm run dev --workspace=@aceuidev/badge",
+    "dev:with:badge": "npm-run-all --parallel dev:badge dev"
   },
   "dependencies": {
     "@aceuidev/button": "*",
@@ -23,7 +26,8 @@
     "framer-motion": "^11.15.0",
     "react": "19.2.3",
     "react-dom": "19.2.3",
-    "react-router-dom": "^7.13.0"
+    "react-router-dom": "^7.13.0",
+    "@aceuidev/badge": "*"
   },
   "devDependencies": {
     "@types/react": "^19.0.0",

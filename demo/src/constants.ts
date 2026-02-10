@@ -6,5 +6,9 @@ export const COMPONENTS = [
     {
         name: "Accordion",
         path: "/accordion",
+    },
+    {
+        name: "Badge",
+        path: "/badge",
     }
 ]
