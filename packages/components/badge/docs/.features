@@ -1,0 +1,78 @@
+# Feature Requirements
+
+## Version: 1.0.0
+Last Updated: 2026-02-10
+
+---
+
+## Feature: Badge Component
+Priority: High
+Status: In Progress
+
+### Overview
+A display-only badge component for labels, status, and counts. Supports default/disabled states, six colors, three sizes, three radius options, five variants (Solid, Bordered, Light, Shadow, Dot), and start/end content slots. Uses the project's design token system. Visual reference: Variants (Solid, Bordered, Light, Shadow, Dot) and Radius (Full, Medium, Small) screenshots.
+
+### Requirements
+
+#### 1. Default
+- Render as `<span>` (non-interactive)
+- Base BEM class: `.aceui-badge`
+- Defaults: variant `solid`, color `primary`, size `medium`, radius `full`
+- Use design tokens from `design-tokens.css`
+
+#### 2. Disabled State
+- Support `isDisabled` prop (boolean)
+- Modifier: `.aceui-badge--disabled`
+- Opacity: `var(--aceui-disabled-opacity)`
+- Set `aria-disabled="true"` when disabled
+- Cursor / pointer-events as needed for display-only
+
+#### 3. Colors
+Support `color` prop with six values; BEM `.aceui-badge--color-{name}`. Use same token pattern as Button:
+- **default**, **primary**, **secondary**, **success**, **warning**, **danger**
+- Each: base `--aceui-color-{name}-500`, foreground `--aceui-color-{name}-foreground`; shades 50–900 for variants (e.g. light = color-50 bg, color-500 text)
+
+#### 4. Size
+- **small**: `.aceui-badge--small` — max-height 24px, font-size/line-height/padding from tokens (small)
+- **medium** (default): `.aceui-badge--medium` — max-height 28px
+- **large**: `.aceui-badge--large` — max-height 32px
+
+#### 5. Radius
+- **full**: `.aceui-badge--radius-full` — border-radius 9999px (pill)
+- **medium**: `.aceui-badge--radius-medium` — `var(--aceui-radius-medium)`
+- **small**: `.aceui-badge--radius-small` — `var(--aceui-radius-small)`
+
+#### 6. Variants
+- **Solid**: `.aceui-badge--solid` — Filled background (color-500), foreground text
+- **Bordered**: `.aceui-badge--bordered` — Transparent bg, border + text from color
+- **Light**: `.aceui-badge--light` — Light bg (color-50), text from color (500)
+- **Shadow**: `.aceui-badge--shadow` — Like Solid + box-shadow using `--aceui-badge-shadow-opacity` and color
+- **Dot**: `.aceui-badge--dot` — Same base style as solid/light etc. + `.aceui-badge__dot` before label (small circle, color from current semantic token)
+
+#### 7. Start / End Content
+- `startContent`, `endContent` (ReactNode)
+- Render in `.aceui-badge__start` and `.aceui-badge__end`
+- Gap from spacing tokens
+- When variant is Dot: render dot then optional startContent then children then endContent
+
+### BEM Class Structure
+- Block: `.aceui-badge`
+- Elements: `.aceui-badge__dot`, `.aceui-badge__start`, `.aceui-badge__content`, `.aceui-badge__end`
+- Modifiers: `.aceui-badge--{variant}`, `.aceui-badge--color-{color}`, `.aceui-badge--small|medium|large`, `.aceui-badge--radius-{radius}`, `.aceui-badge--disabled`
+
+### Component API
+```typescript
+interface BadgeProps {
+  children?: React.ReactNode;
+  variant?: 'solid' | 'bordered' | 'light' | 'shadow' | 'dot';
+  color?: 'default' | 'primary' | 'secondary' | 'success' | 'warning' | 'danger';
+  size?: 'small' | 'medium' | 'large';
+  radius?: 'full' | 'medium' | 'small';
+  isDisabled?: boolean;
+  startContent?: React.ReactNode;
+  endContent?: React.ReactNode;
+  ariaLabel?: string;
+  className?: string;
+  testId?: string;
+}
+```

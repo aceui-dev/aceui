@@ -1,0 +1,293 @@
+/* ============================================
+   Base Badge Styles
+   ============================================ */
+
+.aceui-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--aceui-spacing-small);
+  font-family: inherit;
+  font-weight: 500;
+  line-height: 1;
+  white-space: nowrap;
+  border: none;
+  box-sizing: border-box;
+}
+
+/* ============================================
+   Badge Elements
+   ============================================ */
+
+.aceui-badge__start,
+.aceui-badge__content,
+.aceui-badge__end {
+  display: inline-flex;
+  align-items: center;
+  line-height: 1;
+}
+
+/* Optical adjustment: font metrics place the visual center below the line box center */
+.aceui-badge__content {
+  transform: translateY(-0.06em);
+}
+
+.aceui-badge__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* ============================================
+   Size Variants
+   ============================================ */
+
+.aceui-badge--small {
+  font-size: var(--aceui-font-size-tiny);
+  padding: 4px var(--aceui-spacing-small);
+  min-height: 24px;
+}
+
+.aceui-badge--medium {
+  font-size: var(--aceui-font-size-small);
+  padding: 6px var(--aceui-spacing-medium);
+  min-height: 28px;
+}
+
+.aceui-badge--large {
+  font-size: var(--aceui-font-size-medium);
+  padding: 6px var(--aceui-spacing-medium);
+  min-height: 32px;
+}
+
+/* ============================================
+   Border Radius Variants
+   ============================================ */
+
+.aceui-badge--radius-full {
+  border-radius: 9999px;
+}
+
+.aceui-badge--radius-medium {
+  border-radius: var(--aceui-radius-medium);
+}
+
+.aceui-badge--radius-small {
+  border-radius: var(--aceui-radius-small);
+}
+
+/* ============================================
+   Solid Variant
+   ============================================ */
+
+.aceui-badge--solid.aceui-badge--color-default {
+  background-color: var(--aceui-color-default-500);
+  color: var(--aceui-color-default-foreground);
+}
+
+.aceui-badge--solid.aceui-badge--color-primary {
+  background-color: var(--aceui-color-primary-500);
+  color: var(--aceui-color-primary-foreground);
+}
+
+.aceui-badge--solid.aceui-badge--color-secondary {
+  background-color: var(--aceui-color-secondary-500);
+  color: var(--aceui-color-secondary-foreground);
+}
+
+.aceui-badge--solid.aceui-badge--color-success {
+  background-color: var(--aceui-color-success-500);
+  color: var(--aceui-color-success-foreground);
+}
+
+.aceui-badge--solid.aceui-badge--color-warning {
+  background-color: var(--aceui-color-warning-500);
+  color: var(--aceui-color-warning-foreground);
+}
+
+.aceui-badge--solid.aceui-badge--color-danger {
+  background-color: var(--aceui-color-danger-500);
+  color: var(--aceui-color-danger-foreground);
+}
+
+/* ============================================
+   Bordered Variant
+   ============================================ */
+
+.aceui-badge--bordered.aceui-badge--color-default {
+  background-color: transparent;
+  color: var(--aceui-color-default-500);
+  border: var(--aceui-border-width-small) solid var(--aceui-color-default-500);
+}
+
+.aceui-badge--bordered.aceui-badge--color-primary {
+  background-color: transparent;
+  color: var(--aceui-color-primary-500);
+  border: var(--aceui-border-width-small) solid var(--aceui-color-primary-500);
+}
+
+.aceui-badge--bordered.aceui-badge--color-secondary {
+  background-color: transparent;
+  color: var(--aceui-color-secondary-500);
+  border: var(--aceui-border-width-small) solid var(--aceui-color-secondary-500);
+}
+
+.aceui-badge--bordered.aceui-badge--color-success {
+  background-color: transparent;
+  color: var(--aceui-color-success-500);
+  border: var(--aceui-border-width-small) solid var(--aceui-color-success-500);
+}
+
+.aceui-badge--bordered.aceui-badge--color-warning {
+  background-color: transparent;
+  color: var(--aceui-color-warning-500);
+  border: var(--aceui-border-width-small) solid var(--aceui-color-warning-500);
+}
+
+.aceui-badge--bordered.aceui-badge--color-danger {
+  background-color: transparent;
+  color: var(--aceui-color-danger-500);
+  border: var(--aceui-border-width-small) solid var(--aceui-color-danger-500);
+}
+
+/* ============================================
+   Light Variant
+   ============================================ */
+
+.aceui-badge--light.aceui-badge--color-default {
+  background-color: var(--aceui-color-default-50);
+  color: var(--aceui-color-default-500);
+}
+
+.aceui-badge--light.aceui-badge--color-primary {
+  background-color: var(--aceui-color-primary-50);
+  color: var(--aceui-color-primary-500);
+}
+
+.aceui-badge--light.aceui-badge--color-secondary {
+  background-color: var(--aceui-color-secondary-50);
+  color: var(--aceui-color-secondary-500);
+}
+
+.aceui-badge--light.aceui-badge--color-success {
+  background-color: var(--aceui-color-success-50);
+  color: var(--aceui-color-success-500);
+}
+
+.aceui-badge--light.aceui-badge--color-warning {
+  background-color: var(--aceui-color-warning-50);
+  color: var(--aceui-color-warning-500);
+}
+
+.aceui-badge--light.aceui-badge--color-danger {
+  background-color: var(--aceui-color-danger-50);
+  color: var(--aceui-color-danger-500);
+}
+
+/* ============================================
+   Shadow Variant
+   ============================================ */
+
+.aceui-badge--shadow.aceui-badge--color-default {
+  background-color: var(--aceui-color-default-500);
+  color: var(--aceui-color-default-foreground);
+  box-shadow: 0 2px 8px 0 color-mix(in srgb, var(--aceui-color-default-500) calc(var(--aceui-badge-shadow-opacity) * 100%), transparent);
+}
+
+.aceui-badge--shadow.aceui-badge--color-primary {
+  background-color: var(--aceui-color-primary-500);
+  color: var(--aceui-color-primary-foreground);
+  box-shadow: 0 2px 8px 0 color-mix(in srgb, var(--aceui-color-primary-500) calc(var(--aceui-badge-shadow-opacity) * 100%), transparent);
+}
+
+.aceui-badge--shadow.aceui-badge--color-secondary {
+  background-color: var(--aceui-color-secondary-500);
+  color: var(--aceui-color-secondary-foreground);
+  box-shadow: 0 2px 8px 0 color-mix(in srgb, var(--aceui-color-secondary-500) calc(var(--aceui-badge-shadow-opacity) * 100%), transparent);
+}
+
+.aceui-badge--shadow.aceui-badge--color-success {
+  background-color: var(--aceui-color-success-500);
+  color: var(--aceui-color-success-foreground);
+  box-shadow: 0 2px 8px 0 color-mix(in srgb, var(--aceui-color-success-500) calc(var(--aceui-badge-shadow-opacity) * 100%), transparent);
+}
+
+.aceui-badge--shadow.aceui-badge--color-warning {
+  background-color: var(--aceui-color-warning-500);
+  color: var(--aceui-color-warning-foreground);
+  box-shadow: 0 2px 8px 0 color-mix(in srgb, var(--aceui-color-warning-500) calc(var(--aceui-badge-shadow-opacity) * 100%), transparent);
+}
+
+.aceui-badge--shadow.aceui-badge--color-danger {
+  background-color: var(--aceui-color-danger-500);
+  color: var(--aceui-color-danger-foreground);
+  box-shadow: 0 2px 8px 0 color-mix(in srgb, var(--aceui-color-danger-500) calc(var(--aceui-badge-shadow-opacity) * 100%), transparent);
+}
+
+/* ============================================
+   Dot Variant (same as solid/light base + dot; dot color from token)
+   ============================================ */
+
+.aceui-badge--dot.aceui-badge--color-default {
+  background-color: var(--aceui-color-default-200);
+  color: var(--aceui-color-default-700);
+}
+
+.aceui-badge--dot.aceui-badge--color-default .aceui-badge__dot {
+  background-color: var(--aceui-color-default-500);
+}
+
+.aceui-badge--dot.aceui-badge--color-primary {
+  background-color: var(--aceui-color-primary-50);
+  color: var(--aceui-color-primary-600);
+}
+
+.aceui-badge--dot.aceui-badge--color-primary .aceui-badge__dot {
+  background-color: var(--aceui-color-primary-500);
+}
+
+.aceui-badge--dot.aceui-badge--color-secondary {
+  background-color: var(--aceui-color-secondary-50);
+  color: var(--aceui-color-secondary-600);
+}
+
+.aceui-badge--dot.aceui-badge--color-secondary .aceui-badge__dot {
+  background-color: var(--aceui-color-secondary-500);
+}
+
+.aceui-badge--dot.aceui-badge--color-success {
+  background-color: var(--aceui-color-success-50);
+  color: var(--aceui-color-success-600);
+}
+
+.aceui-badge--dot.aceui-badge--color-success .aceui-badge__dot {
+  background-color: var(--aceui-color-success-500);
+}
+
+.aceui-badge--dot.aceui-badge--color-warning {
+  background-color: var(--aceui-color-warning-50);
+  color: var(--aceui-color-warning-600);
+}
+
+.aceui-badge--dot.aceui-badge--color-warning .aceui-badge__dot {
+  background-color: var(--aceui-color-warning-500);
+}
+
+.aceui-badge--dot.aceui-badge--color-danger {
+  background-color: var(--aceui-color-danger-50);
+  color: var(--aceui-color-danger-600);
+}
+
+.aceui-badge--dot.aceui-badge--color-danger .aceui-badge__dot {
+  background-color: var(--aceui-color-danger-500);
+}
+
+/* ============================================
+   Disabled State
+   ============================================ */
+
+.aceui-badge.aceui-badge--disabled {
+  opacity: var(--aceui-disabled-opacity);
+  cursor: default;
+}

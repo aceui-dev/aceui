@@ -169,6 +169,9 @@
     --aceui-accordion-border-radius: var(--aceui-radius-medium);
     --aceui-accordion-background: var(--aceui-color-surface-1-background);
     --aceui-accordion-foreground: var(--aceui-color-surface-1-foreground);
+
+    /* Badge */
+    --aceui-badge-shadow-opacity: var(--aceui-shadow-opacity-medium);
 }
 
 [data-theme="dark"] {
@@ -292,4 +295,7 @@
      ======================= */
     /* Button */
     --aceui-button-shadow-opacity: var(--aceui-shadow-opacity-small);
+
+    /* Badge */
+    --aceui-badge-shadow-opacity: var(--aceui-shadow-opacity-small);
 }

@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route, Link, useLocation } from "react-router-dom";
 import ButtonPage from "./pages/button/ButtonPage";
 import AccordionPage from "./pages/accordion/AccordionPage";
+import BadgePage from "./pages/badge/BadgePage";
 import HomePage from "./pages/HomePage";
 import { COMPONENTS } from "./constants";
 import { SidebarProvider, useSidebar } from "./contexts/SidebarContext";
@@ -12,7 +13,7 @@ function Navigation() {
   const { theme, setTheme } = useTheme();
 
   // Pages that have sidebars (use page-layout class)
-  const pagesWithSidebar = ["/button", "/accordion"];
+  const pagesWithSidebar = ["/button", "/accordion", "/badge"];
   const hasSidebar = pagesWithSidebar.includes(location.pathname);
 
   return (
@@ -63,6 +64,7 @@ function AppContent() {
           <Route path="/" element={<HomePage />} />
           <Route path="/button" element={<ButtonPage />} />
           <Route path="/accordion" element={<AccordionPage />} />
+          <Route path="/badge" element={<BadgePage />} />
         </Routes>
       </div>
     </div>

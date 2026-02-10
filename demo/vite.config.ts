@@ -11,6 +11,6 @@ export default defineConfig({
     },
   },
   optimizeDeps: {
-    exclude: ['@aceuidev/button'],
+    exclude: ['@aceuidev/button', '@aceuidev/badge', '@aceuidev/accordion'],
   },
 })

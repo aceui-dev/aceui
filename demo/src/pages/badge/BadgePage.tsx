@@ -1,28 +1,26 @@
 import { useSearchParams, Link } from "react-router-dom";
 import DefaultSection from "./sections/DefaultSection";
-import VariantsSection from "./sections/VariantsSection";
-import MultipleSection from "./sections/MultipleSection";
 import DisabledSection from "./sections/DisabledSection";
-import LazySection from "./sections/LazySection";
-import CustomIndicatorSection from "./sections/CustomIndicatorSection";
-import SubtitleStartContentSection from "./sections/SubtitleStartContentSection";
-import ControlledSection from "./sections/ControlledSection";
+import VariantsSection from "./sections/VariantsSection";
+import ColorsSection from "./sections/ColorsSection";
+import SizesSection from "./sections/SizesSection";
+import RadiusSection from "./sections/RadiusSection";
+import StartEndContentSection from "./sections/StartEndContentSection";
 import CombinationsSection from "./sections/CombinationsSection";
 import { useSidebar } from "../../contexts/SidebarContext";
 
 const SECTIONS = [
   { id: "default", label: "Default", component: DefaultSection },
   { id: "variants", label: "Variants", component: VariantsSection },
-  { id: "multiple", label: "Multiple", component: MultipleSection },
+  { id: "colors", label: "Colors", component: ColorsSection },
+  { id: "sizes", label: "Sizes", component: SizesSection },
+  { id: "radius", label: "Radius", component: RadiusSection },
   { id: "disabled", label: "Disabled", component: DisabledSection },
-  { id: "lazy", label: "Lazy render", component: LazySection },
-  { id: "custom-indicator", label: "Custom indicator", component: CustomIndicatorSection },
-  { id: "subtitle-start", label: "Subtitle & start content", component: SubtitleStartContentSection },
-  { id: "controlled", label: "Controlled", component: ControlledSection },
+  { id: "start-end", label: "Start & End Content", component: StartEndContentSection },
   { id: "combinations", label: "Combinations", component: CombinationsSection },
 ];
 
-export default function AccordionPage() {
+export default function BadgePage() {
   const [searchParams] = useSearchParams();
   const currentTab = searchParams.get("t") || "default";
   const { isOpen, close } = useSidebar();
@@ -38,7 +36,7 @@ export default function AccordionPage() {
           {SECTIONS.map((section) => (
             <Link
               key={section.id}
-              to={`/accordion?t=${section.id}`}
+              to={`/badge?t=${section.id}`}
               className={currentTab === section.id ? "sidebar-link active" : "sidebar-link"}
               onClick={close}
             >
@@ -48,7 +46,7 @@ export default function AccordionPage() {
         </nav>
       </aside>
       <main className="page-content">
-        <h1 className="page-heading">AceUI · Accordion</h1>
+        <h1 className="page-heading">AceUI · Badge</h1>
         <CurrentComponent />
       </main>
     </div>
