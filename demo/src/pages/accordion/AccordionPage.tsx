@@ -3,6 +3,10 @@ import DefaultSection from "./sections/DefaultSection";
 import VariantsSection from "./sections/VariantsSection";
 import MultipleSection from "./sections/MultipleSection";
 import DisabledSection from "./sections/DisabledSection";
+import LazySection from "./sections/LazySection";
+import CustomIndicatorSection from "./sections/CustomIndicatorSection";
+import SubtitleStartContentSection from "./sections/SubtitleStartContentSection";
+import ControlledSection from "./sections/ControlledSection";
 import { useSidebar } from "../../contexts/SidebarContext";
 
 const SECTIONS = [
@@ -10,6 +14,10 @@ const SECTIONS = [
   { id: "variants", label: "Variants", component: VariantsSection },
   { id: "multiple", label: "Multiple", component: MultipleSection },
   { id: "disabled", label: "Disabled", component: DisabledSection },
+  { id: "lazy", label: "Lazy render", component: LazySection },
+  { id: "custom-indicator", label: "Custom indicator", component: CustomIndicatorSection },
+  { id: "subtitle-start", label: "Subtitle & start content", component: SubtitleStartContentSection },
+  { id: "controlled", label: "Controlled", component: ControlledSection },
 ];
 
 export default function AccordionPage() {
@@ -38,9 +46,7 @@ export default function AccordionPage() {
         </nav>
       </aside>
       <main className="page-content">
-        <h1 style={{ marginTop: 0, marginBottom: "2rem", fontSize: "1.5rem" }}>
-          AceUI · Accordion
-        </h1>
+        <h1 className="page-heading">AceUI · Accordion</h1>
         <CurrentComponent />
       </main>
     </div>

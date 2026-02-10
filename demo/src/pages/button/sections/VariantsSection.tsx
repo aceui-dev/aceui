@@ -3,9 +3,9 @@ import { Button } from "@aceuidev/button";
 export default function VariantsSection() {
   return (
     <section className="demo-section">
-      <h2>Button · Variants</h2>
+      <h2 className="demo-title">Button · Variants</h2>
       <p>Six different visual style variants.</p>
-      <h3>Default</h3>
+      <h3 className="demo-subtitle">Default</h3>
       <div className="demo-row">
         <Button variant="solid" color="default">
           Solid
@@ -26,7 +26,7 @@ export default function VariantsSection() {
           Ghost
         </Button>
       </div>
-      <h3>Primary</h3>
+      <h3 className="demo-subtitle">Primary</h3>
       <div className="demo-row">
         <Button variant="solid" color="primary">
           Solid
@@ -47,7 +47,7 @@ export default function VariantsSection() {
           Ghost
         </Button>
       </div>
-      <h3>Secondary</h3>
+      <h3 className="demo-subtitle">Secondary</h3>
       <div className="demo-row">
         <Button variant="solid" color="secondary">
           Solid
@@ -68,7 +68,7 @@ export default function VariantsSection() {
           Ghost
         </Button>
       </div>
-      <h3>Success</h3>
+      <h3 className="demo-subtitle">Success</h3>
       <div className="demo-row">
         <Button variant="solid" color="success">
           Solid
@@ -89,7 +89,7 @@ export default function VariantsSection() {
           Ghost
         </Button>
       </div>
-      <h3>Warning</h3>
+      <h3 className="demo-subtitle">Warning</h3>
       <div className="demo-row">
         <Button variant="solid" color="warning">
           Solid
@@ -110,7 +110,7 @@ export default function VariantsSection() {
           Ghost
         </Button>
       </div>
-      <h3>Danger</h3>
+      <h3 className="demo-subtitle">Danger</h3>
       <div className="demo-row">
         <Button variant="solid" color="danger">
           Solid

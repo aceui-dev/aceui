@@ -3,10 +3,10 @@ import { Accordion, AccordionItem } from "@aceuidev/accordion";
 export default function DisabledSection() {
   return (
     <section className="demo-section">
-      <h2>Accordion · Disabled keys</h2>
+      <h2 className="demo-title">Accordion · Disabled keys</h2>
       <p>Specific items can be disabled from interaction.</p>
       <div className="demo-row">
-        <div style={{ maxWidth: 400 }}>
+        <div style={{ width: "100%", maxWidth: 400 }}>
           <Accordion disabledKeys={["2"]}>
             <AccordionItem itemKey="1" title="Enabled Item">
               You can click this.

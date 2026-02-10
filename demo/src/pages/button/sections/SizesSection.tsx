@@ -3,7 +3,7 @@ import { Button } from "@aceuidev/button";
 export default function SizesSection() {
   return (
     <section className="demo-section">
-      <h2>Button · Sizes</h2>
+      <h2 className="demo-title">Button · Sizes</h2>
       <p>Three size variants: small, medium (default), and large.</p>
       <div className="demo-row">
         <Button size="small">Small</Button>

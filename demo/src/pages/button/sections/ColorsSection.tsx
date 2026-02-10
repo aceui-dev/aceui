@@ -3,7 +3,7 @@ import { Button } from "@aceuidev/button";
 export default function ColorsSection() {
   return (
     <section className="demo-section">
-      <h2>Button · Colors</h2>
+      <h2 className="demo-title">Button · Colors</h2>
       <p>Six color schemes available for all variants.</p>
       <div className="demo-row">
         <Button color="default">Default</Button>

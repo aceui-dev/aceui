@@ -11,7 +11,7 @@ export default function DefaultSection() {
   };
   return (
     <section className="demo-section">
-      <h2>Button · Default</h2>
+      <h2 className="demo-title">Button · Default</h2>
       <p>Default button with primary color and solid variant.</p>
       <div className="demo-row">
         <Button onClick={() => console.log("Button clicked!")}>Click me</Button>

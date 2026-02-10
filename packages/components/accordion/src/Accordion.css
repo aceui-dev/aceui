@@ -6,6 +6,8 @@
   display: flex;
   flex-direction: column;
   gap: 0;
+  width: 100%;
+  min-width: 0;
   font-family: inherit;
 }
 
@@ -16,6 +18,7 @@
 .aceui-accordion__item {
   display: flex;
   flex-direction: column;
+  width: 100%;
 }
 
 .aceui-accordion__item--disabled {
@@ -37,21 +40,17 @@
   align-items: center;
   gap: var(--aceui-spacing-small, 8px);
   width: 100%;
-  padding: var(--aceui-spacing-medium, 16px) calc(var(--aceui-spacing-medium, 16px) + 4px);
+  padding-block: var(--aceui-spacing-medium, 16px);
   border: none;
   background: transparent;
   font-family: inherit;
   font-size: var(--aceui-font-size-medium);
   line-height: var(--aceui-line-height-medium);
-  color: var(--aceui-color-content1-foreground);
+  color: var(--aceui-color-text-default);
   text-align: left;
   cursor: pointer;
   outline: none;
   transition: background-color 0.2s ease;
-}
-
-.aceui-accordion__header:hover {
-  background-color: color-mix(in srgb, var(--aceui-color-default-500) calc(var(--aceui-hover-opacity, 0.1) * 100%), transparent);
 }
 
 .aceui-accordion__header:focus-visible {
@@ -89,7 +88,7 @@
 
 .aceui-accordion__subtitle {
   font-size: var(--aceui-font-size-small);
-  color: var(--aceui-color-default-400);
+  color: var(--aceui-color-text-muted);
   line-height: var(--aceui-line-height-small);
 }
 
@@ -113,8 +112,31 @@
   overflow: hidden;
 }
 
+.aceui-accordion__content--animated {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.aceui-accordion__content--animated.aceui-accordion__content--expanded {
+  grid-template-rows: 1fr;
+}
+
+.aceui-accordion__content--collapsed .aceui-accordion__content-inner {
+  visibility: hidden;
+  padding-block: 0;
+  transition: visibility 0s linear 0.3s, padding-block 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.aceui-accordion__content--expanded .aceui-accordion__content-inner {
+  visibility: visible;
+  padding-block: var(--aceui-spacing-medium, 16px);
+  transition: visibility 0s linear 0s, padding-block 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
 .aceui-accordion__content-inner {
-  padding: var(--aceui-spacing-medium, 16px);
+  overflow: hidden;
+  min-height: 0;
 }
 
 /* ============================================
@@ -122,11 +144,11 @@
    ============================================ */
 
 .aceui-accordion--light {
-  background: var(--aceui-color-content1-background);
+  background: #0000;
 }
 
 .aceui-accordion--light .aceui-accordion__item {
-  border-bottom: 1px solid var(--aceui-color-content2-background);
+  border-bottom: 1px solid var(--aceui-color-border-default);
 }
 
 .aceui-accordion--light .aceui-accordion__item:last-child {
@@ -134,38 +156,20 @@
 }
 
 /* ============================================
-   Variant: Shadow
-   ============================================ */
-
-.aceui-accordion--shadow {
-  background: var(--aceui-color-content1-background);
-  gap: var(--aceui-spacing-small, 8px);
-}
-
-.aceui-accordion--shadow .aceui-accordion__item {
-  background: var(--aceui-color-content1-background);
-  box-shadow: 0 1px 3px 0 color-mix(in srgb, var(--aceui-color-content1-foreground) 12%, transparent);
-  border-radius: var(--aceui-accordion-border-radius);
-  overflow: hidden;
-}
-
-.aceui-accordion--shadow .aceui-accordion__header {
-  border-radius: var(--aceui-accordion-border-radius);
-}
-
-/* ============================================
    Variant: Bordered
    ============================================ */
 
 .aceui-accordion--bordered {
-  background: var(--aceui-color-content1-background);
-  border: var(--aceui-border-width-medium) solid var(--aceui-color-content2-background);
+  background: #0000;
+  border: var(--aceui-border-width-medium) solid var(--aceui-color-border-default);
   border-radius: var(--aceui-accordion-border-radius);
   overflow: hidden;
+  padding-inline-start: var(--aceui-spacing-medium, 16px);
+  padding-inline-end: var(--aceui-spacing-medium, 16px);
 }
 
 .aceui-accordion--bordered .aceui-accordion__item {
-  border-bottom: 1px solid var(--aceui-color-content2-background);
+  border-bottom: 1px solid var(--aceui-color-border-default);
 }
 
 .aceui-accordion--bordered .aceui-accordion__item:last-child {
@@ -182,13 +186,20 @@
 }
 
 .aceui-accordion--splitted .aceui-accordion__item {
-  background: var(--aceui-color-content1-background);
-  border: var(--aceui-border-width-medium) solid var(--aceui-color-content2-background);
+  background: #0000;
+  border: var(--aceui-border-width-medium) solid var(--aceui-color-border-default);
   border-radius: var(--aceui-accordion-border-radius);
   overflow: hidden;
-  box-shadow: 0 1px 3px 0 color-mix(in srgb, var(--aceui-color-content1-foreground) 8%, transparent);
+  box-shadow: 0 1px 3px 0 color-mix(in srgb, var(--aceui-color-text-default) 8%, transparent);
 }
 
 .aceui-accordion--splitted .aceui-accordion__header {
+  padding-inline-start: var(--aceui-spacing-medium, 16px);
+  padding-inline-end: calc(var(--aceui-spacing-medium, 16px) + 4px);
   border-radius: var(--aceui-accordion-border-radius);
+}
+
+.aceui-accordion--splitted .aceui-accordion__content-inner {
+  padding-inline-start: var(--aceui-spacing-medium, 16px);
+  padding-inline-end: var(--aceui-spacing-medium, 16px);
 }
