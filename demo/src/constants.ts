@@ -10,5 +10,9 @@ export const COMPONENTS = [
     {
         name: "Badge",
         path: "/badge",
+    },
+    {
+        name: "Divider",
+        path: "/divider",
     }
 ]
