@@ -4,30 +4,34 @@
   "type": "module",
   "scripts": {
     "postinstall": "npm run build:all",
-    "build:all": "npm run build --workspace=@aceuidev/button && npm run build --workspace=@aceuidev/accordion && npm run build --workspace=@aceuidev/badge",
+    "build:all": "npm run build --workspace=@aceuidev/button && npm run build --workspace=@aceuidev/accordion && npm run build --workspace=@aceuidev/badge && npm run build --workspace=@aceuidev/divider",
     "build:button": "npm run build --workspace=@aceuidev/button",
     "build:accordion": "npm run build --workspace=@aceuidev/accordion",
+    "build:badge": "npm run build --workspace=@aceuidev/badge",
+    "build:divider": "npm run build --workspace=@aceuidev/divider",
     "clean": "rimraf ../../packages/components/*/dist",
     "dev": "vite",
     "dev:button": "npm run dev --workspace=@aceuidev/button",
     "dev:accordion": "npm run dev --workspace=@aceuidev/accordion",
+    "dev:badge": "npm run dev --workspace=@aceuidev/badge",
+    "dev:divider": "npm run dev --workspace=@aceuidev/divider",
     "dev:with:button": "npm-run-all --parallel dev:button dev",
     "dev:with:accordion": "npm-run-all --parallel dev:accordion dev",
-    "dev:all": "npm-run-all --parallel dev:button dev:accordion dev:badge",
+    "dev:with:badge": "npm-run-all --parallel dev:badge dev",
+    "dev:with:divider": "npm-run-all --parallel dev:divider dev",
+    "dev:all": "npm-run-all --parallel dev:button dev:accordion dev:badge dev:divider",
     "build": "npm run build:all && vite build",
-    "preview": "vite preview",
-    "build:badge": "npm run build --workspace=@aceuidev/badge",
-    "dev:badge": "npm run dev --workspace=@aceuidev/badge",
-    "dev:with:badge": "npm-run-all --parallel dev:badge dev"
+    "preview": "vite preview"
   },
   "dependencies": {
     "@aceuidev/button": "*",
     "@aceuidev/accordion": "*",
+    "@aceuidev/badge": "*",
+    "@aceuidev/divider": "*",
     "framer-motion": "^11.15.0",
     "react": "19.2.3",
     "react-dom": "19.2.3",
-    "react-router-dom": "^7.13.0",
-    "@aceuidev/badge": "*"
+    "react-router-dom": "^7.13.0"
   },
   "devDependencies": {
     "@types/react": "^19.0.0",

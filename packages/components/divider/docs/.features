@@ -1,0 +1,77 @@
+# Divider Component Features
+
+## Core Features
+
+### Orientation
+- Horizontal divider (default)
+  - Renders as semantic `<hr>` element
+  - Full-width horizontal line
+  - Default orientation when not specified
+
+- Vertical divider
+  - Renders as `<div>` with `role="separator"`
+  - Full-height vertical line
+  - Used in flex/grid layouts to separate content side-by-side
+
+## Props
+
+### orientation
+- Type: `'horizontal' | 'vertical'`
+- Default: `'horizontal'`
+- Description: Controls the direction of the divider line
+
+### className
+- Type: `string`
+- Optional
+- Description: Additional CSS classes for custom styling
+
+### ariaLabel
+- Type: `string`
+- Optional
+- Description: Accessible label for screen readers to provide context
+
+### testId
+- Type: `string`
+- Optional
+- Description: Data attribute for testing frameworks
+
+## Styling
+
+### BEM Classes
+- Base: `.aceui-divider`
+- Horizontal modifier: `.aceui-divider--horizontal`
+- Vertical modifier: `.aceui-divider--vertical`
+
+### Design Tokens
+- Border color: `--aceui-color-border-default`
+- Border width: `--aceui-border-width-small`
+
+## Accessibility
+
+### Horizontal Divider
+- Uses semantic `<hr>` element
+- Native separator role
+- Optional `aria-label` for context
+
+### Vertical Divider
+- Uses `role="separator"`
+- `aria-orientation="vertical"` attribute
+- Optional `aria-label` for context
+
+## Usage Patterns
+
+### Between Sections
+- Separate content blocks vertically
+- Visual hierarchy in layouts
+
+### In Navigation
+- Separate menu items with vertical dividers
+- Create visual groupings
+
+### In Card Layouts
+- Divide card header, body, and footer
+- Separate related content sections
+
+### In Flex/Grid Layouts
+- Vertical dividers in multi-column layouts
+- Side-by-side content separation
