@@ -1,0 +1,125 @@
+---
+description: Regular CSS styling and design tokens for AceUI
+globs: "packages/components/**/*.css"
+alwaysApply: false
+---
+
+# Styling Guidelines
+
+## Approach
+
+- Use regular CSS (`.css` files) for component styling; **no inline styles**.
+- One `.css` file per component; import as side-effect: `import './Component.css'`.
+- Follow BEM methodology with `aceui-` prefix for all class names.
+- Use design tokens (CSS variables) for all values; avoid hardcoded colors/sizes.
+- **Do NOT set `font-family` in components** — let it inherit from the consumer's global styles. Use `font-family: inherit` if needed to ensure inheritance.
+
+## Design Tokens
+
+Design tokens are defined in `demo/src/design-tokens.css` and shared with the demo app. All design token CSS variables use the **`--aceui`** prefix. Components reference these CSS variables; consumers must ensure tokens are available (e.g. import `design-tokens.css` or provide their own). Use CSS variables instead of hardcoded values.
+
+## CSS Variable Naming
+
+All design tokens use the **`--aceui`** prefix (e.g. `--aceui-color-focus`, `--aceui-font-size-small`).
+
+### Colors
+
+#### Global / Content Surfaces
+- `--aceui-color-content1-background`, `--aceui-color-content1-foreground` (main surface)
+- `--aceui-color-content2-background`, `--aceui-color-content2-foreground`
+- `--aceui-color-focus`: Focus ring color
+
+#### Semantic Colors
+- Base: `--aceui-color-{semantic}` (e.g., `--aceui-color-primary`)
+- Foreground: `--aceui-color-{semantic}-foreground`
+- Shades: `--aceui-color-{semantic}-{50-900}` (e.g., `--aceui-color-primary-500`)
+- Semantics: `default`, `primary`, `secondary`, `success`, `warning`, `danger`
+- Each semantic color has shades from 50 (lightest) to 900 (darkest)
+
+### Sizing
+- Font sizes: `--aceui-font-size-tiny`, `--aceui-font-size-small`, `--aceui-font-size-medium`, `--aceui-font-size-large`
+- Line heights: `--aceui-line-height-tiny`, `--aceui-line-height-small`, `--aceui-line-height-medium`, `--aceui-line-height-large`
+- Border radius: `--aceui-radius-small`, `--aceui-radius-medium`, `--aceui-radius-large`
+- Border widths: `--aceui-border-width-small`, `--aceui-border-width-medium`, `--aceui-border-width-large`
+- Spacing: `--aceui-spacing-small`, `--aceui-spacing-medium`, `--aceui-spacing-large`
+
+### Other
+- Opacity: `--aceui-disabled-opacity`, `--aceui-hover-opacity`
+- Component-specific tokens (e.g. `--aceui-button-shadow-opacity`, `--aceui-accordion-border-radius`) are defined in `design-tokens.css`
+
+## BEM (Block Element Modifier) Methodology
+
+Use BEM for class naming with `aceui-` prefix:
+- **Block:** standalone component — `aceui-` + kebab-case (`.aceui-button`, `.aceui-modal`). Must be meaningful on its own and reusable.
+- **Element:** structural part of a block — double underscore `__` (`.aceui-button__icon`, `.aceui-modal__header`). Describes **what it is**, not how it looks.
+- **Modifier:** variant or state — double dash `--` (`.aceui-button--primary`, `.aceui-modal__footer--sticky`). Optional, never structural.
+
+### Examples
+- `.aceui-dropdown`, `.aceui-dropdown__menu`, `.aceui-dropdown__item`, `.aceui-dropdown__item--active`
+- Block modifier: `.aceui-button .aceui-button--primary .aceui-button--disabled`
+- Element modifier: `.aceui-modal__footer .aceui-modal__footer--compact`
+
+### Golden rule
+- Can exist alone → **Block**
+- Is a part of something → **Element**
+- Changes appearance or behavior → **Modifier**
+
+### Elements are one level deep
+- Do not nest elements: `.aceui-form__field__label` ❌
+- Use flat elements: `.aceui-form__field`, `.aceui-form__label` ✅
+
+### Modifiers must not contain elements
+- Wrong: `.aceui-table--striped__row` ❌
+- Right: `.aceui-table.aceui-table--striped` with `.aceui-table__row` inside ✅
+
+### Combining modifiers
+- Never chain modifiers: `.aceui-button--primary--disabled` ❌
+- Use multiple classes: `.aceui-button .aceui-button--primary .aceui-button--disabled` ✅
+
+### Element names: structure, not appearance
+- Wrong: `.aceui-modal__blueHeader`, `.aceui-modal__largeBody` (encodes visual style)
+- Right: `.aceui-modal__header`, `.aceui-modal__body` ✅
+
+### Do not use HTML tag names as elements
+- Wrong: `.aceui-table__tr`, `.aceui-table__td` ❌
+- Right: `.aceui-table__row`, `.aceui-table__cell` ✅
+
+### State vs structure
+- **Elements** = permanent parts: `__header`, `__body`, `__row`, `__cell`
+- **Modifiers** = variants or temporary state: `--primary`, `--disabled`, `--loading`, `--active`
+
+### JavaScript state classes
+- For **JS-toggled DOM state** (open, active, expanded): use non-BEM utility classes so BEM is not tied to JS — e.g. `.is-open`, `.is-active`, `.has-error`.
+- For **design variants** (primary, size, type): use BEM modifiers — e.g. `.aceui-button--primary`, `.aceui-modal--large`.
+
+### When not to use BEM
+- Utility classes (`.hidden`, `.text-center`)
+- Layout helpers (`.grid`, `.flex`)
+- Spacing helpers (`.mt-4`, `.gap-2`)
+- BEM is for **component styling only**.
+
+### Allowed vs disallowed
+- **Allowed:** `.aceui-block`, `.aceui-block__element`, `.aceui-block--modifier`, `.aceui-block__element--modifier`
+- **Disallowed:** modifier chaining, nested elements, mixing structure with state, encoding visual styles in names
+
+## Class Naming Rules
+
+- Always use lowercase letters; multi-word with single hyphen (kebab-case)
+- No camelCase or underscores in class names: `.aceui-notification__close-button` ✅ not `__closeButton` or `__close_button`
+- Use `__` for element relationships, `--` for modifiers
+- Avoid abbreviations unless very common (e.g. `btn` ok; prefer `dropdown` not `dd`)
+- Be descriptive: `.aceui-nav__menu-item` not `.aceui-nav__nmi`
+
+## Class Application
+
+- Base class first: `className={\`aceui-button ${className}\`.trim()}`
+- Modifiers conditionally: `className={\`aceui-button ${isPrimary ? 'aceui-button--primary' : ''} ${className}\`.trim()}`
+- External classes last: append `className` prop to the end of the class string
+- Use string class names with `aceui-` prefix (e.g. `'aceui-button'`, `'aceui-button--primary'`)
+
+## Avoid
+
+- camelCase (`.primaryButton` ❌)
+- Single underscore (`.button_icon` ❌)
+- Generic classes (`.active`, `.large` ❌)
+- Abbreviations (`.btn-prm` ❌)

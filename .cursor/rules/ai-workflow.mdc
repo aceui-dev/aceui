@@ -1,0 +1,102 @@
+---
+description: AI agent behavior and workflow guidelines for AceUI development
+alwaysApply: true
+---
+
+# AI Workflow Guidelines
+
+## 1. NO ASSUMPTIONS
+- Never assume requirements, props, logic, styling, or component behavior
+- If information is missing, unclear, or has multiple interpretations:
+  - STOP
+  - ASK QUESTIONS
+- Never auto-fill gaps
+
+## 2. TODO-FIRST, CODE-LAST
+- Never write code immediately
+- Always start by:
+  - Reading relevant files
+  - Reading `docs/.features` file in the component folder to understand requirements
+  - Creating a structured TODO list in `docs/todo.md` based on `docs/.features` file
+- Code is allowed ONLY after explicit approval for a TODO
+
+## 3. NO DOCUMENTATION GENERATION
+- Do NOT recreate or rewrite README files (or other long-form docs) unless explicitly asked
+- When writing documentation-style content, keep it to:
+  - TODO lists
+  - Task breakdowns
+  - Option comparisons
+  - Flow outlines
+  - Decision matrices
+
+## 4. EXPLAIN REASONING
+- Always explain WHY a suggestion exists
+- Avoid generic or theoretical advice
+- Be specific to this project and the relevant component/file
+
+## 5. COLLABORATIVE MEMORY
+- Remember approved decisions
+- Stay consistent throughout the project
+- If a new suggestion conflicts with a previous decision:
+  - Highlight the conflict explicitly
+  - Ask for direction
+
+## 6. GIT COMMIT MESSAGES
+- Use conventional commits: `feat:`, `fix:`, `docs:`, `style:`, `refactor:`, `chore:`
+- Example: `feat(Button): add loading state with spinner`
+
+## 7. LATEST & CURRENT BEST PRACTICES
+- Always prefer:
+  - Latest stable React patterns
+  - Current TypeScript standards
+  - Modern component library approaches
+  - Actively maintained tools and libraries
+- Explicitly avoid deprecated, legacy, or discouraged patterns
+- If a pattern or tool is outdated:
+  - Clearly state it is outdated
+  - Explain why it should not be used
+  - Provide the modern alternative
+
+## 8. STRONG ENFORCEMENT
+- If recency or best-practice status cannot be confidently verified:
+  - STOP
+  - ASK FOR CONFIRMATION
+  - DO NOT PROCEED
+
+## 9. INTERNET SEARCH REQUIREMENT
+- If there is any uncertainty about:
+  - Whether a practice is still recommended
+  - Latest React/TypeScript conventions
+  - Accessibility best practices
+  - Performance patterns
+  - Third-party package viability
+- You MUST:
+  - Search the internet
+  - Prefer official or authoritative sources
+- If internet access is unavailable:
+  - Explicitly state the limitation
+  - STOP and ask for permission before proceeding
+
+---
+
+## Default Operating Mode
+
+When asked to work on anything:
+
+1. Identify relevant files
+2. Briefly summarize understanding
+3. Generate a structured TODO list:
+   - Ordered
+   - Feature-wise
+   - Dependency-aware
+4. Mark each TODO with status icons:
+   - ✅ **COMPLETED**: Task has been finished
+   - ⏳ **READY**: Can be implemented immediately
+   - 🚫 **BLOCKED**: Requires clarification or dependency
+   - 📋 **OPTIONAL/FUTURE**: Nice to have, not critical for v1.0.0
+   - Use icons instead of text status names in task items
+5. End by asking:
+   - Which TODO or feature to start with
+   - Or what needs refinement
+
+**DO NOT WRITE CODE UNTIL A TODO IS EXPLICITLY APPROVED.**

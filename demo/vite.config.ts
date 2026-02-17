@@ -1,0 +1,16 @@
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
+
+export default defineConfig({
+  plugins: [react()],
+  server: {
+    port: 5174,
+    strictPort: true,
+    watch: {
+      usePolling: true,
+    },
+  },
+  optimizeDeps: {
+    exclude: ['@aceuidev/button', '@aceuidev/badge', '@aceuidev/accordion', '@aceuidev/divider', '@aceuidev/modal'],
+  },
+})

@@ -1,0 +1,64 @@
+{
+  "name": "@aceuidev/button",
+  "version": "0.1.0",
+  "description": "One button component for your whole app: primary, secondary, icons, loading, and grouped actions—ready to drop in.",
+  "keywords": [
+    "react",
+    "button",
+    "component",
+    "ui",
+    "aceui"
+  ],
+  "author": "AceUI <support@aceui.dev>",
+  "homepage": "https://aceui.dev/docs/components/button",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "sideEffects": [
+    "**/*.css"
+  ],
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aceui-dev/aceui.git",
+    "directory": "packages/components/button"
+  },
+  "bugs": {
+    "url": "https://github.com/aceui-dev/aceui/issues"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "peerDependencies": {
+    "framer-motion": "^11.0.0 || ^12.0.0",
+    "react": "^18.0.0 || ^19.0.0",
+    "react-dom": "^18.0.0 || ^19.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^19.2.0",
+    "@types/react-dom": "^19.2.0",
+    "framer-motion": "^11.15.0",
+    "react": "19.2.3",
+    "react-dom": "19.2.3",
+    "rimraf": "^5.0.10",
+    "tsup": "^8.5.1",
+    "typescript": "^5.7.2"
+  },
+  "scripts": {
+    "build": "tsup && node -e \"const fs=require('fs');fs.copyFileSync('src/Button.css','dist/Button.css')\"",
+    "dev": "tsup src --watch --format esm,cjs",
+    "clean": "rimraf dist",
+    "prepublishOnly": "npm run clean && npm run build"
+  }
+}

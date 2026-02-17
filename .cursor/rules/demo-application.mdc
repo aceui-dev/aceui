@@ -1,0 +1,196 @@
+---
+description: Demo application conventions for showcasing AceUI components
+globs: "demo/**/*.tsx, demo/**/*.ts"
+alwaysApply: false
+---
+
+# Demo Application Guidelines
+
+## Overview
+
+The demo application showcases and tests AceUI components using Vite, React Router DOM, and a structured page/section organization.
+
+- **Purpose:** Showcase and test AceUI components
+- **Build tool:** Vite
+- **Routing:** React Router DOM
+- **Styling:** Global CSS (not CSS Modules)
+
+## File Structure
+
+```
+demo/
+├── src/
+│   ├── App.tsx              # Main app with routing
+│   ├── main.tsx             # Entry point
+│   ├── constants.ts         # Component navigation constants
+│   ├── design-tokens.css    # Design tokens (shared with components)
+│   ├── index.css            # Global styles
+│   ├── contexts/            # React contexts
+│   │   └── SidebarContext.tsx
+│   └── pages/               # Component showcase pages
+│       ├── HomePage.tsx
+│       └── {component}/     # Component-specific pages
+│           ├── {Component}Page.tsx
+│           └── sections/     # Demo sections
+│               └── {SectionName}Section.tsx
+├── vite.config.ts
+└── package.json
+```
+
+## Routing Patterns
+
+- Use React Router DOM for navigation
+- Routes defined in `App.tsx`
+- Component pages: `/button`, etc. (kebab-case)
+- Home page: `/`
+- URL search params for tabs: `?t={section-id}`
+
+## Page Structure
+
+### Component Pages (`{Component}Page.tsx`)
+
+- Located in `src/pages/{component}/`
+- Use sidebar navigation for sections
+- Use `useSearchParams` for tab navigation
+- Import sections from `sections/` folder
+- Use `SidebarContext` for sidebar state
+- Use `page-layout` class for pages with sidebar
+
+Example structure:
+```tsx
+import { useSearchParams } from "react-router-dom";
+import { useSidebar } from "../../contexts/SidebarContext";
+import DefaultSection from "./sections/DefaultSection";
+
+const SECTIONS = [
+  { id: "default", label: "Default", component: DefaultSection },
+];
+
+export default function ButtonPage() {
+  const [searchParams] = useSearchParams();
+  const currentTab = searchParams.get("t") || "default";
+  const { isOpen, close } = useSidebar();
+  // ...
+}
+```
+
+### Sections (`{SectionName}Section.tsx`)
+
+- Located in `src/pages/{component}/sections/`
+- Default export function component
+- Use `demo-section` class for styling
+- Use `demo-row` class for horizontal layouts
+- Showcase specific component features/variants
+
+Example:
+```tsx
+import { Button } from "@aceuidev/button";
+
+export default function DefaultSection() {
+  return (
+    <section className="demo-section">
+      <h2>Button · Default</h2>
+      <div className="demo-row">
+        <Button onClick={() => alert("Clicked!")}>Click me</Button>
+      </div>
+    </section>
+  );
+}
+```
+
+## Component Integration
+
+- Import workspace components: `import { Component } from "@aceuidev/{component}"`
+- Use workspace protocol: `"@aceuidev/button": "*"` in `package.json`
+- Components must be added to `vite.config.ts` `optimizeDeps.exclude` array
+- Example: `optimizeDeps: { exclude: ['@aceuidev/button'] }`
+
+## Constants
+
+- `COMPONENTS` array in `src/constants.ts` defines navigation
+- Format: `{ name: string, path: string }`
+- Update when adding new component pages
+
+Example:
+```tsx
+export const COMPONENTS = [
+  { name: "Button", path: "/button" },
+];
+```
+
+## Contexts
+
+- Use React Context API for shared state
+- Create contexts in `src/contexts/`
+- Export provider and custom hook
+- Example: `SidebarContext` for sidebar open/close state
+
+Pattern:
+```tsx
+import { createContext, useContext, useState, ReactNode } from "react";
+
+interface ContextType {
+  // context properties
+}
+
+const Context = createContext<ContextType | undefined>(undefined);
+
+export function ContextProvider({ children }: { children: ReactNode }) {
+  // implementation
+}
+
+export function useAppContext() {
+  const context = useContext(Context);
+  if (context === undefined) {
+    throw new Error("useAppContext must be used within ContextProvider");
+  }
+  return context;
+}
+```
+
+## Styling
+
+- Use global CSS files (not CSS Modules)
+- `design-tokens.css`: Shared design tokens (same as component library)
+- `index.css`: Global application styles
+- Use CSS classes for styling:
+  - `demo-section`: Container for demo sections
+  - `demo-row`: Horizontal layout for demo items
+  - `page-layout`: Layout for pages with sidebar
+  - `sidebar`, `sidebar-overlay`: Sidebar components
+
+## Adding New Component Pages
+
+When adding a new component showcase:
+
+1. Create page folder: `src/pages/{component}/`
+2. Create `{Component}Page.tsx` with sidebar navigation
+3. Create sections in `sections/` folder
+4. Add route in `App.tsx`:
+   ```tsx
+   <Route path="/{component}" element={<{Component}Page />} />
+   ```
+5. Add to `COMPONENTS` in `constants.ts`
+6. Add to `pagesWithSidebar` array in `App.tsx` if sidebar needed:
+   ```tsx
+   const pagesWithSidebar = ["/button", "/{component}"];
+   ```
+7. Update `vite.config.ts` to exclude component from optimization
+
+## Naming Conventions
+
+- **Pages:** PascalCase (`ButtonPage.tsx`)
+- **Sections:** PascalCase with "Section" suffix (`DefaultSection.tsx`)
+- **Contexts:** PascalCase with "Context" suffix (`SidebarContext.tsx`)
+- **Routes:** kebab-case (`/button`, etc.)
+- **Section IDs:** kebab-case (`"default"`, `"custom-styles"`)
+
+## Best Practices
+
+- Keep demo sections focused on one feature/variant
+- Use descriptive section names
+- Group related demos in same section
+- Use `demo-section` and `demo-row` classes for layout
+- Import components from workspace packages (`@aceuidev/{component}`)
+- Follow existing sidebar pattern for component pages
+- Follow accessibility guidelines (see `accessibility.mdc`)
